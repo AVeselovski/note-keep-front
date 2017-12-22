@@ -1,0 +1,16 @@
+/* 
+ * index styles
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500');
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4, p {
+    font-size: 1rem;
+    font-weight: 300;
+}
