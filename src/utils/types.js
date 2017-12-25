@@ -1,3 +1,2 @@
-export const EMAIL_CHANGED = 'email_changed';
-export const PASSWORD_CHANGED = 'password_changed';
-export const PASSWORD_CONFIRM_CHANGED = 'password_confirm_changed';
+export const VALIDATOR_EMAIL_ERROR = 'validator_email_error';
+export const VALIDATOR_PASSWORD_ERROR = 'validator_password_error';

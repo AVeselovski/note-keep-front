@@ -5,6 +5,7 @@ import theme from './theme';
 
 import Auth from './containers/Auth';
 
+
 const StyledApp = styled.div`
   background: ${props => props.theme.themeColor};
   min-height: 100vh;
@@ -24,5 +25,6 @@ class App extends Component {
         );
     }
 }
+
 
 export default App;
