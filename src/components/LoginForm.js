@@ -4,11 +4,21 @@ import styled from 'styled-components';
 import theme from '../theme';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import CircularProgress from 'material-ui/CircularProgress';
 
 
 const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
+    width: 260px;
+`;
+
+const StyledInputContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 160px;
+    justify-content: center;
+    align-items: center;
 `;
 
 const StyledButtonContainer = styled.div`
@@ -18,38 +28,49 @@ const StyledButtonContainer = styled.div`
     margin-top: 50px;
 `;
 
-const LoginForm = ({ onChangeEmail, onChangePassword, email, password, emailError, passwordError, onLogin }) => {
+const LoginForm = ({ onChangeEmail, onChangePassword, email, password, emailError, passwordError, loggingIn, onLogin }) => {
     return (
         <StyledForm onSubmit={onLogin}>
-            <TextField
-                name="login-email"
-                type="email"
-                inputStyle={{ color: theme.grey }}
-                floatingLabelText="Email"
-                floatingLabelFixed
-                floatingLabelStyle={{ color: theme.grey, top: '28px', fontSize: '1.4rem', fontWeight: '400' }}
-                underlineStyle={{ borderColor: theme.grey }}
-                underlineFocusStyle={{ borderColor: theme.grey }}
-                style={{ marginBottom: '15px' }}
-                value={email}
-                onChange={onChangeEmail}
-                errorText={emailError}
-                errorStyle={{ color: theme.yellow }}
-            />
-            <TextField
-                name="login-password"
-                type="password"
-                inputStyle={{ color: theme.grey }}
-                floatingLabelText="Password"
-                floatingLabelFixed
-                floatingLabelStyle={{ color: theme.grey, top: '28px', fontSize: '1.4rem', fontWeight: '400' }}
-                underlineStyle={{ borderColor: theme.grey }}
-                underlineFocusStyle={{ borderColor: theme.grey }}
-                value={password}
-                onChange={onChangePassword}
-                errorText={passwordError}
-                errorStyle={{ color: theme.yellow }}
-            />
+            {
+                !loggingIn
+                    ?
+                    <StyledInputContainer>
+                        <TextField
+                            name="login-email"
+                            type="email"
+                            inputStyle={{ color: theme.grey }}
+                            floatingLabelText="Email"
+                            floatingLabelFixed
+                            floatingLabelStyle={{ color: theme.grey, top: '28px', fontSize: '1.4rem', fontWeight: '400' }}
+                            underlineStyle={{ borderColor: theme.grey }}
+                            underlineFocusStyle={{ borderColor: theme.grey }}
+                            style={{ marginBottom: '15px', width: '260px' }}
+                            value={email}
+                            onChange={onChangeEmail}
+                            errorText={emailError}
+                            errorStyle={{ color: theme.yellow }}
+                        />
+                        <TextField
+                            name="login-password"
+                            type="password"
+                            inputStyle={{ color: theme.grey }}
+                            floatingLabelText="Password"
+                            floatingLabelFixed
+                            floatingLabelStyle={{ color: theme.grey, top: '28px', fontSize: '1.4rem', fontWeight: '400' }}
+                            underlineStyle={{ borderColor: theme.grey }}
+                            underlineFocusStyle={{ borderColor: theme.grey }}
+                            style={{ width: '260px' }}
+                            value={password}
+                            onChange={onChangePassword}
+                            errorText={passwordError}
+                            errorStyle={{ color: theme.yellow }}
+                        />
+                    </StyledInputContainer>
+                    :
+                    <StyledInputContainer>
+                        <CircularProgress size={80} thickness={3} color={theme.grey} />
+                    </StyledInputContainer>
+            }
             <StyledButtonContainer>
                 <FlatButton
                     label="LOGIN"
@@ -58,11 +79,13 @@ const LoginForm = ({ onChangeEmail, onChangePassword, email, password, emailErro
                     style={{ height: '50px', width: '120px', border: `1px solid ${theme.grey}` }}
                     backgroundColor={theme.grey}
                     hoverColor={theme.lightGrey}
+                    disabled={loggingIn}
                 />
                 <FlatButton
                     label="Register"
                     labelStyle={{ textTransform: 'none', color: theme.grey, fontWeight: '300', fontSize: '1.4rem' }}
                     style={{ height: '50px', width: '120px', border: `1px solid ${theme.grey}` }}
+                    disabled={loggingIn}
                 />
             </StyledButtonContainer>
         </StyledForm>

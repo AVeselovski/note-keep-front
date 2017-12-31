@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { validateEmail, validatePassword } from '../utils/helpers';
-import { validatorEmailError, validatorPasswordError } from '../actions/ui-actions';
+import { setEmailError, setPasswordError, setLoggingIn } from '../actions/ui-actions';
 
 import { AppTitle, LoginForm } from '../components';
 
@@ -15,7 +15,7 @@ const StyledAuthPage = styled.section`
     flex-direction: column;
 
     h1 {
-        font-size: 3.56rem;
+        font-size: 3.6rem;
         font-weight: 100;
         margin-bottom: 40px;
     }
@@ -36,16 +36,23 @@ class Auth extends Component {
     }
     onLogin = (e) => {
         e.preventDefault();
-        
-        const { email, password } = this.state;
-        const { emailError, passwordError } = this.props;
 
+        // get input values
+        const { email, password } = this.state;
         email.toString().trim();
 
-        this.props.validatorEmailError(validateEmail(email));
-        this.props.validatorPasswordError(validatePassword(password));
+        // validate
+        const emailError = validateEmail(email);
+        const passwordError = validatePassword(password);
 
-        console.log(emailError, passwordError);
+        // (un)set errors
+        this.props.setEmailError(emailError.msg);
+        this.props.setPasswordError(passwordError.msg);
+
+        // proceed with logging in if no errors
+        if (emailError.error === false && passwordError.error === false) {
+            this.props.setLoggingIn();
+        }
     }
     render() {
         const { email, password } = this.state;
@@ -60,6 +67,7 @@ class Auth extends Component {
                     password={password}
                     emailError={emailError}
                     passwordError={passwordError}
+                    loggingIn={loggingIn}
                     onLogin={this.onLogin}
                 />
             </StyledAuthPage>
@@ -69,8 +77,9 @@ class Auth extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        validatorEmailError: (email) => { dispatch(validatorEmailError(email)) },
-        validatorPasswordError: (password) => { dispatch(validatorPasswordError(password)) }
+        setEmailError: (email) => { dispatch(setEmailError(email)) },
+        setPasswordError: (password) => { dispatch(setPasswordError(password)) },
+        setLoggingIn: () => { dispatch(setLoggingIn()) }
     }
 };
 
