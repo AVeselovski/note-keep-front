@@ -17,7 +17,7 @@ const StyledForm = styled.form`
 const StyledInputContainer = styled.div`
     display: flex;
     flex-direction: column;
-    height: 160px;
+    min-height: 335px;
     justify-content: center;
     align-items: center;
 `;
@@ -29,15 +29,28 @@ const StyledButtonContainer = styled.div`
     margin-top: 50px;
 `;
 
-const LoginForm = ({ onChangeEmail, onChangePassword, email, password, emailError, passwordError, loggingIn, onLogin }) => {
+const RegisterForm = ({
+    onChangeEmail,
+    onChangeConfirmEmail,
+    onChangePassword,
+    onChangeConfirmPassword,
+    email,
+    confirmEmail,
+    password,
+    confirmPassword,
+    emailError,
+    passwordError,
+    loggingIn,
+    onRegister
+}) => {
     return (
-        <StyledForm onSubmit={onLogin}>
+        <StyledForm onSubmit={onRegister}>
             {
                 !loggingIn
                     ?
                     <StyledInputContainer>
                         <TextField
-                            name="login-email"
+                            name="reg-email"
                             type="email"
                             inputStyle={{ color: theme.grey }}
                             floatingLabelText="Email"
@@ -52,7 +65,22 @@ const LoginForm = ({ onChangeEmail, onChangePassword, email, password, emailErro
                             errorStyle={{ color: theme.yellow }}
                         />
                         <TextField
-                            name="login-password"
+                            name="reg-confirm-email"
+                            type="email"
+                            inputStyle={{ color: theme.grey }}
+                            floatingLabelText="Confirm email"
+                            floatingLabelFixed
+                            floatingLabelStyle={{ color: theme.grey, top: '28px', fontSize: '1.4rem', fontWeight: '400' }}
+                            underlineStyle={{ borderColor: theme.grey }}
+                            underlineFocusStyle={{ borderColor: theme.grey }}
+                            style={{ marginBottom: '15px', width: '300px' }}
+                            value={confirmEmail}
+                            onChange={onChangeConfirmEmail}
+                            errorText=""
+                            errorStyle={{ color: theme.yellow }}
+                        />
+                        <TextField
+                            name="reg-password"
                             type="password"
                             inputStyle={{ color: theme.grey }}
                             floatingLabelText="Password"
@@ -60,10 +88,25 @@ const LoginForm = ({ onChangeEmail, onChangePassword, email, password, emailErro
                             floatingLabelStyle={{ color: theme.grey, top: '28px', fontSize: '1.4rem', fontWeight: '400' }}
                             underlineStyle={{ borderColor: theme.grey }}
                             underlineFocusStyle={{ borderColor: theme.grey }}
-                            style={{ width: '300px' }}
+                            style={{ marginBottom: '15px', width: '300px' }}
                             value={password}
                             onChange={onChangePassword}
                             errorText={passwordError}
+                            errorStyle={{ color: theme.yellow }}
+                        />
+                        <TextField
+                            name="reg-confirm-password"
+                            type="password"
+                            inputStyle={{ color: theme.grey }}
+                            floatingLabelText="Confirm password"
+                            floatingLabelFixed
+                            floatingLabelStyle={{ color: theme.grey, top: '28px', fontSize: '1.4rem', fontWeight: '400' }}
+                            underlineStyle={{ borderColor: theme.grey }}
+                            underlineFocusStyle={{ borderColor: theme.grey }}
+                            style={{ width: '300px' }}
+                            value={confirmPassword}
+                            onChange={onChangeConfirmPassword}
+                            errorText=""
                             errorStyle={{ color: theme.yellow }}
                         />
                     </StyledInputContainer>
@@ -74,7 +117,7 @@ const LoginForm = ({ onChangeEmail, onChangePassword, email, password, emailErro
             }
             <StyledButtonContainer>
                 <FlatButton
-                    label="LOGIN"
+                    label="REGISTER"
                     type="submit"
                     labelStyle={{ color: theme.themeColor, fontWeight: '300', fontSize: '1.4rem' }}
                     style={{ height: '50px', width: '140px', border: `1px solid ${theme.grey}` }}
@@ -82,9 +125,9 @@ const LoginForm = ({ onChangeEmail, onChangePassword, email, password, emailErro
                     hoverColor={theme.lightGrey}
                     disabled={loggingIn}
                 />
-                <Link to="/register">
+                <Link to="/login">
                     <FlatButton
-                        label="Register"
+                        label="Login"
                         labelStyle={{ textTransform: 'none', color: theme.grey, fontWeight: '300', fontSize: '1.4rem' }}
                         style={{ height: '50px', width: '140px', border: `1px solid ${theme.grey}` }}
                         disabled={loggingIn}
@@ -95,15 +138,19 @@ const LoginForm = ({ onChangeEmail, onChangePassword, email, password, emailErro
     );
 }
 
-LoginForm.propTypes = {
+RegisterForm.propTypes = {
     onChangeEmail: PropTypes.func,
+    onChangeConfirmEmail: PropTypes.func,
     onChangePassword: PropTypes.func,
+    onChangeConfirmPassword: PropTypes.func,
     email: PropTypes.string,
+    confirmEmail: PropTypes.string,
     password: PropTypes.string,
+    confirmPassword: PropTypes.string,
     emailError: PropTypes.string,
     passwordError: PropTypes.string,
-    onLogin: PropTypes.func
+    onRegister: PropTypes.func
 };
 
 
-export default LoginForm;
+export default RegisterForm;

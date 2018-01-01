@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { validateEmail, validatePassword } from '../utils/helpers';
 import { setEmailError, setPasswordError, setLoggingIn } from '../actions/ui-actions';
 
-import { AppTitle, LoginForm } from '../components';
+import { AppTitle, LoginForm, RegisterForm, AltNotFound } from '../components';
 
 
 const StyledAuthPage = styled.section`
@@ -15,7 +16,7 @@ const StyledAuthPage = styled.section`
     flex-direction: column;
 
     h1 {
-        font-size: 3.6rem;
+        font-size: 4.18rem;
         font-weight: 100;
         margin-bottom: 40px;
     }
@@ -24,15 +25,25 @@ const StyledAuthPage = styled.section`
 class Auth extends Component {
     state = {
         email: '',
-        password: ''
+        confirmEmail: '',
+        password: '',
+        confirmPassword: ''
     }
     onChangeEmail = (event) => {
         const email = event.target.value;
         this.setState({ email });
     }
+    onChangeConfirmEmail = (event) => {
+        const confirmEmail = event.target.value;
+        this.setState({ confirmEmail });
+    }
     onChangePassword = (event) => {
         const password = event.target.value;
         this.setState({ password });
+    }
+    onChangeConfirmPassword = (event) => {
+        const confirmPassword = event.target.value;
+        this.setState({ confirmPassword });
     }
     onLogin = (e) => {
         e.preventDefault();
@@ -54,22 +65,56 @@ class Auth extends Component {
             this.props.setLoggingIn();
         }
     }
+    onRegister = (e) => {
+        e.preventDefault();
+        // WIP
+        this.props.setLoggingIn();
+    }
     render() {
-        const { email, password } = this.state;
-        const { loggingIn, emailError, passwordError } = this.props;
+        const { email, confirmEmail, password, confirmPassword } = this.state;
+        const { loggingIn, emailError, passwordError, match: { url } } = this.props;
+        console.log(url);
         return (
             <StyledAuthPage>
                 <AppTitle />
-                <LoginForm
-                    onChangeEmail={this.onChangeEmail}
-                    onChangePassword={this.onChangePassword}
-                    email={email}
-                    password={password}
-                    emailError={emailError}
-                    passwordError={passwordError}
-                    loggingIn={loggingIn}
-                    onLogin={this.onLogin}
-                />
+                <Switch>
+                    <Redirect exact path={url} to="/login" />
+                    <Route
+                        path="/login"
+                        render={() => (
+                            <LoginForm
+                                onChangeEmail={this.onChangeEmail}
+                                onChangePassword={this.onChangePassword}
+                                email={email}
+                                password={password}
+                                emailError={emailError}
+                                passwordError={passwordError}
+                                loggingIn={loggingIn}
+                                onLogin={this.onLogin}
+                            />
+                        )}
+                    />
+                    <Route
+                        path="/register"
+                        render={() => (
+                            <RegisterForm
+                                onChangeEmail={this.onChangeEmail}
+                                onChangeConfirmEmail={this.onChangeConfirmEmail}
+                                onChangePassword={this.onChangePassword}
+                                onChangeConfirmPassword={this.onChangeConfirmPassword}
+                                email={email}
+                                confirmEmail={confirmEmail}
+                                password={password}
+                                confirmPassword={confirmPassword}
+                                emailError={emailError}
+                                passwordError={passwordError}
+                                loggingIn={loggingIn}
+                                onRegister={this.onRegister}
+                            />
+                        )}
+                    />
+                    <Route component={AltNotFound} />
+                </Switch>
             </StyledAuthPage>
         );
     }
@@ -90,4 +135,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Auth));
