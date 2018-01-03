@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -22,20 +22,19 @@ class App extends Component {
         return (
             <MuiThemeProvider>
                 <ThemeProvider theme={theme}>
-                    <Router>
-                        <StyledApp>
-                            {
-                                isLoggedIn
-                                    ?
-                                    <Switch>
-                                        <Route exact path="/" component={Main} />
-                                        <Route component={NotFound} />
-                                    </Switch>
-                                    :
-                                    <Auth />
-                            }
-                        </StyledApp>
-                    </Router>
+                    <StyledApp>
+                        {
+                            isLoggedIn
+                                ?
+                                <Switch>
+                                    <Redirect exact path={`/login`} to="/" />
+                                    <Route exact path="/" component={Main} />
+                                    <Route component={NotFound} />
+                                </Switch>
+                                :
+                                <Auth />
+                        }
+                    </StyledApp>
                 </ThemeProvider>
             </MuiThemeProvider>
         );
@@ -47,4 +46,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));

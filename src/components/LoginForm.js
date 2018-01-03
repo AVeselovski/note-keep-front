@@ -82,7 +82,7 @@ const LoginForm = ({ onChangeEmail, onChangePassword, email, password, emailErro
                     hoverColor={theme.lightGrey}
                     disabled={loggingIn}
                 />
-                <Link to="/register">
+                <Link to="/register" style={ loggingIn ? { pointerEvents: 'none' } : {}}>
                     <FlatButton
                         label="Register"
                         labelStyle={{ textTransform: 'none', color: theme.grey, fontWeight: '300', fontSize: '1.4rem' }}

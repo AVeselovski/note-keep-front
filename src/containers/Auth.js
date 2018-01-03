@@ -4,6 +4,7 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { validateEmail, validatePassword } from '../utils/helpers';
 import { setEmailError, setPasswordError, setLoggingIn } from '../actions/ui-actions';
+import { login } from '../actions/auth-actions';
 
 import { AppTitle, LoginForm, RegisterForm, AltNotFound } from '../components';
 
@@ -63,6 +64,8 @@ class Auth extends Component {
         // proceed with logging in if no errors
         if (emailError.error === false && passwordError.error === false) {
             this.props.setLoggingIn();
+            const credentials = { email, password };
+            this.props.login(credentials);
         }
     }
     onRegister = (e) => {
@@ -70,10 +73,15 @@ class Auth extends Component {
         // WIP
         this.props.setLoggingIn();
     }
+    componentWillUnmount() {
+        this.setState({
+            email: '',
+            password: ''
+        });
+    }
     render() {
         const { email, confirmEmail, password, confirmPassword } = this.state;
         const { loggingIn, emailError, passwordError, match: { url } } = this.props;
-        console.log(url);
         return (
             <StyledAuthPage>
                 <AppTitle />
@@ -124,7 +132,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setEmailError: (email) => { dispatch(setEmailError(email)) },
         setPasswordError: (password) => { dispatch(setPasswordError(password)) },
-        setLoggingIn: () => { dispatch(setLoggingIn()) }
+        setLoggingIn: () => { dispatch(setLoggingIn()) },
+        login: (credentials) => { dispatch(login(credentials)) }
     }
 };
 

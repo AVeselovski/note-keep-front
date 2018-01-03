@@ -125,7 +125,7 @@ const RegisterForm = ({
                     hoverColor={theme.lightGrey}
                     disabled={loggingIn}
                 />
-                <Link to="/login">
+                <Link to="/login" style={ loggingIn ? { pointerEvents: 'none' } : {}}>
                     <FlatButton
                         label="Login"
                         labelStyle={{ textTransform: 'none', color: theme.grey, fontWeight: '300', fontSize: '1.4rem' }}
