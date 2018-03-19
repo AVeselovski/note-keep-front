@@ -29,11 +29,20 @@ const StyledButtonContainer = styled.div`
     margin-top: 50px;
 `;
 
-const LoginForm = ({ onChangeEmail, onChangePassword, email, password, emailError, passwordError, loggingIn, onLogin }) => {
+const LoginForm = ({
+    onChangeEmail,
+    onChangePassword,
+    email,
+    password,
+    emailError,
+    passwordError,
+    statusLoggingIn,
+    onLogin
+}) => {
     return (
         <StyledForm onSubmit={onLogin}>
             {
-                !loggingIn
+                !statusLoggingIn
                     ?
                     <StyledInputContainer>
                         <TextField
@@ -80,14 +89,14 @@ const LoginForm = ({ onChangeEmail, onChangePassword, email, password, emailErro
                     style={{ height: '50px', width: '140px', border: `1px solid ${theme.grey}` }}
                     backgroundColor={theme.grey}
                     hoverColor={theme.lightGrey}
-                    disabled={loggingIn}
+                    disabled={statusLoggingIn}
                 />
-                <Link to="/register" style={ loggingIn ? { pointerEvents: 'none' } : {}}>
+                <Link to="/auth/register" style={ statusLoggingIn ? { pointerEvents: 'none' } : {}}>
                     <FlatButton
                         label="Register"
                         labelStyle={{ textTransform: 'none', color: theme.grey, fontWeight: '300', fontSize: '1.4rem' }}
                         style={{ height: '50px', width: '140px', border: `1px solid ${theme.grey}` }}
-                        disabled={loggingIn}
+                        disabled={statusLoggingIn}
                     />
                 </Link>
             </StyledButtonContainer>
@@ -102,6 +111,7 @@ LoginForm.propTypes = {
     password: PropTypes.string,
     emailError: PropTypes.string,
     passwordError: PropTypes.string,
+    statusLoggingIn: PropTypes.bool,
     onLogin: PropTypes.func
 };
 

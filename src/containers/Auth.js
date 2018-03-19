@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { validateEmail, validatePassword } from '../utils/helpers';
-import { setEmailError, setPasswordError, setLoggingIn } from '../actions/ui-actions';
-import { login } from '../actions/auth-actions';
+import {
+    setValidatorEmailError,
+    setValidatorPasswordError,
+    setStatusLoggingIn,
+    loginUser
+} from '../actions/auth';
 
 import { AppTitle, LoginForm, RegisterForm, AltNotFound } from '../components';
 
 
-const StyledAuthPage = styled.section`
+const StyledAuthPage = styled.div`
     display: flex;
     min-height: 100vh;
     justify-content: center;
@@ -30,6 +34,14 @@ class Auth extends Component {
         password: '',
         confirmPassword: ''
     }
+
+    componentWillMount() {
+        // force users to dashboard if logged in
+        if (this.props.statusAuthorized) {
+            this.props.history.push('/dashboard');
+        }
+    }
+
     onChangeEmail = (event) => {
         const email = event.target.value;
         this.setState({ email });
@@ -46,6 +58,7 @@ class Auth extends Component {
         const confirmPassword = event.target.value;
         this.setState({ confirmPassword });
     }
+
     onLogin = (e) => {
         e.preventDefault();
 
@@ -58,37 +71,44 @@ class Auth extends Component {
         const passwordError = validatePassword(password);
 
         // (un)set errors
-        this.props.setEmailError(emailError.msg);
-        this.props.setPasswordError(passwordError.msg);
+        this.props.setValidatorEmailError(emailError.msg);
+        this.props.setValidatorPasswordError(passwordError.msg);
 
         // proceed with logging in if no errors
         if (emailError.error === false && passwordError.error === false) {
-            this.props.setLoggingIn();
             const credentials = { email, password };
-            this.props.login(credentials);
+            const { history } = this.props;
+            this.props.setStatusLoggingIn(true);
+            this.props.loginUser(credentials, history);
         }
     }
+
     onRegister = (e) => {
         e.preventDefault();
+
         // WIP
-        this.props.setLoggingIn();
+        this.props.setStatusLoggingIn(true);
     }
+
     componentWillUnmount() {
         this.setState({
             email: '',
             password: ''
         });
     }
+
     render() {
         const { email, confirmEmail, password, confirmPassword } = this.state;
-        const { loggingIn, emailError, passwordError, match: { url } } = this.props;
+        const { statusAuthorized, statusLoggingIn, emailError, passwordError, match: { url } } = this.props;
+        const redirect = statusAuthorized ? '/dashboard' : `${url}/login`;
+
         return (
             <StyledAuthPage>
                 <AppTitle />
                 <Switch>
-                    <Redirect exact path={url} to="/login" />
+                    <Redirect exact path={url} to={redirect} />
                     <Route
-                        path="/login"
+                        path={`${url}/login`}
                         render={() => (
                             <LoginForm
                                 onChangeEmail={this.onChangeEmail}
@@ -97,13 +117,13 @@ class Auth extends Component {
                                 password={password}
                                 emailError={emailError}
                                 passwordError={passwordError}
-                                loggingIn={loggingIn}
+                                statusLoggingIn={statusLoggingIn}
                                 onLogin={this.onLogin}
                             />
                         )}
                     />
                     <Route
-                        path="/register"
+                        path={`${url}/register`}
                         render={() => (
                             <RegisterForm
                                 onChangeEmail={this.onChangeEmail}
@@ -116,7 +136,7 @@ class Auth extends Component {
                                 confirmPassword={confirmPassword}
                                 emailError={emailError}
                                 passwordError={passwordError}
-                                loggingIn={loggingIn}
+                                statusLoggingIn={statusLoggingIn}
                                 onRegister={this.onRegister}
                             />
                         )}
@@ -128,20 +148,21 @@ class Auth extends Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    statusLoggingIn: state.auth.statusLoggingIn,
+    statusAuthorized: state.auth.statusAuthorized,
+    emailError: state.auth.emailError,
+    passwordError: state.auth.passwordError
+});
+
 const mapDispatchToProps = (dispatch) => {
     return {
-        setEmailError: (email) => { dispatch(setEmailError(email)) },
-        setPasswordError: (password) => { dispatch(setPasswordError(password)) },
-        setLoggingIn: () => { dispatch(setLoggingIn()) },
-        login: (credentials) => { dispatch(login(credentials)) }
+        setValidatorEmailError: (email) => { dispatch(setValidatorEmailError(email)) },
+        setValidatorPasswordError: (password) => { dispatch(setValidatorPasswordError(password)) },
+        setStatusLoggingIn: (val) => { dispatch(setStatusLoggingIn(val)) },
+        loginUser: (credentials, history) => { dispatch(loginUser(credentials, history)) }
     }
 };
 
-const mapStateToProps = (state) => ({
-    loggingIn: state.ui.loggingIn,
-    emailError: state.ui.emailError,
-    passwordError: state.ui.passwordError
-});
 
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Auth));
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

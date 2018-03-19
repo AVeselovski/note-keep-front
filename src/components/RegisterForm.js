@@ -40,13 +40,13 @@ const RegisterForm = ({
     confirmPassword,
     emailError,
     passwordError,
-    loggingIn,
+    statusLoggingIn,
     onRegister
 }) => {
     return (
         <StyledForm onSubmit={onRegister}>
             {
-                !loggingIn
+                !statusLoggingIn
                     ?
                     <StyledInputContainer>
                         <TextField
@@ -123,14 +123,14 @@ const RegisterForm = ({
                     style={{ height: '50px', width: '140px', border: `1px solid ${theme.grey}` }}
                     backgroundColor={theme.grey}
                     hoverColor={theme.lightGrey}
-                    disabled={loggingIn}
+                    disabled={statusLoggingIn}
                 />
-                <Link to="/login" style={ loggingIn ? { pointerEvents: 'none' } : {}}>
+                <Link to="/auth/login" style={ statusLoggingIn ? { pointerEvents: 'none' } : {}}>
                     <FlatButton
                         label="Login"
                         labelStyle={{ textTransform: 'none', color: theme.grey, fontWeight: '300', fontSize: '1.4rem' }}
                         style={{ height: '50px', width: '140px', border: `1px solid ${theme.grey}` }}
-                        disabled={loggingIn}
+                        disabled={statusLoggingIn}
                     />
                 </Link>
             </StyledButtonContainer>
@@ -149,6 +149,7 @@ RegisterForm.propTypes = {
     confirmPassword: PropTypes.string,
     emailError: PropTypes.string,
     passwordError: PropTypes.string,
+    statusLoggingIn: PropTypes.bool,
     onRegister: PropTypes.func
 };
 
