@@ -1,33 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import theme from '../theme';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import CircularProgress from 'material-ui/CircularProgress';
 
-
-const StyledForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-`;
-
-const StyledInputContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    min-height: 335px;
-    justify-content: center;
-    align-items: center;
-`;
-
-const StyledButtonContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 50px;
-`;
 
 const RegisterForm = ({
     onChangeEmail,
@@ -44,15 +22,15 @@ const RegisterForm = ({
     onRegister
 }) => {
     return (
-        <StyledForm onSubmit={onRegister}>
+        <form className="register-form" onSubmit={onRegister}>
             {
                 !statusLoggingIn
                     ?
-                    <StyledInputContainer>
+                    <div className="input-container">
                         <TextField
                             name="reg-email"
                             type="email"
-                            inputStyle={{ color: theme.grey }}
+                            inputStyle={{ color: theme.darkGrey }}
                             floatingLabelText="Email"
                             floatingLabelFixed
                             floatingLabelStyle={{ color: theme.grey, top: '28px', fontSize: '1.4rem', fontWeight: '400' }}
@@ -67,7 +45,7 @@ const RegisterForm = ({
                         <TextField
                             name="reg-confirm-email"
                             type="email"
-                            inputStyle={{ color: theme.grey }}
+                            inputStyle={{ color: theme.darkGrey }}
                             floatingLabelText="Confirm email"
                             floatingLabelFixed
                             floatingLabelStyle={{ color: theme.grey, top: '28px', fontSize: '1.4rem', fontWeight: '400' }}
@@ -82,7 +60,7 @@ const RegisterForm = ({
                         <TextField
                             name="reg-password"
                             type="password"
-                            inputStyle={{ color: theme.grey }}
+                            inputStyle={{ color: theme.darkGrey }}
                             floatingLabelText="Password"
                             floatingLabelFixed
                             floatingLabelStyle={{ color: theme.grey, top: '28px', fontSize: '1.4rem', fontWeight: '400' }}
@@ -97,7 +75,7 @@ const RegisterForm = ({
                         <TextField
                             name="reg-confirm-password"
                             type="password"
-                            inputStyle={{ color: theme.grey }}
+                            inputStyle={{ color: theme.darkGrey }}
                             floatingLabelText="Confirm password"
                             floatingLabelFixed
                             floatingLabelStyle={{ color: theme.grey, top: '28px', fontSize: '1.4rem', fontWeight: '400' }}
@@ -109,13 +87,13 @@ const RegisterForm = ({
                             errorText=""
                             errorStyle={{ color: theme.yellow }}
                         />
-                    </StyledInputContainer>
+                    </div>
                     :
-                    <StyledInputContainer>
+                    <div className="input-container">
                         <CircularProgress size={120} thickness={3} color={theme.grey} />
-                    </StyledInputContainer>
+                    </div>
             }
-            <StyledButtonContainer>
+            <div className="button-container">
                 <FlatButton
                     label="REGISTER"
                     type="submit"
@@ -133,8 +111,8 @@ const RegisterForm = ({
                         disabled={statusLoggingIn}
                     />
                 </Link>
-            </StyledButtonContainer>
-        </StyledForm>
+            </div>
+        </form>
     );
 }
 

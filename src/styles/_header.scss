@@ -1,0 +1,57 @@
+.header-desktop {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+
+    ul {
+        list-style-type: none;
+    }
+
+    .nav-element {
+        display: inline-block;
+        margin: 0 5px;
+
+        a {
+            text-decoration: none;
+            box-sizing: border-box;
+            color: $darkGrey;
+            padding: 5px 30px;
+            transition: all .2s;
+            box-shadow: inset 0px -1px 0px $darkGrey;
+            &:hover {
+                color: $grey;
+                box-shadow: inset 0px -2px 0px $grey;
+            }
+        }
+        .active-link {
+            color: $grey;
+            box-shadow: inset 0px -2px 0px $grey;
+        }
+    }
+    .nav-left {
+        width: 90px;
+        margin: 0 30px;
+    }
+    .nav-right {
+        width: 90px;
+        margin: 0 30px;
+        display: flex;
+        justify-content: space-between;
+        color: $darkGrey;
+        font-size: 2rem;
+
+        span {
+            cursor: pointer;
+            transition: color .2s;
+            &:hover {
+                color: $grey;
+            }
+        }
+    }
+}

@@ -6,7 +6,8 @@ import {
     SET_RESPONSE_ERROR,
     LOGOUT_USER
 } from '../utils/constants';
-import { apiLogin } from '../api/auth'
+import { apiLogin } from '../api/auth';
+import { errorMessages as messages } from '../utils/messages';
 
 
 function* login(action) {
@@ -17,15 +18,21 @@ function* login(action) {
 
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
         yield put({ type: SET_STATUS_AUTHORIZED, payload: true });
+        // clear response error
+        yield put({ type: SET_RESPONSE_ERROR, payload: '' });
         // store token
         localStorage.setItem('token', res.data.token);
         // redirect
         history.push('/dashboard');
     } catch (err) {
-        console.log('ERROR', err.response, err.response.status, err.message); // TEMP
-
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
-        yield put({ type: SET_RESPONSE_ERROR, payload: err.response.data }); // WIP
+
+        let error = messages.genericResponseError;
+        if (err.response.status === 401) {
+            error = messages.wrongCredentialsError;
+        }
+
+        yield put({ type: SET_RESPONSE_ERROR, payload: error });
     }
 }
 

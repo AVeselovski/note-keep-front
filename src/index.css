@@ -1,16 +1,34 @@
-/* 
- * index styles
- */
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500");
+* { margin: 0; padding: 0; }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500');
-* {
-    margin: 0;
-    padding: 0;
-}
-body {
-    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-h1, h2, h3, h4, p {
-    font-size: 1rem;
-    font-weight: 300;
-}
+body { font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+h1, h2, h3, h4, p { font-size: 1rem; font-weight: 300; }
+
+.app { background-color: #1a1a1a; min-height: 100vh; color: #bdbdbd; }
+
+.header-desktop { width: 100%; position: absolute; left: 0; top: 0; right: 0; display: flex; justify-content: space-between; align-items: center; height: 60px; }
+.header-desktop ul { list-style-type: none; }
+.header-desktop .nav-element { display: inline-block; margin: 0 5px; }
+.header-desktop .nav-element a { text-decoration: none; box-sizing: border-box; color: #747474; padding: 5px 30px; transition: all .2s; box-shadow: inset 0px -1px 0px #747474; }
+.header-desktop .nav-element a:hover { color: #bdbdbd; box-shadow: inset 0px -2px 0px #bdbdbd; }
+.header-desktop .nav-element .active-link { color: #bdbdbd; box-shadow: inset 0px -2px 0px #bdbdbd; }
+.header-desktop .nav-left { width: 90px; margin: 0 30px; }
+.header-desktop .nav-right { width: 90px; margin: 0 30px; display: flex; justify-content: space-between; color: #747474; font-size: 2rem; }
+.header-desktop .nav-right span { cursor: pointer; transition: color .2s; }
+.header-desktop .nav-right span:hover { color: #bdbdbd; }
+
+.auth-page { display: flex; min-height: 100vh; justify-content: center; align-items: center; flex-direction: column; }
+.auth-page h1 { font-size: 4rem; font-weight: 300; margin-bottom: 50px; }
+.auth-page .error-msg { color: #d9534f; width: 300px; text-align: center; height: 40px; margin-top: 25px; }
+.auth-page .login-from { display: flex; flex-direction: column; width: 300px; }
+.auth-page .login-from .input-container { display: flex; flex-direction: column; height: 160px; justify-content: center; align-items: center; }
+.auth-page .login-from .button-container { display: flex; flex-direction: row; justify-content: space-between; margin-top: 50px; }
+.auth-page .register-form { display: flex; flex-direction: column; width: 300px; }
+.auth-page .register-form .input-container { display: flex; flex-direction: column; min-height: 335px; justify-content: center; align-items: center; }
+.auth-page .register-form .button-container { display: flex; flex-direction: row; justify-content: space-between; margin-top: 50px; }
+
+.main-page { min-height: 100vh; position: relative; }
+.main-page .main-container { height: 100%; display: flex; flex-direction: column; align-items: center; padding: 100px; }
+
+/*# sourceMappingURL=index.css.map */

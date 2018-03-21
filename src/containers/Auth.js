@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import styled from 'styled-components';
 import { validateEmail, validatePassword } from '../utils/helpers';
 import {
     setValidatorEmailError,
@@ -13,32 +12,27 @@ import {
 import { AppTitle, LoginForm, RegisterForm, AltNotFound } from '../components';
 
 
-const StyledAuthPage = styled.div`
-    display: flex;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    h1 {
-        font-size: 4.18rem;
-        font-weight: 100;
-        margin-bottom: 40px;
-    }
-`;
-
 class Auth extends Component {
     state = {
         email: '',
         confirmEmail: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        responseError: ''
     }
 
     componentWillMount() {
         // force users to dashboard if logged in
         if (this.props.statusAuthorized) {
             this.props.history.push('/dashboard');
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.responseError !== this.props.responseError) {
+            this.setState((prevState) => {
+                return { responseError: nextProps.responseError };
+            });
         }
     }
 
@@ -93,17 +87,18 @@ class Auth extends Component {
     componentWillUnmount() {
         this.setState({
             email: '',
-            password: ''
+            password: '',
+            responseError: ''
         });
     }
 
     render() {
-        const { email, confirmEmail, password, confirmPassword } = this.state;
+        const { email, confirmEmail, password, confirmPassword, responseError } = this.state;
         const { statusAuthorized, statusLoggingIn, emailError, passwordError, match: { url } } = this.props;
         const redirect = statusAuthorized ? '/dashboard' : `${url}/login`;
 
         return (
-            <StyledAuthPage>
+            <div className="auth-page">
                 <AppTitle />
                 <Switch>
                     <Redirect exact path={url} to={redirect} />
@@ -143,7 +138,8 @@ class Auth extends Component {
                     />
                     <Route component={AltNotFound} />
                 </Switch>
-            </StyledAuthPage>
+                <span className="error-msg">{responseError}</span>
+            </div>
         );
     }
 }
@@ -152,7 +148,8 @@ const mapStateToProps = (state) => ({
     statusLoggingIn: state.auth.statusLoggingIn,
     statusAuthorized: state.auth.statusAuthorized,
     emailError: state.auth.emailError,
-    passwordError: state.auth.passwordError
+    passwordError: state.auth.passwordError,
+    responseError: state.auth.responseError
 });
 
 const mapDispatchToProps = (dispatch) => {

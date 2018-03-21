@@ -1,0 +1,12 @@
+.main-page {
+    min-height: 100vh;
+    position: relative;
+
+    .main-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 100px;
+    }
+}

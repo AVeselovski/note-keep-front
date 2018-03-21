@@ -1,33 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import theme from '../theme';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import CircularProgress from 'material-ui/CircularProgress';
 
-
-const StyledForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-`;
-
-const StyledInputContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 160px;
-    justify-content: center;
-    align-items: center;
-`;
-
-const StyledButtonContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 50px;
-`;
 
 const LoginForm = ({
     onChangeEmail,
@@ -40,15 +18,15 @@ const LoginForm = ({
     onLogin
 }) => {
     return (
-        <StyledForm onSubmit={onLogin}>
+        <form className="login-from" onSubmit={onLogin}>
             {
                 !statusLoggingIn
                     ?
-                    <StyledInputContainer>
+                    <div className="input-container">
                         <TextField
                             name="login-email"
                             type="email"
-                            inputStyle={{ color: theme.grey }}
+                            inputStyle={{ color: theme.darkGrey }}
                             floatingLabelText="Email"
                             floatingLabelFixed
                             floatingLabelStyle={{ color: theme.grey, top: '28px', fontSize: '1.4rem', fontWeight: '400' }}
@@ -63,7 +41,7 @@ const LoginForm = ({
                         <TextField
                             name="login-password"
                             type="password"
-                            inputStyle={{ color: theme.grey }}
+                            inputStyle={{ color: theme.darkGrey }}
                             floatingLabelText="Password"
                             floatingLabelFixed
                             floatingLabelStyle={{ color: theme.grey, top: '28px', fontSize: '1.4rem', fontWeight: '400' }}
@@ -75,13 +53,13 @@ const LoginForm = ({
                             errorText={passwordError}
                             errorStyle={{ color: theme.yellow }}
                         />
-                    </StyledInputContainer>
+                    </div>
                     :
-                    <StyledInputContainer>
+                    <div className="input-container">
                         <CircularProgress size={120} thickness={3} color={theme.grey} />
-                    </StyledInputContainer>
+                    </div>
             }
-            <StyledButtonContainer>
+            <div className="button-container">
                 <FlatButton
                     label="LOGIN"
                     type="submit"
@@ -99,8 +77,8 @@ const LoginForm = ({
                         disabled={statusLoggingIn}
                     />
                 </Link>
-            </StyledButtonContainer>
-        </StyledForm>
+            </div>
+        </form>
     );
 }
 
