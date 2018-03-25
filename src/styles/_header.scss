@@ -1,57 +1,141 @@
 .header-desktop {
     width: 100%;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     right: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    height: 60px;
+    height: 70px;
 
     ul {
         list-style-type: none;
+        transition: all 0.3s ease-in-out;
     }
 
     .nav-element {
         display: inline-block;
         margin: 0 5px;
+        font-size: 18px;
+        font-weight: 300;
 
         a {
             text-decoration: none;
             box-sizing: border-box;
-            color: $darkGrey;
-            padding: 5px 30px;
+            color: $grey;
+            padding: 10px 30px;
             transition: all .2s;
-            box-shadow: inset 0px -1px 0px $darkGrey;
+            box-shadow: inset 0px -1px 0px $grey;
             &:hover {
-                color: $grey;
-                box-shadow: inset 0px -2px 0px $grey;
+                color: $lightGrey;
+                box-shadow: inset 0px -2px 0px $lightGrey;
             }
         }
         .active-link {
-            color: $grey;
-            box-shadow: inset 0px -2px 0px $grey;
+            color: $lightGrey;
+            box-shadow: inset 0px -2px 0px $lightGrey;
         }
     }
-    .nav-left {
-        width: 90px;
-        margin: 0 30px;
-    }
-    .nav-right {
-        width: 90px;
-        margin: 0 30px;
-        display: flex;
-        justify-content: space-between;
-        color: $darkGrey;
-        font-size: 2rem;
+}
 
-        span {
+.btn-menu {
+    cursor: pointer;
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    width: 30px;
+    height: 30px;
+    stroke: $grey;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        stroke: $lightGrey;
+    }
+}
+
+.btn-add-new {
+    cursor: pointer;
+    transform: rotate(45deg);
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 30px;
+    height: 30px;
+    stroke: $grey;
+    transition: stroke 0.2s ease;
+    &:hover {
+        stroke: $lightGrey;
+    }
+}
+
+.side-nav {
+    height: 120%;
+    position: fixed;
+    top: 0px;
+    // left: 0px;
+    bottom: 0px;
+    width: 240px;
+    overflow: hidden;
+    background-color: lighten($themeColor, 0.5%);
+    transition: all 0.3s ease-in-out;
+
+    .side-nav-top {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 80px;
+        padding-right: 25px;
+
+        .btn-close-side-nav {
             cursor: pointer;
-            transition: color .2s;
+            width: 30px;
+            height: 30px;
+            stroke: $grey;
+            transition: stroke 0.2s ease;
             &:hover {
-                color: $grey;
+                stroke: $lightGrey;
             }
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        margin-top: 20px;
+    }
+
+    .nav-element {
+        font-size: 18px;
+        font-weight: 300;
+
+        a {
+            margin: 0;
+            padding: 15px 0 15px 30px;
+            display: block;
+            text-decoration: none;
+            color: $grey;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            &:hover {
+                padding-left: 35px;
+                box-shadow: 2px 0 0 $lightGrey inset;
+            }
+        }
+        .active-link {
+            color: $lightGrey;
+            box-shadow: 2px 0 0 $lightGrey inset;
+            padding-left: 40px;
+            &:hover {
+                padding-left: 40px;
+            }
+        }
+    }
+    .logout {
+        margin-top: 30px;
+        padding: 15px 0 15px 30px;
+        transition: color 0.2s ease;
+        cursor: pointer;
+        &:hover {
+            color: $red;
         }
     }
 }
