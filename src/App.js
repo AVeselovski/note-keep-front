@@ -9,8 +9,22 @@ import RequireAuth from './components/hoc/RequireAuth';
 
 
 class App extends Component {
+    componentWillMount() {
+        console.log('Allahu App will mount');
+    }
+    componentDidMount() {
+        console.log('Allahu App did mount');
+    }
+    componentWillUpdate() {
+        console.log('Allahu App will mount');
+    }
+    componentDidUpdate() {
+        console.log('Allahu App did update');
+    }
     render() {
         const redirect = this.props.token ? "dashboard" : "auth";
+
+        console.log('Allahu App re rendered');
         return (
             <MuiThemeProvider>
                 <div className="app">

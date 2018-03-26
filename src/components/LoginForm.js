@@ -64,7 +64,7 @@ const LoginForm = ({
                     label="LOGIN"
                     type="submit"
                     labelStyle={{ color: theme.themeColor, fontWeight: '300', fontSize: '1.4rem' }}
-                    style={{ height: '50px', width: '140px', border: `1px solid ${theme.grey}` }}
+                    style={{ height: '50px', width: '145px', border: `1px solid ${theme.grey}` }}
                     backgroundColor={theme.grey}
                     hoverColor={theme.lightGrey}
                     disabled={statusLoggingIn}
@@ -73,7 +73,7 @@ const LoginForm = ({
                     <FlatButton
                         label="Register"
                         labelStyle={{ textTransform: 'none', color: theme.grey, fontWeight: '300', fontSize: '1.4rem' }}
-                        style={{ height: '50px', width: '140px', border: `1px solid ${theme.grey}` }}
+                        style={{ height: '50px', width: '145px', border: `1px solid ${theme.grey}` }}
                         disabled={statusLoggingIn}
                     />
                 </Link>

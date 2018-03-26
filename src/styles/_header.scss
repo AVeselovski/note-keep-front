@@ -25,7 +25,7 @@
             box-sizing: border-box;
             color: $grey;
             padding: 10px 30px;
-            transition: all .2s;
+            transition: all .3s ease-in-out;
             box-shadow: inset 0px -1px 0px $grey;
             &:hover {
                 color: $lightGrey;
@@ -55,16 +55,25 @@
 
 .btn-add-new {
     cursor: pointer;
-    transform: rotate(45deg);
     position: fixed;
-    top: 25px;
+    bottom: 25px;
     right: 25px;
     width: 30px;
     height: 30px;
+    padding: 10px;
     stroke: $grey;
-    transition: stroke 0.2s ease;
+    border: 1px solid $lightGrey;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
     &:hover {
-        stroke: $lightGrey;
+        background-color: $lightGrey;
+        stroke: $themeColor;
+    }
+    @media screen and (max-width: 767px) {
+        stroke: $darkGrey;
+        border: 1px solid $darkGrey;
+        background-color: $lightGrey;
+
     }
 }
 
@@ -72,11 +81,10 @@
     height: 120%;
     position: fixed;
     top: 0px;
-    // left: 0px;
     bottom: 0px;
     width: 240px;
     overflow: hidden;
-    background-color: lighten($themeColor, 0.5%);
+    background-color: $lightGrey;
     transition: all 0.3s ease-in-out;
 
     .side-nav-top {
@@ -90,10 +98,10 @@
             cursor: pointer;
             width: 30px;
             height: 30px;
-            stroke: $grey;
-            transition: stroke 0.2s ease;
+            stroke: $darkGrey;
+            transition: all 0.3s ease-in-out;
             &:hover {
-                stroke: $lightGrey;
+                stroke: $themeColor;
             }
         }
     }
@@ -112,30 +120,107 @@
             padding: 15px 0 15px 30px;
             display: block;
             text-decoration: none;
-            color: $grey;
-            transition: all 0.2s ease;
+            color: $darkGrey;
+            transition: all 0.3s ease-in-out;
             cursor: pointer;
             &:hover {
+                color: $themeColor;
                 padding-left: 35px;
-                box-shadow: 2px 0 0 $lightGrey inset;
+                box-shadow: 4px 0 0 $darkGrey inset;
             }
         }
         .active-link {
-            color: $lightGrey;
-            box-shadow: 2px 0 0 $lightGrey inset;
-            padding-left: 40px;
+            color: $themeColor;
+            box-shadow: 4px 0 0 $darkGrey inset;
+            padding-left: 35px;
+        }
+    }
+    .about {
+        margin-top: 30px;
+
+        a {
             &:hover {
-                padding-left: 40px;
-            }
+                color: $themeColor;
+                padding-left: 30px;
+                box-shadow: none;
+            } 
         }
     }
     .logout {
-        margin-top: 30px;
+        color: $darkGrey;
         padding: 15px 0 15px 30px;
-        transition: color 0.2s ease;
+        transition: color 0.3s ease-in-out;
         cursor: pointer;
         &:hover {
             color: $red;
         }
+    }
+}
+
+.side-nav-mobile {
+    height: 120%;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    overflow: hidden;
+    background-color: $lightGrey;
+    transition: all 0.3s ease-in-out;
+
+    .side-nav-top {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 80px;
+        padding-right: 25px;
+
+        .btn-close-side-nav {
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            stroke: $darkGrey;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                stroke: $themeColor;
+            }
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        margin-top: 20px;
+    }
+
+    .nav-element {
+        font-size: 18px;
+        font-weight: 300;
+
+        a {
+            margin: 0;
+            padding: 15px 0 15px 30px;
+            display: block;
+            text-decoration: none;
+            color: $darkGrey;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            &:hover {
+                color: $themeColor;
+                padding-left: 35px;
+                box-shadow: 4px 0 0 $darkGrey inset;
+            }
+        }
+        .active-link {
+            color: $themeColor;
+            box-shadow: 4px 0 0 $darkGrey inset;
+            padding-left: 35px;
+        }
+    }
+    .about {
+        margin-top: 30px;
+    }
+    .logout {
+        color: $red;
+        padding: 15px 0 15px 30px;
+        cursor: pointer;
     }
 }

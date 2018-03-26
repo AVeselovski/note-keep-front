@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { logoutUser } from '../actions/auth';
-import FaSignOut from 'react-icons/lib/fa/sign-out';
-import FaPlus from 'react-icons/lib/fa/plus';
-import FaBars from 'react-icons/lib/fa/bars';
-import { CloseIcon, MenuIcon } from './icons';
+import { toggleMenu } from '../actions/ui';
+import { CloseIcon, MenuIcon, PlusIcon } from './icons';
 
 
 class Header extends Component {
     constructor() {
         super();
         this.state = {
-            isMobile: false,
-            menuOpen: false
+            isMobile: false
         }
         this.updateLayout = this.updateLayout.bind(this);
     }
@@ -24,14 +21,10 @@ class Header extends Component {
     }
 
     openSideMenu() {
-        this.setState((prevState) => {
-            return { menuOpen: true };
-        });
+        this.props.toggleMenu(true);
     }
     closeSideMenu() {
-        this.setState((prevState) => {
-            return { menuOpen: false };
-        });
+        this.props.toggleMenu(false);
     }
 
     updateLayout() {
@@ -51,7 +44,7 @@ class Header extends Component {
     }
 
     render() {
-        const { url } = this.props;
+        const { url, menuOpen } = this.props;
 
         return (
             <nav>
@@ -59,8 +52,7 @@ class Header extends Component {
                     !this.state.isMobile
                     &&
                     <div className="header-desktop">
-                        <div className="nav-left"></div>
-                        <ul style={!!this.state.menuOpen ? { marginLeft: '175px' } : { marginLeft: '0px' }}>
+                        <ul style={!!menuOpen ? { marginLeft: '240px' } : { marginLeft: '0px' }}>
                             <li className="nav-element">
                                 <NavLink to={`${url}/tasks`} activeClassName="active-link">Tasks</NavLink>
                             </li>
@@ -76,56 +68,119 @@ class Header extends Component {
                         </ul>
                     </div>
                 }
-                <div className="side-nav" style={!!this.state.menuOpen ? { left: '0px' } : { left: '-240px' }}>
-                    <div className="side-nav-top">
-                        <i className="btn-close-side-nav" onClick={() => this.closeSideMenu()}><CloseIcon /></i>
-                    </div>
-                    <ul>
-                        <li className="nav-element">
-                            <NavLink to={`${url}/tasks`} activeClassName="active-link">Tasks</NavLink>
-                        </li>
-                        <li className="nav-element">
-                            <NavLink to={`${url}/done`} activeClassName="active-link">Done</NavLink>
-                        </li>
-                        <li className="nav-element">
-                            <NavLink to={`${url}/notes`} activeClassName="active-link">Notes</NavLink>
-                        </li>
-                        <li className="nav-element">
-                            <NavLink to={`${url}/archive`} activeClassName="active-link">Archive</NavLink>
-                        </li>
-                        <li className="nav-element logout" onClick={() => this.props.logoutUser()}>
-                            Logout
-                        </li>
-                    </ul>
-                </div>
-                <i
-                    className="btn-menu"
-                    onClick={() => this.openSideMenu()}
-                    style={
-                        !!this.state.menuOpen
-                            ?
-                            {
-                                left: '265px',
-                                transform: 'rotate(90deg)',
-                                opacity: 0.25,
-                                clickEvents: 'none',
-                                cursor: 'default'
-                            }
-                            :
-                            { left: '25px' }
-                    }
-                ><MenuIcon /></i>
-                <i className="btn-add-new"><CloseIcon size="26" /></i>
+                {
+                    !this.state.isMobile
+                        ?
+                        <div className="side-nav" style={!!menuOpen ? { left: '0px' } : { left: '-240px' }}>
+                            <div className="side-nav-top">
+                                <i
+                                    className="btn-close-side-nav"
+                                    style={!!menuOpen ? {} : { transform: 'rotate(-45deg)' }}
+                                    onClick={() => this.closeSideMenu()}
+                                ><CloseIcon /></i>
+                            </div>
+                            <ul>
+                                <li className="nav-element">
+                                    <NavLink to={`${url}/tasks`} activeClassName="active-link">Tasks</NavLink>
+                                </li>
+                                <li className="nav-element">
+                                    <NavLink to={`${url}/done`} activeClassName="active-link">Done</NavLink>
+                                </li>
+                                <li className="nav-element">
+                                    <NavLink to={`${url}/notes`} activeClassName="active-link">Notes</NavLink>
+                                </li>
+                                <li className="nav-element">
+                                    <NavLink to={`${url}/archive`} activeClassName="active-link">Archive</NavLink>
+                                </li>
+                                <li className="nav-element about">
+                                    <NavLink to={`#`} activeClassName="active-link-about">About</NavLink>
+                                </li>
+                                <li className="nav-element logout" onClick={() => this.props.logoutUser()}>
+                                    Logout
+                                </li>
+                            </ul>
+                            <i
+                                className="btn-menu"
+                                onClick={() => this.openSideMenu()}
+                                style={
+                                    !!menuOpen
+                                        ?
+                                        {
+                                            left: '265px',
+                                            transform: 'rotate(90deg)',
+                                            opacity: 0,
+                                            clickEvents: 'none',
+                                            cursor: 'default'
+                                        }
+                                        :
+                                        { left: '25px' }
+                                }
+                            ><MenuIcon /></i>
+                        </div>
+                        :
+                        <div className="side-nav-mobile" style={!!menuOpen ? { left: '0px' } : { left: '-100%' }}>
+                            <div className="side-nav-top">
+                                <i
+                                    className="btn-close-side-nav"
+                                    style={!!menuOpen ? {} : { transform: 'rotate(-45deg)' }}
+                                    onClick={() => this.closeSideMenu()}
+                                ><CloseIcon /></i>
+                            </div>
+                            <ul onClick={() => { this.props.toggleMenu(false) }}>
+                                <li className="nav-element">
+                                    <NavLink to={`${url}/tasks`} activeClassName="active-link">Tasks</NavLink>
+                                </li>
+                                <li className="nav-element">
+                                    <NavLink to={`${url}/done`} activeClassName="active-link">Done</NavLink>
+                                </li>
+                                <li className="nav-element">
+                                    <NavLink to={`${url}/notes`} activeClassName="active-link">Notes</NavLink>
+                                </li>
+                                <li className="nav-element">
+                                    <NavLink to={`${url}/archive`} activeClassName="active-link">Archive</NavLink>
+                                </li>
+                                <li className="nav-element about">
+                                    <NavLink to={`#`} activeClassName="active-link-about">About</NavLink>
+                                </li>
+                                <li className="nav-element logout" onClick={() => this.props.logoutUser()}>
+                                    Logout
+                                </li>
+                            </ul>
+                            <i
+                                className="btn-menu"
+                                onClick={() => this.openSideMenu()}
+                                style={
+                                    !!menuOpen
+                                        ?
+                                        {
+                                            left: 'calc(100% + 25px)',
+                                            transform: 'rotate(90deg)',
+                                            opacity: 0,
+                                            clickEvents: 'none',
+                                            cursor: 'default'
+                                        }
+                                        :
+                                        { left: '25px' }
+                                }
+                            ><MenuIcon /></i>
+                        </div>
+                }
+                <i className="btn-add-new"><PlusIcon /></i>
             </nav>
         );
     }
 }
 
+const mapStateToPorps = ({ ui }) => ({
+    menuOpen: ui.menuOpen
+});
+
 const mapDispatchToProps = (dispatch) => {
     return {
-        logoutUser: () => { dispatch(logoutUser()) }
+        logoutUser: () => { dispatch(logoutUser()) },
+        toggleMenu: (val) => { dispatch(toggleMenu(val)) }
     }
 }
 
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToPorps, mapDispatchToProps)(Header);
