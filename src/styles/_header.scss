@@ -11,7 +11,7 @@
 
     ul {
         list-style-type: none;
-        transition: all 0.3s ease-in-out;
+        transition: margin .2s;
     }
 
     .nav-element {
@@ -25,7 +25,7 @@
             box-sizing: border-box;
             color: $grey;
             padding: 10px 30px;
-            transition: all .3s ease-in-out;
+            transition: color .2s, box-shadow .2s;
             box-shadow: inset 0px -1px 0px $grey;
             &:hover {
                 color: $lightGrey;
@@ -47,7 +47,7 @@
     width: 30px;
     height: 30px;
     stroke: $grey;
-    transition: all 0.3s ease-in-out;
+    transition: stroke .2s, left .2s, opacity .2s, transform .2s;
     &:hover {
         stroke: $lightGrey;
     }
@@ -64,7 +64,7 @@
     stroke: $grey;
     border: 1px solid $lightGrey;
     border-radius: 50%;
-    transition: all 0.3s ease-in-out;
+    transition: stroke .2s, background-color .2s;
     &:hover {
         background-color: $lightGrey;
         stroke: $themeColor;
@@ -85,7 +85,7 @@
     width: 240px;
     overflow: hidden;
     background-color: $lightGrey;
-    transition: all 0.3s ease-in-out;
+    transition: left .2s;
 
     .side-nav-top {
         display: flex;
@@ -99,7 +99,7 @@
             width: 30px;
             height: 30px;
             stroke: $darkGrey;
-            transition: all 0.3s ease-in-out;
+            transition: stroke .2s;
             &:hover {
                 stroke: $themeColor;
             }
@@ -121,7 +121,7 @@
             display: block;
             text-decoration: none;
             color: $darkGrey;
-            transition: all 0.3s ease-in-out;
+            transition: color .2s, padding .2s, box-shadow .2s;
             cursor: pointer;
             &:hover {
                 color: $themeColor;
@@ -149,7 +149,7 @@
     .logout {
         color: $darkGrey;
         padding: 15px 0 15px 30px;
-        transition: color 0.3s ease-in-out;
+        transition: color .2s;
         cursor: pointer;
         &:hover {
             color: $red;
@@ -165,7 +165,7 @@
     width: 100%;
     overflow: hidden;
     background-color: $lightGrey;
-    transition: all 0.3s ease-in-out;
+    transition: left .2s;
 
     .side-nav-top {
         display: flex;
@@ -179,7 +179,7 @@
             width: 30px;
             height: 30px;
             stroke: $darkGrey;
-            transition: all 0.3s ease-in-out;
+            transition: stroke .2s;
             &:hover {
                 stroke: $themeColor;
             }
@@ -201,7 +201,7 @@
             display: block;
             text-decoration: none;
             color: $darkGrey;
-            transition: all 0.3s ease-in-out;
+            transition: color .2s, padding .2s, box-shadow .2s;
             cursor: pointer;
             &:hover {
                 color: $themeColor;

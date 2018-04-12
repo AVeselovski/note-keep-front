@@ -23,7 +23,7 @@ class Auth extends Component {
 
     componentWillMount() {
         // force users to dashboard if logged in
-        if (this.props.statusAuthorized) {
+        if (!!this.props.statusAuthorized) {
             this.props.history.push('/dashboard');
         }
     }
@@ -33,6 +33,13 @@ class Auth extends Component {
             this.setState((prevState) => {
                 return { responseError: nextProps.responseError };
             });
+        }
+    }
+
+    componentDidUpdate() {
+        // force users to dashboard if logged in
+        if (!!this.props.statusAuthorized) {
+            this.props.history.push('/dashboard');
         }
     }
 

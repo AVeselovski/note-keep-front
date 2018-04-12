@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { logoutUser } from '../actions/auth';
 import { toggleMenu } from '../actions/ui';
 import { CloseIcon, MenuIcon, PlusIcon } from './icons';
@@ -75,7 +75,6 @@ class Header extends Component {
                             <div className="side-nav-top">
                                 <i
                                     className="btn-close-side-nav"
-                                    style={!!menuOpen ? {} : { transform: 'rotate(-45deg)' }}
                                     onClick={() => this.closeSideMenu()}
                                 ><CloseIcon /></i>
                             </div>
@@ -122,7 +121,6 @@ class Header extends Component {
                             <div className="side-nav-top">
                                 <i
                                     className="btn-close-side-nav"
-                                    style={!!menuOpen ? {} : { transform: 'rotate(-45deg)' }}
                                     onClick={() => this.closeSideMenu()}
                                 ><CloseIcon /></i>
                             </div>
@@ -183,4 +181,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToPorps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToPorps, mapDispatchToProps)(Header));
