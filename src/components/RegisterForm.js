@@ -17,7 +17,9 @@ const RegisterForm = ({
     password,
     confirmPassword,
     emailError,
+    confirmEmailError,
     passwordError,
+    confirmPasswordError,
     statusLoggingIn,
     onRegister
 }) => {
@@ -54,7 +56,7 @@ const RegisterForm = ({
                             style={{ marginBottom: '15px', width: '300px' }}
                             value={confirmEmail}
                             onChange={onChangeConfirmEmail}
-                            errorText=""
+                            errorText={confirmEmailError}
                             errorStyle={{ color: theme.yellow }}
                         />
                         <TextField
@@ -84,7 +86,7 @@ const RegisterForm = ({
                             style={{ width: '300px' }}
                             value={confirmPassword}
                             onChange={onChangeConfirmPassword}
-                            errorText=""
+                            errorText={confirmPasswordError}
                             errorStyle={{ color: theme.yellow }}
                         />
                     </div>
@@ -94,6 +96,14 @@ const RegisterForm = ({
                     </div>
             }
             <div className="button-container">
+                <Link to="/auth/login" style={ statusLoggingIn ? { pointerEvents: 'none' } : {}}>
+                    <FlatButton
+                        label="Login"
+                        labelStyle={{ textTransform: 'none', color: theme.grey, fontWeight: '300', fontSize: '1.4rem' }}
+                        style={{ height: '50px', width: '145px', border: `1px solid ${theme.grey}` }}
+                        disabled={statusLoggingIn}
+                    />
+                </Link>
                 <FlatButton
                     label="REGISTER"
                     type="submit"
@@ -103,14 +113,6 @@ const RegisterForm = ({
                     hoverColor={theme.lightGrey}
                     disabled={statusLoggingIn}
                 />
-                <Link to="/auth/login" style={ statusLoggingIn ? { pointerEvents: 'none' } : {}}>
-                    <FlatButton
-                        label="Login"
-                        labelStyle={{ textTransform: 'none', color: theme.grey, fontWeight: '300', fontSize: '1.4rem' }}
-                        style={{ height: '50px', width: '145px', border: `1px solid ${theme.grey}` }}
-                        disabled={statusLoggingIn}
-                    />
-                </Link>
             </div>
         </form>
     );
@@ -126,7 +128,9 @@ RegisterForm.propTypes = {
     password: PropTypes.string,
     confirmPassword: PropTypes.string,
     emailError: PropTypes.string,
+    confirmEmailError: PropTypes.string,
     passwordError: PropTypes.string,
+    confirmPasswordError: PropTypes.string,
     statusLoggingIn: PropTypes.bool,
     onRegister: PropTypes.func
 };

@@ -60,6 +60,14 @@ const LoginForm = ({
                     </div>
             }
             <div className="button-container">
+                <Link to="/auth/register" style={ statusLoggingIn ? { pointerEvents: 'none' } : {}}>
+                    <FlatButton
+                        label="Register"
+                        labelStyle={{ textTransform: 'none', color: theme.grey, fontWeight: '300', fontSize: '1.4rem' }}
+                        style={{ height: '50px', width: '145px', border: `1px solid ${theme.grey}` }}
+                        disabled={statusLoggingIn}
+                    />
+                </Link>
                 <FlatButton
                     label="LOGIN"
                     type="submit"
@@ -69,14 +77,6 @@ const LoginForm = ({
                     hoverColor={theme.lightGrey}
                     disabled={statusLoggingIn}
                 />
-                <Link to="/auth/register" style={ statusLoggingIn ? { pointerEvents: 'none' } : {}}>
-                    <FlatButton
-                        label="Register"
-                        labelStyle={{ textTransform: 'none', color: theme.grey, fontWeight: '300', fontSize: '1.4rem' }}
-                        style={{ height: '50px', width: '145px', border: `1px solid ${theme.grey}` }}
-                        disabled={statusLoggingIn}
-                    />
-                </Link>
             </div>
         </form>
     );

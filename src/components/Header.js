@@ -62,9 +62,6 @@ class Header extends Component {
                             <li className="nav-element">
                                 <NavLink to={`${url}/notes`} activeClassName="active-link">Notes</NavLink>
                             </li>
-                            <li className="nav-element">
-                                <NavLink to={`${url}/archive`} activeClassName="active-link">Archive</NavLink>
-                            </li>
                         </ul>
                     </div>
                 }
@@ -107,8 +104,8 @@ class Header extends Component {
                                         {
                                             left: '265px',
                                             transform: 'rotate(90deg)',
-                                            opacity: 0,
-                                            clickEvents: 'none',
+                                            opacity: 0.25,
+                                            pointerEvents: 'none',
                                             cursor: 'default'
                                         }
                                         :
@@ -154,7 +151,7 @@ class Header extends Component {
                                             left: 'calc(100% + 25px)',
                                             transform: 'rotate(90deg)',
                                             opacity: 0,
-                                            clickEvents: 'none',
+                                            pointerEvents: 'none',
                                             cursor: 'default'
                                         }
                                         :

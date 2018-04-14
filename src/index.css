@@ -10,7 +10,7 @@ h1, h2, h3, h4, p { font-size: 1rem; font-weight: 300; }
 .header-desktop { width: 100%; position: fixed; left: 0; top: 0; right: 0; display: flex; justify-content: center; align-items: center; height: 70px; }
 .header-desktop ul { list-style-type: none; transition: margin .2s; }
 .header-desktop .nav-element { display: inline-block; margin: 0 5px; font-size: 18px; font-weight: 300; }
-.header-desktop .nav-element a { text-decoration: none; box-sizing: border-box; color: #bdbdbd; padding: 10px 30px; transition: color .2s, box-shadow .2s; box-shadow: inset 0px -1px 0px #bdbdbd; }
+.header-desktop .nav-element a { text-decoration: none; box-sizing: border-box; color: #bdbdbd; padding: 10px 30px; transition: color .2s, box-shadow .2s; }
 .header-desktop .nav-element a:hover { color: #e3e3e3; box-shadow: inset 0px -2px 0px #e3e3e3; }
 .header-desktop .nav-element .active-link { color: #e3e3e3; box-shadow: inset 0px -2px 0px #e3e3e3; }
 

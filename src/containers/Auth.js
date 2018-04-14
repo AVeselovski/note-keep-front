@@ -4,10 +4,14 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { validateEmail, validatePassword } from '../utils/helpers';
 import {
     setValidatorEmailError,
+    setValidatorConfirmEmailError,
     setValidatorPasswordError,
+    setValidatorConfirmPasswordError,
     setStatusLoggingIn,
-    loginUser
+    loginUser,
+    registerUser
 } from '../actions/auth';
+import { errorMessages as messages } from '../utils/messages';
 
 import { AppTitle, LoginForm, RegisterForm, AltNotFound } from '../components';
 
@@ -72,11 +76,11 @@ class Auth extends Component {
         const passwordError = validatePassword(password);
 
         // (un)set errors
-        this.props.setValidatorEmailError(emailError.msg);
-        this.props.setValidatorPasswordError(passwordError.msg);
+        this.props.setValidatorEmailError(!!emailError ? messages.validEmailError : '');
+        this.props.setValidatorPasswordError(!!passwordError ? messages.validPasswordError : '');
 
         // proceed with logging in if no errors
-        if (emailError.error === false && passwordError.error === false) {
+        if (!emailError && !passwordError) {
             const credentials = { email, password };
             const { history } = this.props;
             this.props.setStatusLoggingIn(true);
@@ -87,21 +91,51 @@ class Auth extends Component {
     onRegister = (e) => {
         e.preventDefault();
 
-        // WIP
-        this.props.setStatusLoggingIn(true);
+        // get input values
+        const { email, confirmEmail, password, confirmPassword } = this.state;
+        email.toString().trim();
+
+        // validate
+        const emailError = validateEmail(email);
+        const passwordError = validatePassword(password);
+        const confirmEmailError = email !== confirmEmail ? true : false;
+        const confirmPasswordError = password !== confirmPassword ? true : false;
+
+        // (un)set errors
+        this.props.setValidatorEmailError(!!emailError ? messages.validEmailError : '');
+        this.props.setValidatorPasswordError(!!passwordError ? messages.validPasswordError : '');
+        this.props.setValidatorConfirmEmailError(!!confirmEmailError ? messages.confirmEmailError : '');
+        this.props.setValidatorConfirmPasswordError(!!confirmPasswordError ? messages.confirmPasswordError : '');
+
+        if (!emailError && !passwordError && !confirmEmailError && !confirmPasswordError) {
+            const credentials = { email, password };
+            const { history } = this.props;
+            this.props.setStatusLoggingIn(true);
+            this.props.registerUser(credentials, history);
+        }
     }
 
     componentWillUnmount() {
         this.setState({
             email: '',
+            confirmEmail: '',
             password: '',
+            confirmPassword: '',
             responseError: ''
         });
     }
 
     render() {
         const { email, confirmEmail, password, confirmPassword, responseError } = this.state;
-        const { statusAuthorized, statusLoggingIn, emailError, passwordError, match: { url } } = this.props;
+        const {
+            statusAuthorized,
+            statusLoggingIn,
+            emailError,
+            confirmEmailError,
+            passwordError,
+            confirmPasswordError,
+            match: { url }
+        } = this.props;
         const redirect = statusAuthorized ? '/dashboard' : `${url}/login`;
 
         return (
@@ -137,7 +171,9 @@ class Auth extends Component {
                                 password={password}
                                 confirmPassword={confirmPassword}
                                 emailError={emailError}
+                                confirmEmailError={confirmEmailError}
                                 passwordError={passwordError}
+                                confirmPasswordError={confirmPasswordError}
                                 statusLoggingIn={statusLoggingIn}
                                 onRegister={this.onRegister}
                             />
@@ -151,22 +187,27 @@ class Auth extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    statusLoggingIn: state.auth.statusLoggingIn,
-    statusAuthorized: state.auth.statusAuthorized,
-    emailError: state.auth.emailError,
-    passwordError: state.auth.passwordError,
-    responseError: state.auth.responseError
+
+const mapStateToProps = ({ auth }) => ({
+    statusLoggingIn: auth.statusLoggingIn,
+    statusAuthorized: auth.statusAuthorized,
+    emailError: auth.emailError,
+    confirmEmailError: auth.confirmEmailError,
+    passwordError: auth.passwordError,
+    confirmPasswordError: auth.confirmPasswordError,
+    responseError: auth.responseError
 });
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setValidatorEmailError: (email) => { dispatch(setValidatorEmailError(email)) },
-        setValidatorPasswordError: (password) => { dispatch(setValidatorPasswordError(password)) },
+        setValidatorEmailError: (val) => { dispatch(setValidatorEmailError(val)) },
+        setValidatorConfirmEmailError: (val) => { dispatch(setValidatorConfirmEmailError(val)) },
+        setValidatorPasswordError: (val) => { dispatch(setValidatorPasswordError(val)) },
+        setValidatorConfirmPasswordError: (val) => { dispatch(setValidatorConfirmPasswordError(val)) },
         setStatusLoggingIn: (val) => { dispatch(setStatusLoggingIn(val)) },
-        loginUser: (credentials, history) => { dispatch(loginUser(credentials, history)) }
+        loginUser: (credentials, history) => { dispatch(loginUser(credentials, history)) },
+        registerUser: (credentials, history) => { dispatch(registerUser(credentials, history)) }
     }
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);

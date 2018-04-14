@@ -1,34 +1,19 @@
-import { errorMessages as messages } from './messages';
-
-
 const validateEmail = (email) => {
     // email regex check
     const mailValidate = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; // eslint-disable-line
     if (!email.match(mailValidate)) {
-        return {
-            error: true,
-            msg: messages.validEmailError
-        }
+        return true;
     } else {
-        return {
-            error: false,
-            msg: ''
-        }
+        return false
     }
 }
 
 const validatePassword = (password) => {
     // simple password check
     if (password.length < 7) {
-        return {
-            error: true,
-            msg: messages.validPasswordError
-        }
+        return true;
     } else {
-        return {
-            error: false,
-            msg: ''
-        }
+        return false;
     }
 }
 

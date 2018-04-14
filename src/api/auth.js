@@ -7,3 +7,10 @@ export const apiLogin = (credentials) => {
             return res;
         });
 };
+
+export const apiRegister = (credentials) => {
+    return axios.post(`${API_URL}/register`, credentials)
+        .then(res => {
+            return res;
+        });
+}

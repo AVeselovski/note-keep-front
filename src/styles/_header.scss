@@ -26,7 +26,7 @@
             color: $grey;
             padding: 10px 30px;
             transition: color .2s, box-shadow .2s;
-            box-shadow: inset 0px -1px 0px $grey;
+            // box-shadow: inset 0px -2px 0px $darkGrey;
             &:hover {
                 color: $lightGrey;
                 box-shadow: inset 0px -2px 0px $lightGrey;
