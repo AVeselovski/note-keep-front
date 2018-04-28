@@ -6,7 +6,8 @@ import {
     SET_STATUS_LOGGING_IN,
     LOGIN_USER,
     REGISTER_USER,
-    LOGOUT_USER
+    LOGOUT_USER,
+    SET_RESPONSE_ERROR
 } from '../utils/constants';
 
 
@@ -35,13 +36,19 @@ export const setStatusLoggingIn = val => ({
     payload: val
 });
 
+export const resetResponseError = val => ({
+    type: SET_RESPONSE_ERROR,
+    payload: ''
+});
 
-// init login flow
+
+// init login saga
 export const loginUser = (credentials, history) => ({
     type: LOGIN_USER,
     payload: { credentials, history }
 });
 
+// init register saga
 export const registerUser = (credentials, history) => ({
     type: REGISTER_USER,
     payload: { credentials, history }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import Snackbar from 'material-ui/Snackbar';
 import { validateEmail, validatePassword } from '../utils/helpers';
 import {
     setValidatorEmailError,
@@ -8,12 +9,17 @@ import {
     setValidatorPasswordError,
     setValidatorConfirmPasswordError,
     setStatusLoggingIn,
+    resetResponseError,
     loginUser,
     registerUser
 } from '../actions/auth';
 import { errorMessages as messages } from '../utils/messages';
-
-import { AppTitle, LoginForm, RegisterForm, AltNotFound } from '../components';
+import {
+    AppTitle,
+    AuthForm,
+    ErrorNotification,
+    AltNotFound
+} from '../components';
 
 
 class Auth extends Component {
@@ -21,22 +27,13 @@ class Auth extends Component {
         email: '',
         confirmEmail: '',
         password: '',
-        confirmPassword: '',
-        responseError: ''
+        confirmPassword: ''
     }
 
     componentWillMount() {
         // force users to dashboard if logged in
         if (!!this.props.statusAuthorized) {
             this.props.history.push('/dashboard');
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.responseError !== this.props.responseError) {
-            this.setState((prevState) => {
-                return { responseError: nextProps.responseError };
-            });
         }
     }
 
@@ -115,6 +112,10 @@ class Auth extends Component {
         }
     }
 
+    resetNotificationError = () => {
+        this.props.resetResponseError();
+    }
+
     componentWillUnmount() {
         this.setState({
             email: '',
@@ -126,7 +127,7 @@ class Auth extends Component {
     }
 
     render() {
-        const { email, confirmEmail, password, confirmPassword, responseError } = this.state;
+        const { email, confirmEmail, password, confirmPassword } = this.state;
         const {
             statusAuthorized,
             statusLoggingIn,
@@ -134,6 +135,7 @@ class Auth extends Component {
             confirmEmailError,
             passwordError,
             confirmPasswordError,
+            responseError,
             match: { url }
         } = this.props;
         const redirect = statusAuthorized ? '/dashboard' : `${url}/login`;
@@ -146,7 +148,7 @@ class Auth extends Component {
                     <Route
                         path={`${url}/login`}
                         render={() => (
-                            <LoginForm
+                            <AuthForm
                                 onChangeEmail={this.onChangeEmail}
                                 onChangePassword={this.onChangePassword}
                                 email={email}
@@ -155,13 +157,14 @@ class Auth extends Component {
                                 passwordError={passwordError}
                                 statusLoggingIn={statusLoggingIn}
                                 onLogin={this.onLogin}
+                                isRegistering={false}
                             />
                         )}
                     />
                     <Route
                         path={`${url}/register`}
                         render={() => (
-                            <RegisterForm
+                            <AuthForm
                                 onChangeEmail={this.onChangeEmail}
                                 onChangeConfirmEmail={this.onChangeConfirmEmail}
                                 onChangePassword={this.onChangePassword}
@@ -176,12 +179,16 @@ class Auth extends Component {
                                 confirmPasswordError={confirmPasswordError}
                                 statusLoggingIn={statusLoggingIn}
                                 onRegister={this.onRegister}
+                                isRegistering={true}
                             />
                         )}
                     />
                     <Route component={AltNotFound} />
                 </Switch>
-                <span className="error-msg">{responseError}</span>
+                <ErrorNotification
+                    errorMessage={responseError}
+                    resetNotificationError={this.resetNotificationError}
+                />
             </div>
         );
     }
@@ -205,6 +212,7 @@ const mapDispatchToProps = (dispatch) => {
         setValidatorPasswordError: (val) => { dispatch(setValidatorPasswordError(val)) },
         setValidatorConfirmPasswordError: (val) => { dispatch(setValidatorConfirmPasswordError(val)) },
         setStatusLoggingIn: (val) => { dispatch(setStatusLoggingIn(val)) },
+        resetResponseError: (val) => { dispatch(resetResponseError()) },
         loginUser: (credentials, history) => { dispatch(loginUser(credentials, history)) },
         registerUser: (credentials, history) => { dispatch(registerUser(credentials, history)) }
     }

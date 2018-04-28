@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
-
 import { Header, AltNotFound } from '../components';
 
 
@@ -26,18 +25,10 @@ class Main extends Component {
         return (
             <div className="main-page">
                 <Header url={url} />
-                <div
-                    className="main-container"
-                    style={
-                        !!this.props.menuOpen
-                            ? { marginLeft: '240px' }
-                            : { marginLeft: '0px' }
-                    }
-                >
+                <div className="main-container">
                     <Switch>
                         <Redirect exact from={url} to={`${url}/tasks`} />
                         <Route path={`${url}/tasks`} render={() => <h1>TASKS</h1>} />
-                        <Route path={`${url}/done`} render={() => <h1>DONE</h1>} />
                         <Route path={`${url}/notes`} render={() => <h1>NOTES</h1>} />
                         <Route path={`${url}/archive`} render={() => <h1>ARCHIVE</h1>} />
                         <Route component={AltNotFound} />
@@ -48,10 +39,9 @@ class Main extends Component {
     }
 }
 
-const mapStateToProps = ({ auth, ui }) => ({
-    statusAuthorized: auth.statusAuthorized,
-    menuOpen: ui.menuOpen
-});
 
+const mapStateToProps = ({ auth }) => ({
+    statusAuthorized: auth.statusAuthorized
+});
 
 export default connect(mapStateToProps)(Main);

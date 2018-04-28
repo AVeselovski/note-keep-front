@@ -3,9 +3,11 @@ import React from 'react';
 
 const AppTitle = () => {
     return (
-        <h1>Note Keep</h1>
+        <div className='app-title'>
+            <h1>ZERO TASKS</h1>
+            <h3>Because there is probably going to be next to zero support for this app.</h3>
+        </div>
     );
 }
-
 
 export default AppTitle;

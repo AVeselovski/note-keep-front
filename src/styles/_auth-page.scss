@@ -5,60 +5,8 @@
     align-items: center;
     flex-direction: column;
 
-    h1 {
-        font-size: 4rem;
-        font-weight: 300;
-        margin-top: 20px;
-        margin-bottom: 50px;
-    }
-
-    .error-msg {
-        color: $red;
-        width: 300px;
+    .not-found-alt {
+        max-width: 300px;
         text-align: center;
-        height: 40px;
-        margin-top: 25px;
-    }
-
-    .login-from {
-        display: flex;
-        flex-direction: column;
-        width: 300px;
-
-        .input-container {
-            display: flex;
-            flex-direction: column;
-            height: 160px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .button-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            margin-top: 50px;
-        }
-    }
-
-    .register-form {
-        display: flex;
-        flex-direction: column;
-        width: 300px;
-
-        .input-container {
-            display: flex;
-            flex-direction: column;
-            min-height: 335px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .button-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            margin-top: 50px;
-        }
     }
 }

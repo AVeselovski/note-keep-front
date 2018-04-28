@@ -4,6 +4,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { logoutUser } from '../actions/auth';
 import { toggleMenu } from '../actions/ui';
 import { CloseIcon, MenuIcon, PlusIcon } from './icons';
+import theme from '../theme';
 
 
 class Header extends Component {
@@ -43,8 +44,23 @@ class Header extends Component {
         window.removeEventListener("resize", this.updateLayout);
     }
 
+    renderIndicatorLine() {
+        const curLocation = this.props.location.pathname.split('/').pop();
+        // const position = { left: curLocation === 'tasks' ? '0' : '110px' }
+        const position = curLocation === 'tasks'
+            ? { left: '0', backgroundColor: theme.red }
+            : { left: '110px', backgroundColor: theme.blue };
+
+        if (curLocation === 'tasks' || curLocation === 'notes') {
+            return <span className="slider-line" style={position} />;
+        }
+
+        return null;
+    }
+
     render() {
         const { url, menuOpen } = this.props;
+        console.log(this.props.location.pathname);
 
         return (
             <nav>
@@ -57,11 +73,9 @@ class Header extends Component {
                                 <NavLink to={`${url}/tasks`} activeClassName="active-link">Tasks</NavLink>
                             </li>
                             <li className="nav-element">
-                                <NavLink to={`${url}/done`} activeClassName="active-link">Done</NavLink>
-                            </li>
-                            <li className="nav-element">
                                 <NavLink to={`${url}/notes`} activeClassName="active-link">Notes</NavLink>
                             </li>
+                            {this.renderIndicatorLine()}
                         </ul>
                     </div>
                 }
@@ -80,16 +94,13 @@ class Header extends Component {
                                     <NavLink to={`${url}/tasks`} activeClassName="active-link">Tasks</NavLink>
                                 </li>
                                 <li className="nav-element">
-                                    <NavLink to={`${url}/done`} activeClassName="active-link">Done</NavLink>
-                                </li>
-                                <li className="nav-element">
                                     <NavLink to={`${url}/notes`} activeClassName="active-link">Notes</NavLink>
                                 </li>
                                 <li className="nav-element">
                                     <NavLink to={`${url}/archive`} activeClassName="active-link">Archive</NavLink>
                                 </li>
-                                <li className="nav-element about">
-                                    <NavLink to={`#`} activeClassName="active-link-about">About</NavLink>
+                                <li className="nav-element">
+                                    <NavLink to={`#`} activeClassName="active-link">About</NavLink>
                                 </li>
                                 <li className="nav-element logout" onClick={() => this.props.logoutUser()}>
                                     Logout
@@ -126,15 +137,12 @@ class Header extends Component {
                                     <NavLink to={`${url}/tasks`} activeClassName="active-link">Tasks</NavLink>
                                 </li>
                                 <li className="nav-element">
-                                    <NavLink to={`${url}/done`} activeClassName="active-link">Done</NavLink>
-                                </li>
-                                <li className="nav-element">
                                     <NavLink to={`${url}/notes`} activeClassName="active-link">Notes</NavLink>
                                 </li>
                                 <li className="nav-element">
                                     <NavLink to={`${url}/archive`} activeClassName="active-link">Archive</NavLink>
                                 </li>
-                                <li className="nav-element about">
+                                <li className="nav-element">
                                     <NavLink to={`#`} activeClassName="active-link-about">About</NavLink>
                                 </li>
                                 <li className="nav-element logout" onClick={() => this.props.logoutUser()}>
@@ -166,6 +174,7 @@ class Header extends Component {
     }
 }
 
+
 const mapStateToPorps = ({ ui }) => ({
     menuOpen: ui.menuOpen
 });
@@ -176,6 +185,5 @@ const mapDispatchToProps = (dispatch) => {
         toggleMenu: (val) => { dispatch(toggleMenu(val)) }
     }
 }
-
 
 export default withRouter(connect(mapStateToPorps, mapDispatchToProps)(Header));

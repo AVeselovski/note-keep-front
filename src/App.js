@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 import Auth from './containers/Auth';
 import Main from './containers/Main';
 import { NotFound } from './components';
@@ -25,6 +24,5 @@ class App extends Component {
         );
     }
 }
-
 
 export default withRouter(App);

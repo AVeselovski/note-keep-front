@@ -16,25 +16,25 @@ function* login(action) {
     const { credentials, history } = action.payload;
 
     try {
-        const res = yield call(apiLogin, credentials);
+        const response = yield call(apiLogin, credentials);
 
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
         yield put({ type: SET_STATUS_AUTHORIZED, payload: true });
         // clear response error
         yield put({ type: SET_RESPONSE_ERROR, payload: '' });
         // store token
-        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('token', response.data.token);
         // redirect
         history.push('/dashboard');
-    } catch (err) {
+    } catch (error) {
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
 
-        let error = messages.genericResponseError;
-        if (err.response.status === 401) {
-            error = messages.wrongCredentialsError;
+        let customError = messages.genericResponseError;
+        if (error.response.status === 401) {
+            customError = messages.wrongCredentialsError;
         }
 
-        yield put({ type: SET_RESPONSE_ERROR, payload: error });
+        yield put({ type: SET_RESPONSE_ERROR, payload: customError });
     }
 }
 
@@ -42,29 +42,30 @@ export function* watchLogin() {
     yield takeEvery(LOGIN_USER, login);
 }
 
+
 function* register(action) {
     const { credentials, history } = action.payload;
 
     try {
-        const res = yield call(apiRegister, credentials);
+        const response = yield call(apiRegister, credentials);
 
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
         yield put({ type: SET_STATUS_AUTHORIZED, payload: true });
         // clear response error
         yield put({ type: SET_RESPONSE_ERROR, payload: ''});
         // store token
-        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('token', response.data.token);
         // redirect
         history.push('/dashboard');
-    } catch (err) {
+    } catch (error) {
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
         
-        let error = messages.genericResponseError;
-        if (err.response.status === 422) {
-            error = err.response.data.error;
+        let customError = messages.genericResponseError;
+        if (error.response.status === 422) {
+            customError = error.response.data;
         }
 
-        yield put({ type: SET_RESPONSE_ERROR, payload: error });
+        yield put({ type: SET_RESPONSE_ERROR, payload: customError });
     }
 }
 
@@ -80,8 +81,8 @@ function* logout(action) {
 
         yield put({ type: SET_STATUS_AUTHORIZED, payload: false });
         yield put({ type: TOGGLE_MENU, payload: false });
-    } catch (err) {
-        console.log(err);
+    } catch (error) {
+        console.log(error);
     }
 }
 

@@ -8,5 +8,4 @@ const AppReducer = combineReducers({
     ui
 });
 
-
 export default AppReducer;

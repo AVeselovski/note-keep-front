@@ -17,5 +17,4 @@ const validatePassword = (password) => {
     }
 }
 
-
 export { validateEmail, validatePassword };

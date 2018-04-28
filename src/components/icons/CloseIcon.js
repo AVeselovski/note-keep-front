@@ -10,5 +10,4 @@ const CloseIcon = ({ size="30" }) => {
     );
 }
 
-
 export default CloseIcon;
