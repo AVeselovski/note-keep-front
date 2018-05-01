@@ -12,7 +12,7 @@ class HeaderNav extends Component {
             : { left: '110px', backgroundColor: theme.blue };
 
         if (curLocation === 'tasks' || curLocation === 'notes') {
-            return <span className="slider-line" style={position} />;
+            return <span className="indicator-line" style={position} />;
         }
 
         return null;
@@ -23,7 +23,7 @@ class HeaderNav extends Component {
 
         return (
             <div className="header-nav">
-                <ul style={!!menuOpen ? { marginLeft: '240px' } : { marginLeft: '0px' }}>
+                <ul className={`${menuOpen ? 'open' : 'closed'}`}>
                     <li className="nav-element">
                         <NavLink to={`${url}/tasks`} activeClassName="active-link">Tasks</NavLink>
                     </li>

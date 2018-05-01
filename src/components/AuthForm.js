@@ -9,7 +9,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 
 const textFieldStyles = {
     rootStyle: {
-        marginBottom: '15px',
+        marginBottom: theme.spacingSM,
         width: '300px'
     },
     inputStyle: {
@@ -20,7 +20,7 @@ const textFieldStyles = {
     floatingLabelStyle: {
         color: theme.grey,
         top: '28px',
-        fontSize: '1.4rem',
+        fontSize: theme.fontLG,
         fontWeight: '400'
     },
     underlineStyle: {
@@ -136,12 +136,12 @@ const AuthForm = ({
                     to={isRegistering ? '/auth/login' : '/auth/register'}
                     style={statusLoggingIn ? { pointerEvents: 'none' } : {}}>
                     <FlatButton
-                        label={isRegistering ? 'Login' : 'Regisrer'}
+                        label={isRegistering ? 'Login' : 'Register'}
                         labelStyle={{
                             textTransform: 'none',
                             color: theme.grey,
                             fontWeight: '300',
-                            fontSize: '1.4rem'
+                            fontSize: theme.fontLG
                         }}
                         style={{
                             height: '50px',
@@ -158,7 +158,7 @@ const AuthForm = ({
                     labelStyle={{
                         color: theme.themeColor,
                         fontWeight: '300',
-                        fontSize: '1.4rem'
+                        fontSize: theme.fontLG
                     }}
                     style={{
                         height: '50px',

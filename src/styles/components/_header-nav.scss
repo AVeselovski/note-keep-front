@@ -7,28 +7,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70px;
+    height: 80px;
 
     ul {
         list-style-type: none;
-        transition: margin .15s ease-in;
         position: relative;
-
-        .slider-line {
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            height: 2px;
-            width: 110px;
-            background-color: $lightGrey;
-            transition: left .1s ease-in, background-color .1s ease-in;
-        }
+        margin-left: 0px;
+        transition: margin .15s ease-in;
+    }
+    ul.open {
+        margin-left: 240px;
     }
 
     .nav-element {
         display: inline-block;
         margin: 0;
-        font-size: 18px;
+        font-size: $font-md;
         font-weight: 300;
         width: 110px;
         text-align: center;
@@ -37,7 +31,7 @@
             width: 110px;
             text-decoration: none;
             color: $grey;
-            padding: 10px 30px;
+            padding: $spacing-xs $spacing-md;
             transition: color .15s ease-in;
             &:hover {
                 color: $lightGrey;
@@ -47,4 +41,15 @@
             color: $lightGrey;
         }
     }
+}
+
+
+.indicator-line {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    height: 2px;
+    width: 110px;
+    background-color: $lightGrey;
+    transition: left .1s ease-in, background-color .1s ease-in;
 }

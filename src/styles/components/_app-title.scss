@@ -1,11 +1,11 @@
 .app-title {
     width: 300px;
-    margin-top: 20px;
-    margin-bottom: 50px;
+    margin-top: $spacing-sm;
+    margin-bottom: $spacing-lg;
     text-align: center;
 
     h1 {
-        font-size: 3.25rem;
+        font-size: $font-title;
         font-weight: 200;  
     }
 }

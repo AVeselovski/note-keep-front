@@ -17,7 +17,7 @@ import {
     AppTitle,
     AuthForm,
     ErrorNotification,
-    AltNotFound
+    NotFoundAlt
 } from '../components';
 
 
@@ -181,7 +181,7 @@ class Auth extends Component {
                             />
                         )}
                     />
-                    <Route component={AltNotFound} />
+                    <Route component={NotFoundAlt} />
                 </Switch>
                 <ErrorNotification
                     errorMessage={responseError}

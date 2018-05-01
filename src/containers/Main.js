@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { Header, AltNotFound } from '../components';
+import { Header, NotFoundAlt } from '../components';
 
 
 class Main extends Component {
@@ -31,7 +31,7 @@ class Main extends Component {
                         <Route path={`${url}/tasks`} render={() => <h1>TASKS</h1>} />
                         <Route path={`${url}/notes`} render={() => <h1>NOTES</h1>} />
                         <Route path={`${url}/archive`} render={() => <h1>ARCHIVE</h1>} />
-                        <Route component={AltNotFound} />
+                        <Route component={NotFoundAlt} />
                     </Switch>
                 </div>
             </div>

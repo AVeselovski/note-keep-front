@@ -6,12 +6,7 @@ import { CloseIcon, MenuIcon, PlusIcon } from '../icons';
 
 const SideNav = ({ isMobile = false, menuOpen, url, toggleMenu, logoutUser }) => {
     return (
-        <div
-            className={`side-nav ${isMobile ? 'mobile' : 'desktop'}`}
-            style={
-                menuOpen
-                    ? { left: '0px' }
-                    : { left: !isMobile ? '-240px' : '-100%' }}>
+        <div className={`side-nav${menuOpen ? ' open' : ''}`}>
             <div className="side-nav-top">
                 <i
                     className="btn-close-side-nav"
@@ -36,22 +31,9 @@ const SideNav = ({ isMobile = false, menuOpen, url, toggleMenu, logoutUser }) =>
                 </li>
             </ul>
             <i
-                className="btn-menu"
-                onClick={() => toggleMenu(true)}
-                style={
-                    !!menuOpen
-                        ?
-                        {
-                            left: isMobile ? 'calc(100% + 25px)' : '265px',
-                            transform: 'rotate(90deg)',
-                            opacity: 0.25,
-                            pointerEvents: 'none',
-                            cursor: 'default'
-                        }
-                        :
-                        { left: '25px' }
-                }
-            ><MenuIcon /></i>
+                className={`btn-menu${menuOpen ? ' open' : ''}`}
+                onClick={() => toggleMenu(true)}>
+                <MenuIcon /></i>
             <i className="btn-add-new"><PlusIcon /></i>
         </div>
     );

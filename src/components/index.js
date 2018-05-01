@@ -2,7 +2,7 @@ import AppTitle from './AppTitle';
 import AuthForm from './AuthForm';
 import Header from './Header';
 import ErrorNotification from './ErrorNotification';
-import { NotFound, AltNotFound } from './NotFound';
+import { NotFound, NotFoundAlt } from './NotFound';
 
 
 export {
@@ -11,5 +11,5 @@ export {
     Header,
     ErrorNotification,
     NotFound,
-    AltNotFound
+    NotFoundAlt
 };

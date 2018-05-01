@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { logoutUser } from '../actions/auth';
 import { toggleMenu } from '../actions/ui';
-import HeaderNav from './header/HeaderNav';
-import SideNav from './header/SideNav';
+import HeaderNav from './header-components/HeaderNav';
+import SideNav from './header-components/SideNav';
 
 
 class Header extends Component {
@@ -53,24 +53,13 @@ class Header extends Component {
                     !this.state.isMobile &&
                     <HeaderNav menuOpen={menuOpen} url={url} pathname={pathname} />
                 }
-                {
-                    !this.state.isMobile
-                        ?
-                        <SideNav
-                            menuOpen={menuOpen}
-                            url={url}
-                            toggleMenu={this.props.toggleMenu}
-                            logoutUser={this.props.logoutUser}
-                        />
-                        :
-                        <SideNav
-                            isMobile
-                            menuOpen={menuOpen}
-                            url={url}
-                            toggleMenu={this.props.toggleMenu}
-                            logoutUser={this.props.logoutUser}
-                        />
-                }
+                <SideNav
+                    isMobile={this.state.isMobile}
+                    menuOpen={menuOpen}
+                    url={url}
+                    toggleMenu={this.props.toggleMenu}
+                    logoutUser={this.props.logoutUser}
+                />
             </nav>
         );
     }

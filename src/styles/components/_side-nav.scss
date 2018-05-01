@@ -1,52 +1,85 @@
-.btn-menu {
-    cursor: pointer;
-    position: fixed;
-    top: 25px;
-    left: 25px;
-    width: 30px;
-    height: 30px;
-    stroke: $grey;
-    transition: stroke .15s ease-in,
-                left .15s ease-in,
-                opacity .15s ease-in,
-                transform .15s ease-in;
-    &:hover {
-        stroke: $lightGrey;
-    }
-}
-
 .btn-add-new {
     cursor: pointer;
     position: fixed;
-    bottom: 25px;
-    right: 25px;
+    bottom: $spacing-sm;
+    right: $spacing-sm;
     width: 30px;
     height: 30px;
-    padding: 10px;
-    stroke: $grey;
-    border: 2px solid $lightGrey;
+    padding: 8px;
+    stroke: $darkGrey;
+    border: 2px solid $darkGrey;
     border-radius: 50%;
+    background-color: $lightGrey;
     transition: stroke .15s ease-in, background-color .15s ease-in;
     &:hover {
         background-color: $lightGrey;
         stroke: $themeColor;
     }
-    @media screen and (max-width: 767px) {
-        stroke: $darkGrey;
-        border: 2px solid $darkGrey;
-        background-color: $lightGrey;
 
+    @media screen and (min-width: 768px) {
+        bottom: 25px;
+        right: 25px;
+        padding: 13px;
+        stroke: $grey;
+        border: 2px solid $lightGrey;
+        background-color: transparent;
     }
 }
 
+
+.btn-menu {
+    cursor: pointer;
+    position: fixed;
+    top: 25px;
+    left: $spacing-sm;
+    width: 30px;
+    height: 30px;
+    stroke: $grey;
+    transition: stroke .15s ease-in,
+                left .2s ease-in,
+                opacity .2s ease-in,
+                transform .2s ease-in;
+    &:hover {
+        stroke: $lightGrey;
+    }
+
+    @media screen and (min-width: 768px) {
+        left: 25px;
+        transition: stroke .15s ease-in,
+                    left .15s ease-in,
+                    opacity .15s ease-in,
+                    transform .15s ease-in;
+    }
+}
+.btn-menu.open {
+    left: calc(100% + 15px);
+    transform: rotate(90deg);
+    opacity: 0.25;
+    pointer-events: none;
+    cursor: default;
+
+    @media screen and (min-width: 768px) {
+        left: 265px;
+    }
+}
+
+
 .side-nav {
     height: 120%;
+    width: 100%;
     position: fixed;
     top: 0px;
+    left: -100%;
     bottom: 0px;
     overflow: hidden;
     background-color: $lightGrey;
-    transition: left .15s ease-in;
+    transition: left .2s ease-in;
+
+    @media screen and (min-width: 768px) {
+        width: 240px;
+        left: -240px;
+        transition: left .15s ease-in;
+    }
 
     .side-nav-top {
         display: flex;
@@ -69,51 +102,81 @@
 
     ul {
         list-style-type: none;
-        margin-top: 20px;
+        margin-top: $spacing-sm;
+        width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+
+        @media screen and (min-width: 768px) {
+            width: auto;
+            margin-left: 0;
+            text-align: left;
+        }
     }
 
     .nav-element {
-        font-size: 18px;
+        font-size: $font-md;
         font-weight: 300;
 
         a {
             margin: 0;
-            padding: 15px 0 15px 30px;
+            padding: 20px 0 10px 0px;
             display: block;
             text-decoration: none;
             color: $darkGrey;
-            transition: color .15s ease-in, padding .15s ease-in, box-shadow .15s ease-in;
             cursor: pointer;
-            &:hover {
-                color: $themeColor;
-                padding-left: 35px;
-                box-shadow: 4px 0 0 $darkGrey inset;
-            }
         }
         .active-link {
             color: $themeColor;
-            box-shadow: 4px 0 0 $darkGrey inset;
-            padding-left: 35px;
+            padding: 20px 0 8px 0px;
+            border-bottom: 2px solid $darkGrey;
+        }
+
+        @media screen and (min-width: 768px) {
+            a {
+                padding: $spacing-sm 0 $spacing-sm $spacing-md;
+                transition: color .15s ease-in, padding .15s ease-in, box-shadow .15s ease-in;
+                &:hover {
+                    color: $themeColor;
+                    padding-left: $spacing-md + 5px;
+                    box-shadow: 4px 0 0 $darkGrey inset;
+                }
+            }
+            .active-link {
+                padding: $spacing-sm 0 $spacing-sm 35px;
+                box-shadow: 4px 0 0 $darkGrey inset;
+                border-bottom: none;
+            }
+        }
+    }
+    .nav-element:nth-of-type(1) .active-link {
+        @media screen and (max-width: 767px) {
+            border-bottom: 2px solid $red;
+        }
+    }
+    .nav-element:nth-of-type(2) .active-link {
+        @media screen and (max-width: 767px) {
+            border-bottom: 2px solid $blue;
         }
     }
     .nav-element:nth-of-type(3) {
-        margin-top: 30px;
+        margin-top: $spacing-md;
     }
     .logout {
         color: $red;
-        padding: 15px 0 15px 30px;
-        transition: color .15s ease-in;
+        padding: $spacing-sm 0 $spacing-sm 0px;
         cursor: pointer;
-        &:hover {
-            color: $red;
+
+        @media screen and (min-width: 768px) {
+            padding: $spacing-sm 0 $spacing-sm $spacing-md;
+            transition: color .15s ease-in;
+            &:hover {
+                color: lighten($red, 8%);
+            }
         }
     }
 }
-
-.side-nav.mobile {
-    width: 100%;
-}
-
-.side-nav.desktop {
-    width: 240px;
+.side-nav.open {
+    left: 0px;
 }
