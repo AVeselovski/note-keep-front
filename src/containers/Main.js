@@ -24,7 +24,7 @@ class Main extends Component {
 
         return (
             <div className="main-page">
-                <Header url={url} />
+                <Header />
                 <div className="main-container">
                     <Switch>
                         <Redirect exact from={url} to={`${url}/tasks`} />

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Snackbar from 'material-ui/Snackbar';
 import { validateEmail, validatePassword } from '../utils/helpers';
 import {
     setValidatorEmailError,
@@ -157,7 +156,6 @@ class Auth extends Component {
                                 passwordError={passwordError}
                                 statusLoggingIn={statusLoggingIn}
                                 onLogin={this.onLogin}
-                                isRegistering={false}
                             />
                         )}
                     />
@@ -179,7 +177,7 @@ class Auth extends Component {
                                 confirmPasswordError={confirmPasswordError}
                                 statusLoggingIn={statusLoggingIn}
                                 onRegister={this.onRegister}
-                                isRegistering={true}
+                                isRegistering
                             />
                         )}
                     />

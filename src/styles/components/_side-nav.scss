@@ -1,0 +1,119 @@
+.btn-menu {
+    cursor: pointer;
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    width: 30px;
+    height: 30px;
+    stroke: $grey;
+    transition: stroke .15s ease-in,
+                left .15s ease-in,
+                opacity .15s ease-in,
+                transform .15s ease-in;
+    &:hover {
+        stroke: $lightGrey;
+    }
+}
+
+.btn-add-new {
+    cursor: pointer;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    stroke: $grey;
+    border: 2px solid $lightGrey;
+    border-radius: 50%;
+    transition: stroke .15s ease-in, background-color .15s ease-in;
+    &:hover {
+        background-color: $lightGrey;
+        stroke: $themeColor;
+    }
+    @media screen and (max-width: 767px) {
+        stroke: $darkGrey;
+        border: 2px solid $darkGrey;
+        background-color: $lightGrey;
+
+    }
+}
+
+.side-nav {
+    height: 120%;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    overflow: hidden;
+    background-color: $lightGrey;
+    transition: left .15s ease-in;
+
+    .side-nav-top {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 80px;
+        padding-right: 25px;
+
+        .btn-close-side-nav {
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            stroke: $darkGrey;
+            transition: stroke .15s ease-in;
+            &:hover {
+                stroke: $themeColor;
+            }
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        margin-top: 20px;
+    }
+
+    .nav-element {
+        font-size: 18px;
+        font-weight: 300;
+
+        a {
+            margin: 0;
+            padding: 15px 0 15px 30px;
+            display: block;
+            text-decoration: none;
+            color: $darkGrey;
+            transition: color .15s ease-in, padding .15s ease-in, box-shadow .15s ease-in;
+            cursor: pointer;
+            &:hover {
+                color: $themeColor;
+                padding-left: 35px;
+                box-shadow: 4px 0 0 $darkGrey inset;
+            }
+        }
+        .active-link {
+            color: $themeColor;
+            box-shadow: 4px 0 0 $darkGrey inset;
+            padding-left: 35px;
+        }
+    }
+    .nav-element:nth-of-type(3) {
+        margin-top: 30px;
+    }
+    .logout {
+        color: $red;
+        padding: 15px 0 15px 30px;
+        transition: color .15s ease-in;
+        cursor: pointer;
+        &:hover {
+            color: $red;
+        }
+    }
+}
+
+.side-nav.mobile {
+    width: 100%;
+}
+
+.side-nav.desktop {
+    width: 240px;
+}

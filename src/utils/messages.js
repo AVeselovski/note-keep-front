@@ -4,6 +4,6 @@ export const errorMessages = {
     validPasswordError: 'Password of at least 6 characters must be provided.',
     confirmPasswordError: 'Passwords do not match.',
     notFoundError: "These are not the droids you're looking for... Move along.",
-    wrongCredentialsError: "Wrong credentials provided.",
+    wrongCredentialsError: "Email / password did not match.",
     genericResponseError: "Something went wrong..."
 };

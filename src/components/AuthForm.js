@@ -51,7 +51,7 @@ const AuthForm = ({
     statusLoggingIn,
     onLogin,
     onRegister,
-    isRegistering
+    isRegistering = false
 }) => {
     const containerHeight = isRegistering ? '348px' : '174px';
 
@@ -96,7 +96,7 @@ const AuthForm = ({
                         <TextField
                             name="password"
                             type="password"
-                            floatingLabelText="Password"
+                            floatingLabelText="Password:"
                             floatingLabelFixed
                             value={password}
                             onChange={onChangePassword}
@@ -112,7 +112,7 @@ const AuthForm = ({
                             <TextField
                                 name="confirm-password"
                                 type="password"
-                                floatingLabelText="Confirm password"
+                                floatingLabelText="Confirm password:"
                                 floatingLabelFixed
                                 value={confirmPassword}
                                 onChange={onChangeConfirmPassword}
@@ -149,6 +149,7 @@ const AuthForm = ({
                             border: `1px solid ${theme.grey}`
                         }}
                         disabled={statusLoggingIn}
+                        disableTouchRipple
                     />
                 </Link>
                 <FlatButton
@@ -167,6 +168,7 @@ const AuthForm = ({
                     backgroundColor={theme.grey}
                     hoverColor={theme.lightGrey}
                     disabled={statusLoggingIn}
+                    disableTouchRipple
                 />
             </div>
         </form>
