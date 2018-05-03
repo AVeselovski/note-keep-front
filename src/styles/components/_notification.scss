@@ -1,0 +1,54 @@
+.notification {
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    top: -50px;
+    transition: opacity .15s ease-in, top .15s ease-in;
+
+    @media screen and (min-width: 768px) {
+        width: 300px;
+    }
+
+    .notification-inner { 
+        margin-left: auto;
+        margin-right: auto;
+        padding: 15px 20px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: $font-standard;
+        font-weight: 300;
+        color: $lightGrey;
+        border-bottom: 1px solid;
+        border-color: $lightGrey;
+        border-radius: 2px;
+
+        @media screen and (min-width: 768px) {
+            border: 1px solid;
+        }
+    }
+
+    .btn-close {
+        height: 15px;
+        width: 15px;
+        cursor: pointer;
+        margin-left: 15px;
+        stroke: $lightGrey;
+        &:hover {
+            stroke: $themeColor;
+        }
+    }
+}
+.notification.active {
+    opacity: 1;
+    top: 0px;
+
+    @media screen and (min-width: 768px) {
+        top: 90px;
+    }
+}

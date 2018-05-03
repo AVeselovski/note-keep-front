@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { logoutUser } from '../actions/auth';
-import { toggleMenu } from '../actions/ui';
-import HeaderNav from './header-components/HeaderNav';
-import SideNav from './header-components/SideNav';
+import { logoutUser } from '../../actions/auth';
+import { toggleMenu } from '../../actions/ui';
+import HeaderNav from './HeaderNav';
+import SideNav from './SideNav';
 
 
 class Header extends Component {

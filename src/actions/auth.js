@@ -6,8 +6,7 @@ import {
     SET_STATUS_LOGGING_IN,
     LOGIN_USER,
     REGISTER_USER,
-    LOGOUT_USER,
-    SET_RESPONSE_ERROR
+    LOGOUT_USER
 } from '../utils/constants';
 
 
@@ -34,11 +33,6 @@ export const setValidatorConfirmPasswordError = confirmPasswordError => ({
 export const setStatusLoggingIn = val => ({
     type: SET_STATUS_LOGGING_IN,
     payload: val
-});
-
-export const resetResponseError = val => ({
-    type: SET_RESPONSE_ERROR,
-    payload: ''
 });
 
 

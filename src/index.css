@@ -19,6 +19,16 @@ h1, h2, h3, h4, p { font-size: 16px; font-weight: 300; }
 .app-title { width: 300px; margin-top: 15px; margin-bottom: 60px; text-align: center; }
 .app-title h1 { font-size: 52px; font-weight: 200; }
 
+.notification { position: fixed; margin-left: auto; margin-right: auto; height: 50px; opacity: 0; left: 0; right: 0; top: -50px; transition: opacity .15s ease-in, top .15s ease-in; }
+@media screen and (min-width: 768px) { .notification { width: 300px; } }
+.notification .notification-inner { margin-left: auto; margin-right: auto; padding: 15px 20px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; font-size: 16px; font-weight: 300; color: #e3e3e3; border-bottom: 1px solid; border-color: #e3e3e3; border-radius: 2px; }
+@media screen and (min-width: 768px) { .notification .notification-inner { border: 1px solid; } }
+.notification .btn-close { height: 15px; width: 15px; cursor: pointer; margin-left: 15px; stroke: #e3e3e3; }
+.notification .btn-close:hover { stroke: #1a1a1a; }
+
+.notification.active { opacity: 1; top: 0px; }
+@media screen and (min-width: 768px) { .notification.active { top: 90px; } }
+
 .header-nav { width: 100%; position: fixed; left: 0; top: 0; right: 0; display: flex; justify-content: center; align-items: center; height: 80px; }
 .header-nav ul { list-style-type: none; position: relative; margin-left: 0px; transition: margin .15s ease-in; }
 .header-nav ul.open { margin-left: 240px; }

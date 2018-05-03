@@ -5,8 +5,8 @@ import {
     LOGIN_USER,
     REGISTER_USER,
     LOGOUT_USER,
-    SET_RESPONSE_ERROR,
-    TOGGLE_MENU
+    TOGGLE_MENU,
+    SET_NOTIFICATION
 } from '../utils/constants';
 import { apiLogin, apiRegister } from '../api/auth';
 import { errorMessages as messages } from '../utils/messages';
@@ -20,8 +20,6 @@ function* login(action) {
 
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
         yield put({ type: SET_STATUS_AUTHORIZED, payload: true });
-        // clear response error
-        yield put({ type: SET_RESPONSE_ERROR, payload: '' });
         // store token
         localStorage.setItem('token', response.data.token);
         // redirect
@@ -34,7 +32,7 @@ function* login(action) {
             customError = messages.wrongCredentialsError;
         }
 
-        yield put({ type: SET_RESPONSE_ERROR, payload: customError });
+        yield put({ type: SET_NOTIFICATION, payload: { msg: customError, type: 'error' }});
     }
 }
 
@@ -52,7 +50,7 @@ function* register(action) {
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
         yield put({ type: SET_STATUS_AUTHORIZED, payload: true });
         // clear response error
-        yield put({ type: SET_RESPONSE_ERROR, payload: ''});
+        yield put({ type: SET_NOTIFICATION, payload: { msg: 'You registered successfully.', type: 'success' }});
         // store token
         localStorage.setItem('token', response.data.token);
         // redirect
@@ -65,7 +63,7 @@ function* register(action) {
             customError = error.response.data;
         }
 
-        yield put({ type: SET_RESPONSE_ERROR, payload: customError });
+        yield put({ type: SET_NOTIFICATION, payload: { msg: customError, type: 'error' }});
     }
 }
 

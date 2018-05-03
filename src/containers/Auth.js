@@ -8,7 +8,6 @@ import {
     setValidatorPasswordError,
     setValidatorConfirmPasswordError,
     setStatusLoggingIn,
-    resetResponseError,
     loginUser,
     registerUser
 } from '../actions/auth';
@@ -16,7 +15,6 @@ import { errorMessages as messages } from '../utils/messages';
 import {
     AppTitle,
     AuthForm,
-    ErrorNotification,
     NotFoundAlt
 } from '../components';
 
@@ -111,10 +109,6 @@ class Auth extends Component {
         }
     }
 
-    resetNotificationError = () => {
-        this.props.resetResponseError();
-    }
-
     componentWillUnmount() {
         this.setState({
             email: '',
@@ -134,7 +128,6 @@ class Auth extends Component {
             confirmEmailError,
             passwordError,
             confirmPasswordError,
-            responseError,
             match: { url }
         } = this.props;
         const redirect = statusAuthorized ? '/dashboard' : `${url}/login`;
@@ -183,10 +176,6 @@ class Auth extends Component {
                     />
                     <Route component={NotFoundAlt} />
                 </Switch>
-                <ErrorNotification
-                    errorMessage={responseError}
-                    resetNotificationError={this.resetNotificationError}
-                />
             </div>
         );
     }
@@ -199,21 +188,17 @@ const mapStateToProps = ({ auth }) => ({
     emailError: auth.emailError,
     confirmEmailError: auth.confirmEmailError,
     passwordError: auth.passwordError,
-    confirmPasswordError: auth.confirmPasswordError,
-    responseError: auth.responseError
+    confirmPasswordError: auth.confirmPasswordError
 });
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setValidatorEmailError: (val) => { dispatch(setValidatorEmailError(val)) },
-        setValidatorConfirmEmailError: (val) => { dispatch(setValidatorConfirmEmailError(val)) },
-        setValidatorPasswordError: (val) => { dispatch(setValidatorPasswordError(val)) },
-        setValidatorConfirmPasswordError: (val) => { dispatch(setValidatorConfirmPasswordError(val)) },
-        setStatusLoggingIn: (val) => { dispatch(setStatusLoggingIn(val)) },
-        resetResponseError: (val) => { dispatch(resetResponseError()) },
-        loginUser: (credentials, history) => { dispatch(loginUser(credentials, history)) },
-        registerUser: (credentials, history) => { dispatch(registerUser(credentials, history)) }
-    }
-};
+const mapDispatchToProps = (dispatch) => ({
+    setValidatorEmailError: (val) => { dispatch(setValidatorEmailError(val)) },
+    setValidatorConfirmEmailError: (val) => { dispatch(setValidatorConfirmEmailError(val)) },
+    setValidatorPasswordError: (val) => { dispatch(setValidatorPasswordError(val)) },
+    setValidatorConfirmPasswordError: (val) => { dispatch(setValidatorConfirmPasswordError(val)) },
+    setStatusLoggingIn: (val) => { dispatch(setStatusLoggingIn(val)) },
+    loginUser: (credentials, history) => { dispatch(loginUser(credentials, history)) },
+    registerUser: (credentials, history) => { dispatch(registerUser(credentials, history)) }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);

@@ -4,8 +4,7 @@ import {
     SET_VALIDATOR_PASSWORD_ERROR,
     SET_VALIDATOR_CONFIRM_PASSWORD_ERROR,
     SET_STATUS_LOGGING_IN,
-    SET_STATUS_AUTHORIZED,
-    SET_RESPONSE_ERROR
+    SET_STATUS_AUTHORIZED
 } from "../utils/constants";
 
 
@@ -13,8 +12,7 @@ const initialState = {
     statusLoggingIn: false,
     statusAuthorized: false,
     emailError: '',
-    passwordError: '',
-    responseError: ''
+    passwordError: ''
 };
 
 export default (state = initialState, action) => {
@@ -31,8 +29,6 @@ export default (state = initialState, action) => {
             return { ...state, statusLoggingIn: action.payload };
         case SET_STATUS_AUTHORIZED:
             return { ...state, statusAuthorized: action.payload };
-        case SET_RESPONSE_ERROR:
-            return { ...state, responseError: action.payload };
         default:
             return state;
     }

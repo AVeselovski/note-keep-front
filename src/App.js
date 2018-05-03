@@ -3,7 +3,7 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Auth from './containers/Auth';
 import Main from './containers/Main';
-import { NotFound } from './components';
+import { Notification, NotFound } from './components';
 
 
 class App extends Component {
@@ -19,6 +19,7 @@ class App extends Component {
                         <Route path="/dashboard" component={Main} />
                         <Route component={NotFound} />
                     </Switch>
+                    <Notification />
                 </div>
             </MuiThemeProvider>
         );
