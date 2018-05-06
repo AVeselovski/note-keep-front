@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import theme from '../theme';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
-import CircularProgress from 'material-ui/CircularProgress';
+import theme from '../theme';
+import { notificationMessages as notify } from '../utils/messages';
+import Loading from './Loading'
 
 
 const textFieldStyles = {
@@ -128,7 +129,7 @@ const AuthForm = ({
                     </div>
                     :
                     <div className="input-container" style={{ height: containerHeight }}>
-                        <CircularProgress size={60} thickness={3} color={theme.grey} />
+                        <Loading message={isRegistering ? notify.registering : notify.loggingIn} />
                     </div>
             }
             <div className="button-container">

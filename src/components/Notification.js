@@ -24,10 +24,17 @@ class Notification extends Component {
                 <div
                     className="notification-inner"
                     style={{
-                        backgroundColor: type === 'error' ? theme.red : theme.green
+                        color: type === 'error' ? theme.red : theme.green,
+                        borderColor: type === 'error' ? theme.red : theme.green
                     }}>
                     <span>{notificationMsg}</span>
-                    <i className="btn-close" onClick={dismiss}><CloseIcon size='15' /></i>
+                    <i
+                        className="btn-close"
+                        onClick={dismiss}
+                        style={{
+                            stroke: type === 'error' ? theme.red : theme.green
+                        }}>
+                        <CloseIcon size='15' /></i>
                 </div>
             </div>
         );

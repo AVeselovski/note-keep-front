@@ -11,7 +11,7 @@ import {
     loginUser,
     registerUser
 } from '../actions/auth';
-import { errorMessages as messages } from '../utils/messages';
+import { errorMessages as errorMsg } from '../utils/messages';
 import {
     AppTitle,
     AuthForm,
@@ -70,8 +70,8 @@ class Auth extends Component {
         const passwordError = validatePassword(password);
 
         // (un)set errors
-        this.props.setValidatorEmailError(!!emailError ? messages.validEmailError : '');
-        this.props.setValidatorPasswordError(!!passwordError ? messages.validPasswordError : '');
+        this.props.setValidatorEmailError(!!emailError ? errorMsg.validEmailError : '');
+        this.props.setValidatorPasswordError(!!passwordError ? errorMsg.validPasswordError : '');
 
         // proceed with logging in if no errors
         if (!emailError && !passwordError) {
@@ -96,10 +96,10 @@ class Auth extends Component {
         const confirmPasswordError = password !== confirmPassword ? true : false;
 
         // (un)set errors
-        this.props.setValidatorEmailError(!!emailError ? messages.validEmailError : '');
-        this.props.setValidatorPasswordError(!!passwordError ? messages.validPasswordError : '');
-        this.props.setValidatorConfirmEmailError(!!confirmEmailError ? messages.confirmEmailError : '');
-        this.props.setValidatorConfirmPasswordError(!!confirmPasswordError ? messages.confirmPasswordError : '');
+        this.props.setValidatorEmailError(!!emailError ? errorMsg.validEmailError : '');
+        this.props.setValidatorPasswordError(!!passwordError ? errorMsg.validPasswordError : '');
+        this.props.setValidatorConfirmEmailError(!!confirmEmailError ? errorMsg.confirmEmailError : '');
+        this.props.setValidatorConfirmPasswordError(!!confirmPasswordError ? errorMsg.confirmPasswordError : '');
 
         if (!emailError && !passwordError && !confirmEmailError && !confirmPasswordError) {
             const credentials = { email, password };

@@ -74,6 +74,7 @@
     overflow: hidden;
     background-color: $lightGrey;
     transition: left .2s ease-in;
+    z-index: 2;
 
     @media screen and (min-width: 768px) {
         width: 240px;

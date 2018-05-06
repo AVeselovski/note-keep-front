@@ -1,0 +1,61 @@
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+        margin-top: 30px;
+        color: $darkGrey;
+        font-size: $font-standard;
+    }
+}
+
+.loading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    width: 30px;
+    height: 30px;
+
+    .loading-dot {
+        width: 2px;
+        height: 30px;
+        // border-radius: 50%;
+        position: absolute;
+        background-color: $darkGrey;
+        transition: top .15s ease-in, opacity .15s ease-in;
+    }
+
+    .dot-1 {
+        left: 0;
+    }
+    .dot-2 {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .dot-3 {
+        right: 0;
+    }
+
+    .hidden {
+        top: -4px;
+        opacity: 0;
+    }
+    .visible {
+        top: 0px;
+        opacity: 1;
+    }
+}
+.alternative {
+    transform: rotate(-90deg);
+    height: 40px;
+    width: 40px;
+
+    .loading-dot {
+        background-color: $grey;
+        height: 40px;
+    }
+}

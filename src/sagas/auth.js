@@ -9,7 +9,10 @@ import {
     SET_NOTIFICATION
 } from '../utils/constants';
 import { apiLogin, apiRegister } from '../api/auth';
-import { errorMessages as messages } from '../utils/messages';
+import {
+    errorMessages as errorMsg,
+    notificationMessages as notify
+} from '../utils/messages';
 
 
 function* login(action) {
@@ -27,12 +30,12 @@ function* login(action) {
     } catch (error) {
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
 
-        let customError = messages.genericResponseError;
+        let customError = errorMsg.genericResponseError;
         if (error.response.status === 401) {
-            customError = messages.wrongCredentialsError;
+            customError = errorMsg.wrongCredentialsError;
         }
-
-        yield put({ type: SET_NOTIFICATION, payload: { msg: customError, type: 'error' }});
+        // notify error
+        yield put({ type: SET_NOTIFICATION, payload: { msg: customError, type: 'error' } });
     }
 }
 
@@ -49,21 +52,21 @@ function* register(action) {
 
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
         yield put({ type: SET_STATUS_AUTHORIZED, payload: true });
-        // clear response error
-        yield put({ type: SET_NOTIFICATION, payload: { msg: 'You registered successfully.', type: 'success' }});
         // store token
         localStorage.setItem('token', response.data.token);
+        // notify
+        yield put({ type: SET_NOTIFICATION, payload: { msg: notify.registerSuccess, type: 'success' } });
         // redirect
         history.push('/dashboard');
     } catch (error) {
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
-        
-        let customError = messages.genericResponseError;
+
+        let customError = errorMsg.genericResponseError;
         if (error.response.status === 422) {
             customError = error.response.data;
         }
-
-        yield put({ type: SET_NOTIFICATION, payload: { msg: customError, type: 'error' }});
+        // notify error
+        yield put({ type: SET_NOTIFICATION, payload: { msg: customError, type: 'error' } });
     }
 }
 

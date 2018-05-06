@@ -19,14 +19,13 @@ h1, h2, h3, h4, p { font-size: 16px; font-weight: 300; }
 .app-title { width: 300px; margin-top: 15px; margin-bottom: 60px; text-align: center; }
 .app-title h1 { font-size: 52px; font-weight: 200; }
 
-.notification { position: fixed; margin-left: auto; margin-right: auto; height: 50px; opacity: 0; left: 0; right: 0; top: -50px; transition: opacity .15s ease-in, top .15s ease-in; }
-@media screen and (min-width: 768px) { .notification { width: 300px; } }
-.notification .notification-inner { margin-left: auto; margin-right: auto; padding: 15px 20px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; font-size: 16px; font-weight: 300; color: #e3e3e3; border-bottom: 1px solid; border-color: #e3e3e3; border-radius: 2px; }
-@media screen and (min-width: 768px) { .notification .notification-inner { border: 1px solid; } }
-.notification .btn-close { height: 15px; width: 15px; cursor: pointer; margin-left: 15px; stroke: #e3e3e3; }
-.notification .btn-close:hover { stroke: #1a1a1a; }
+.notification { position: fixed; margin-left: auto; margin-right: auto; opacity: 0.5; left: 0; right: 0; top: -60px; height: 60px; transition: opacity .05s ease-in, top .10s ease-in; }
+@media screen and (min-width: 768px) { .notification { width: 300px; top: -50px; height: 50px; transition: opacity .05s ease-in; } }
+.notification .notification-inner { margin-left: auto; margin-right: auto; padding: 20px 15px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; font-size: 16px; font-weight: 400; border-bottom: 1px solid; border-radius: 2px; background-color: #1a1a1a; }
+@media screen and (min-width: 768px) { .notification .notification-inner { border: 1px solid; padding: 15px; } }
+.notification .btn-close { height: 15px; width: 15px; cursor: pointer; margin-left: 15px; }
 
-.notification.active { opacity: 1; top: 0px; }
+.notification.active { opacity: 1; top: 0px; visibility: visible; }
 @media screen and (min-width: 768px) { .notification.active { top: 90px; } }
 
 .header-nav { width: 100%; position: fixed; left: 0; top: 0; right: 0; display: flex; justify-content: center; align-items: center; height: 80px; }
@@ -50,7 +49,7 @@ h1, h2, h3, h4, p { font-size: 16px; font-weight: 300; }
 .btn-menu.open { left: calc(100% + 15px); transform: rotate(90deg); opacity: 0.25; pointer-events: none; cursor: default; }
 @media screen and (min-width: 768px) { .btn-menu.open { left: 265px; } }
 
-.side-nav { height: 120%; width: 100%; position: fixed; top: 0px; left: -100%; bottom: 0px; overflow: hidden; background-color: #e3e3e3; transition: left .2s ease-in; }
+.side-nav { height: 120%; width: 100%; position: fixed; top: 0px; left: -100%; bottom: 0px; overflow: hidden; background-color: #e3e3e3; transition: left .2s ease-in; z-index: 2; }
 @media screen and (min-width: 768px) { .side-nav { width: 240px; left: -240px; transition: left .15s ease-in; } }
 .side-nav .side-nav-top { display: flex; align-items: center; justify-content: flex-end; height: 80px; padding-right: 25px; }
 .side-nav .side-nav-top .btn-close-side-nav { cursor: pointer; width: 30px; height: 30px; stroke: #747474; transition: stroke .15s ease-in; }
@@ -77,5 +76,19 @@ h1, h2, h3, h4, p { font-size: 16px; font-weight: 300; }
 .not-found h3 { font-size: 22px; margin-bottom: 30px; }
 
 .not-found-alt { max-width: 300px; text-align: center; }
+
+.loading-container { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.loading-container .title { margin-top: 30px; color: #747474; font-size: 16px; }
+
+.loading { display: flex; justify-content: space-between; align-items: center; position: relative; width: 30px; height: 30px; }
+.loading .loading-dot { width: 2px; height: 30px; position: absolute; background-color: #747474; transition: top .15s ease-in, opacity .15s ease-in; }
+.loading .dot-1 { left: 0; }
+.loading .dot-2 { left: 50%; transform: translateX(-50%); }
+.loading .dot-3 { right: 0; }
+.loading .hidden { top: -4px; opacity: 0; }
+.loading .visible { top: 0px; opacity: 1; }
+
+.alternative { transform: rotate(-90deg); height: 40px; width: 40px; }
+.alternative .loading-dot { background-color: #bdbdbd; height: 40px; }
 
 /*# sourceMappingURL=index.css.map */

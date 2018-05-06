@@ -7,3 +7,10 @@ export const errorMessages = {
     wrongCredentialsError: "Email / password did not match.",
     genericResponseError: "Something went wrong..."
 };
+
+export const notificationMessages = {
+    registerSuccess: 'Registration successful.',
+    registering: 'Registering...',
+    loggingIn: 'Logging in...',
+    loadingFailing: 'Or not...'
+}
