@@ -3,16 +3,16 @@ import {
     SET_VALIDATOR_CONFIRM_EMAIL_ERROR,
     SET_VALIDATOR_PASSWORD_ERROR,
     SET_VALIDATOR_CONFIRM_PASSWORD_ERROR,
-    SET_STATUS_LOGGING_IN,
-    SET_STATUS_AUTHORIZED
+    SET_IS_AUTHORIZED
 } from "../utils/constants";
 
 
 const initialState = {
-    statusLoggingIn: false,
-    statusAuthorized: false,
+    isAuthorized: false,
     emailError: '',
-    passwordError: ''
+    confirmEmailError: '',
+    passwordError: '',
+    confirmPasswordError: ''
 };
 
 export default (state = initialState, action) => {
@@ -25,10 +25,8 @@ export default (state = initialState, action) => {
             return { ...state, passwordError: action.payload };
         case SET_VALIDATOR_CONFIRM_PASSWORD_ERROR:
             return { ...state, confirmPasswordError: action.payload };
-        case SET_STATUS_LOGGING_IN:
-            return { ...state, statusLoggingIn: action.payload };
-        case SET_STATUS_AUTHORIZED:
-            return { ...state, statusAuthorized: action.payload };
+        case SET_IS_AUTHORIZED:
+            return { ...state, isAuthorized: action.payload };
         default:
             return state;
     }

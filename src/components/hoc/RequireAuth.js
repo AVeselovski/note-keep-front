@@ -6,13 +6,13 @@ import { withRouter } from 'react-router-dom'
 export default function(ComposedComponent) {
     class RequireAuth extends Component {
         componentWillMount() {
-            if (!this.props.statusAuthorized) {
+            if (!this.props.isAuthorized) {
                 this.props.history.push('/auth');
             }
         }
 
         componentWillUpdate(nextProps) {
-            if (!nextProps.statusAuthorized) {
+            if (!nextProps.isAuthorized) {
                 this.props.history.push('/auth');
             }
         }
@@ -22,7 +22,7 @@ export default function(ComposedComponent) {
     }
 
     const mapStateToProps = (state) => {
-        return { statusAuthorized: state.auth.statusAuthorized };
+        return { isAuthorized: state.auth.isAuthorized };
     }
 
     return withRouter(connect(mapStateToProps)(RequireAuth));

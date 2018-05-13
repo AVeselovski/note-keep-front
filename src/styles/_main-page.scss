@@ -7,7 +7,29 @@
         height: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        padding: 100px; // temp
+        // align-items: center;
+        padding: 65px 5px 5px 5px; // temp
+
+        @media screen and (min-width: 768px) {
+            transition: margin-left .1s ease-in;
+            padding: 80px 20px 20px 20px; // temp
+        }
+    }
+    .main-container.menu-open {
+        @media screen and (min-width: 768px) {
+            margin-left: 240px;
+        }
+    }
+
+    nav {
+        // mobile header
+        @media screen and (max-width: 767px) {
+            height: 60px;
+            background-color: $lightGrey;
+            box-sizing: border-box;
+            border-bottom: 1px solid $darkGrey;
+            width: 100%;
+            position: fixed;
+        }
     }
 }

@@ -5,7 +5,7 @@
     align-items: center;
 
     .title {
-        margin-top: 30px;
+        margin-bottom: 20px;
         color: $darkGrey;
         font-size: $font-standard;
     }
@@ -17,16 +17,16 @@
     align-items: center;
     position: relative;
 
-    width: 30px;
-    height: 30px;
-
+    height: 5px;
+    width: 60px;
+    
     .loading-dot {
-        width: 2px;
-        height: 30px;
-        // border-radius: 50%;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
         position: absolute;
-        background-color: $darkGrey;
-        transition: top .15s ease-in, opacity .15s ease-in;
+        background-color: $grey;
+        transition: top .1s ease-in, opacity .1s ease-in;
     }
 
     .dot-1 {
@@ -41,7 +41,7 @@
     }
 
     .hidden {
-        top: -4px;
+        top: -5px;
         opacity: 0;
     }
     .visible {
@@ -50,12 +50,14 @@
     }
 }
 .alternative {
-    transform: rotate(-90deg);
-    height: 40px;
-    width: 40px;
+    // transform: rotate(-90deg);
+    width: 30px;
+    height: 30px;
 
     .loading-dot {
-        background-color: $grey;
-        height: 40px;
+        width: 2px;
+        height: 30px;
+        border-radius: 0px;
+        background-color: $darkGrey;
     }
 }

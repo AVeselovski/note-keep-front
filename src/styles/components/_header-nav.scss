@@ -13,7 +13,8 @@
         list-style-type: none;
         position: relative;
         margin-left: 0px;
-        transition: margin .15s ease-in;
+        transition: margin .1s ease-in;
+        margin-bottom: 12px;
     }
     ul.open {
         margin-left: 240px;
@@ -32,7 +33,7 @@
             text-decoration: none;
             color: $grey;
             padding: $spacing-xs $spacing-md;
-            transition: color .15s ease-in;
+            transition: color .1s ease-in;
             &:hover {
                 color: $lightGrey;
             }

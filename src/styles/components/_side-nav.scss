@@ -10,7 +10,7 @@
     border: 2px solid $darkGrey;
     border-radius: 50%;
     background-color: $lightGrey;
-    transition: stroke .15s ease-in, background-color .15s ease-in;
+    transition: stroke .1s ease-in, background-color .1s ease-in;
     &:hover {
         background-color: $lightGrey;
         stroke: $themeColor;
@@ -21,8 +21,11 @@
         right: 25px;
         padding: 13px;
         stroke: $grey;
-        border: 2px solid $lightGrey;
+        border: 2px solid $grey;
         background-color: transparent;
+        &:hover {
+            border: 2px solid $lightGrey;
+        }
     }
 }
 
@@ -30,25 +33,27 @@
 .btn-menu {
     cursor: pointer;
     position: fixed;
-    top: 25px;
+    top: $spacing-sm;
     left: $spacing-sm;
     width: 30px;
     height: 30px;
-    stroke: $grey;
-    transition: stroke .15s ease-in,
-                left .2s ease-in,
-                opacity .2s ease-in,
-                transform .2s ease-in;
+    stroke: $darkGrey;
+    transition: stroke .1s ease-in,
+                left .15s ease-in,
+                opacity .15s ease-in,
+                transform .15s ease-in;
     &:hover {
         stroke: $lightGrey;
     }
 
     @media screen and (min-width: 768px) {
+        top: 25px;
         left: 25px;
-        transition: stroke .15s ease-in,
-                    left .15s ease-in,
-                    opacity .15s ease-in,
-                    transform .15s ease-in;
+        stroke: $grey;
+        transition: stroke .1s ease-in,
+                    left .1s ease-in,
+                    opacity .1s ease-in,
+                    transform .1s ease-in;
     }
 }
 .btn-menu.open {
@@ -73,28 +78,32 @@
     bottom: 0px;
     overflow: hidden;
     background-color: $lightGrey;
-    transition: left .2s ease-in;
+    transition: left .15s ease-in;
     z-index: 2;
 
     @media screen and (min-width: 768px) {
         width: 240px;
         left: -240px;
-        transition: left .15s ease-in;
+        transition: left .1s ease-in;
     }
 
     .side-nav-top {
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        height: 80px;
-        padding-right: 25px;
+        height: 60px;
+        padding-right: 15px;
+
+        @media screen and (min-width: 768px) {
+            height: 80px;
+        }
 
         .btn-close-side-nav {
             cursor: pointer;
             width: 30px;
             height: 30px;
             stroke: $darkGrey;
-            transition: stroke .15s ease-in;
+            transition: stroke .1s ease-in;
             &:hover {
                 stroke: $themeColor;
             }
@@ -137,16 +146,21 @@
         @media screen and (min-width: 768px) {
             a {
                 padding: $spacing-sm 0 $spacing-sm $spacing-md;
-                transition: color .15s ease-in, padding .15s ease-in, box-shadow .15s ease-in;
+                transition: color .1s ease-in,
+                            padding .1s ease-in,
+                            box-shadow .1s ease-in,
+                            border-left .1s ease-in;
                 &:hover {
                     color: $themeColor;
                     padding-left: $spacing-md + 5px;
-                    box-shadow: 4px 0 0 $darkGrey inset;
+                    // box-shadow: 4px 0 0 $darkGrey inset;
+                    border-left: 4px solid $darkGrey;
                 }
             }
             .active-link {
                 padding: $spacing-sm 0 $spacing-sm 35px;
-                box-shadow: 4px 0 0 $darkGrey inset;
+                // box-shadow: 4px 0 0 $darkGrey inset;
+                border-left: 4px solid $darkGrey;
                 border-bottom: none;
             }
         }
@@ -171,9 +185,9 @@
 
         @media screen and (min-width: 768px) {
             padding: $spacing-sm 0 $spacing-sm $spacing-md;
-            transition: color .15s ease-in;
+            transition: color .1s ease-in;
             &:hover {
-                color: lighten($red, 8%);
+                color: lighten($red, 10);
             }
         }
     }

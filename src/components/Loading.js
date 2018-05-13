@@ -7,15 +7,13 @@ class Loading extends Component {
     state = {
         dots: ['hidden', 'hidden', 'hidden'],
         allVisible: false,
-        message: '',
-        alternativeStyle: ''
+        message: ''
     }
     componentWillMount() {
         if (this.props.message) {
             this.setState((prevState) => {
                 return {
-                    message: this.props.message,
-                    alternativeStyle: ' alternative'
+                    message: this.props.message
                 }
             });
         }
@@ -64,12 +62,12 @@ class Loading extends Component {
     render() {
         return (
             <div className="loading-container">
-                <div className={`loading${this.state.alternativeStyle}`}>
+                {this.props.message && <span className="title">{this.state.message}</span>}
+                <div className={`loading${this.props.alternative ? ' alternative' : ''}`}>
                     <span className={`loading-dot dot-1${this.state.dots[0] === 'hidden' ? ' hidden' : ' visible'}`} />
                     <span className={`loading-dot dot-2${this.state.dots[1] === 'hidden' ? ' hidden' : ' visible'}`} />
                     <span className={`loading-dot dot-3${this.state.dots[2] === 'hidden' ? ' hidden' : ' visible'}`} />
                 </div>
-                {this.props.message && <span className="title">{this.state.message}</span>}
             </div>
         );
     }
@@ -77,7 +75,8 @@ class Loading extends Component {
 
 
 Loading.propTypes = {
-    message: PropTypes.string
+    message: PropTypes.string,
+    alternative: PropTypes.bool
 }
 
 export default Loading;

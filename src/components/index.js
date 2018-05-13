@@ -1,9 +1,10 @@
 import AppTitle from './AppTitle';
 import AuthForm from './AuthForm';
-import Header from './header-components/Header';
+import Header from './header';
 import Notification from './Notification';
 import Loading from './Loading';
 import { NotFound, NotFoundAlt } from './NotFound';
+import CardContainer from './CardContainer';
 
 
 export {
@@ -13,5 +14,6 @@ export {
     Notification,
     Loading,
     NotFound,
-    NotFoundAlt
+    NotFoundAlt,
+    CardContainer
 };

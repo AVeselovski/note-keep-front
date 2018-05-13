@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { logoutUser } from '../../actions/auth';
-import { toggleMenu } from '../../actions/ui';
 import HeaderNav from './HeaderNav';
 import SideNav from './SideNav';
+import Tags from './Tags';
+import Select from './Select';
 
 
 class Header extends Component {
@@ -45,7 +43,16 @@ class Header extends Component {
     }
 
     render() {
-        const { match: { url }, location: { pathname }, menuOpen } = this.props;
+        const {
+            url,
+            pathname,
+            menuOpen,
+            tags,
+            activeTag,
+            toggleMenu,
+            logoutUser,
+            filterTag
+        } = this.props;
 
         return (
             <nav>
@@ -53,28 +60,21 @@ class Header extends Component {
                     !this.state.isMobile &&
                     <HeaderNav menuOpen={menuOpen} url={url} pathname={pathname} />
                 }
+                <Select tags={tags} />
                 <SideNav
                     isMobile={this.state.isMobile}
                     menuOpen={menuOpen}
                     url={url}
-                    toggleMenu={this.props.toggleMenu}
-                    logoutUser={this.props.logoutUser}
+                    toggleMenu={toggleMenu}
+                    logoutUser={logoutUser}
                 />
+                {
+                    tags.length > 1 && 
+                    <Tags tags={tags} activeTag={activeTag} filterTag={filterTag} />
+                }
             </nav>
         );
     }
 }
 
-
-const mapStateToPorps = ({ ui }) => ({
-    menuOpen: ui.menuOpen
-});
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        logoutUser: () => { dispatch(logoutUser()) },
-        toggleMenu: (val) => { dispatch(toggleMenu(val)) }
-    }
-}
-
-export default withRouter(connect(mapStateToPorps, mapDispatchToProps)(Header));
+export default Header;

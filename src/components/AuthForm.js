@@ -5,7 +5,7 @@ import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import theme from '../theme';
 import { notificationMessages as notify } from '../utils/messages';
-import Loading from './Loading'
+import Loading from './Loading';
 
 
 const textFieldStyles = {

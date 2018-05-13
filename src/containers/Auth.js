@@ -7,10 +7,10 @@ import {
     setValidatorConfirmEmailError,
     setValidatorPasswordError,
     setValidatorConfirmPasswordError,
-    setStatusLoggingIn,
     loginUser,
     registerUser
 } from '../actions/auth';
+import { setStatusLoggingIn } from '../actions/ui';
 import { errorMessages as errorMsg } from '../utils/messages';
 import {
     AppTitle,
@@ -29,14 +29,14 @@ class Auth extends Component {
 
     componentWillMount() {
         // force users to dashboard if logged in
-        if (!!this.props.statusAuthorized) {
+        if (!!this.props.isAuthorized) {
             this.props.history.push('/dashboard');
         }
     }
 
     componentDidUpdate() {
         // force users to dashboard if logged in
-        if (!!this.props.statusAuthorized) {
+        if (!!this.props.isAuthorized) {
             this.props.history.push('/dashboard');
         }
     }
@@ -122,7 +122,7 @@ class Auth extends Component {
     render() {
         const { email, confirmEmail, password, confirmPassword } = this.state;
         const {
-            statusAuthorized,
+            isAuthorized,
             statusLoggingIn,
             emailError,
             confirmEmailError,
@@ -130,7 +130,7 @@ class Auth extends Component {
             confirmPasswordError,
             match: { url }
         } = this.props;
-        const redirect = statusAuthorized ? '/dashboard' : `${url}/login`;
+        const redirect = isAuthorized ? '/dashboard' : `${url}/login`;
 
         return (
             <div className="auth-page">
@@ -182,9 +182,9 @@ class Auth extends Component {
 }
 
 
-const mapStateToProps = ({ auth }) => ({
-    statusLoggingIn: auth.statusLoggingIn,
-    statusAuthorized: auth.statusAuthorized,
+const mapStateToProps = ({ auth, ui }) => ({
+    statusLoggingIn: ui.statusLoggingIn,
+    isAuthorized: auth.isAuthorized,
     emailError: auth.emailError,
     confirmEmailError: auth.confirmEmailError,
     passwordError: auth.passwordError,
@@ -196,9 +196,9 @@ const mapDispatchToProps = (dispatch) => ({
     setValidatorConfirmEmailError: (val) => { dispatch(setValidatorConfirmEmailError(val)) },
     setValidatorPasswordError: (val) => { dispatch(setValidatorPasswordError(val)) },
     setValidatorConfirmPasswordError: (val) => { dispatch(setValidatorConfirmPasswordError(val)) },
-    setStatusLoggingIn: (val) => { dispatch(setStatusLoggingIn(val)) },
     loginUser: (credentials, history) => { dispatch(loginUser(credentials, history)) },
-    registerUser: (credentials, history) => { dispatch(registerUser(credentials, history)) }
+    registerUser: (credentials, history) => { dispatch(registerUser(credentials, history)) },
+    setStatusLoggingIn: (val) => { dispatch(setStatusLoggingIn(val)) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);

@@ -1,14 +1,15 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+import { apiLogin, apiRegister } from '../api/auth';
 import {
     SET_STATUS_LOGGING_IN,
-    SET_STATUS_AUTHORIZED,
+    SET_IS_AUTHORIZED,
     LOGIN_USER,
     REGISTER_USER,
     LOGOUT_USER,
     TOGGLE_MENU,
-    SET_NOTIFICATION
+    SET_NOTIFICATION,
+    RESET_DATA
 } from '../utils/constants';
-import { apiLogin, apiRegister } from '../api/auth';
 import {
     errorMessages as errorMsg,
     notificationMessages as notify
@@ -22,12 +23,15 @@ function* login(action) {
         const response = yield call(apiLogin, credentials);
 
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
-        yield put({ type: SET_STATUS_AUTHORIZED, payload: true });
+        yield put({ type: SET_IS_AUTHORIZED, payload: true });
         // store token
         localStorage.setItem('token', response.data.token);
         // redirect
         history.push('/dashboard');
     } catch (error) {
+        // log error, not temp
+        console.log(error);
+
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
 
         let customError = errorMsg.genericResponseError;
@@ -51,7 +55,7 @@ function* register(action) {
         const response = yield call(apiRegister, credentials);
 
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
-        yield put({ type: SET_STATUS_AUTHORIZED, payload: true });
+        yield put({ type: SET_IS_AUTHORIZED, payload: true });
         // store token
         localStorage.setItem('token', response.data.token);
         // notify
@@ -59,6 +63,9 @@ function* register(action) {
         // redirect
         history.push('/dashboard');
     } catch (error) {
+        // log error, not temp
+        console.log(error);
+        
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
 
         let customError = errorMsg.genericResponseError;
@@ -80,8 +87,9 @@ function* logout(action) {
         // destroy token
         localStorage.removeItem('token');
 
-        yield put({ type: SET_STATUS_AUTHORIZED, payload: false });
+        yield put({ type: SET_IS_AUTHORIZED, payload: false });
         yield put({ type: TOGGLE_MENU, payload: false });
+        yield put({ type: RESET_DATA });
     } catch (error) {
         console.log(error);
     }

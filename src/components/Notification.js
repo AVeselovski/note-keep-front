@@ -24,8 +24,7 @@ class Notification extends Component {
                 <div
                     className="notification-inner"
                     style={{
-                        color: type === 'error' ? theme.red : theme.green,
-                        borderColor: type === 'error' ? theme.red : theme.green
+                        color: type === 'error' ? theme.red : theme.green
                     }}>
                     <span>{notificationMsg}</span>
                     <i

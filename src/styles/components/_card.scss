@@ -1,0 +1,57 @@
+.card {
+    background-color: $lightGrey;
+    width: 100%;
+    max-width: 400px;
+    color: $darkGrey;
+
+    @media screen and (min-width: 768px) {
+        width: 350px;
+    }
+
+    margin: 5px;
+    border-radius: 3px;
+    // height: 500px;
+
+    .card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px;
+
+        border-bottom: 1px solid $blue;
+
+        .title {
+            font-size: $font-md;
+            color: $themeColor;
+        }
+        .done-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid $blue;
+        }
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    .card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px;
+        box-sizing: border-box;
+        height: 50px;
+
+        .tag {
+            color: $grey;
+        }
+        .date {
+            background-color: $yellow;
+            padding: 2px 7px;
+            border-radius: 12px;
+            color: $lightGrey;
+        }
+    }
+}

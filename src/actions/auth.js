@@ -3,7 +3,6 @@ import {
     SET_VALIDATOR_CONFIRM_EMAIL_ERROR,
     SET_VALIDATOR_PASSWORD_ERROR,
     SET_VALIDATOR_CONFIRM_PASSWORD_ERROR,
-    SET_STATUS_LOGGING_IN,
     LOGIN_USER,
     REGISTER_USER,
     LOGOUT_USER
@@ -28,11 +27,6 @@ export const setValidatorPasswordError = passwordError => ({
 export const setValidatorConfirmPasswordError = confirmPasswordError => ({
     type: SET_VALIDATOR_CONFIRM_PASSWORD_ERROR,
     payload: confirmPasswordError
-});
-
-export const setStatusLoggingIn = val => ({
-    type: SET_STATUS_LOGGING_IN,
-    payload: val
 });
 
 

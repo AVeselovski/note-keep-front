@@ -19,7 +19,7 @@ class App extends Component {
                         <Route path="/dashboard" component={Main} />
                         <Route component={NotFound} />
                     </Switch>
-                    <Notification />
+                    <Notification duration={3000} />
                 </div>
             </MuiThemeProvider>
         );
