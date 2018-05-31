@@ -115,7 +115,7 @@ class Main extends Component {
                             path={`${url}/tasks`}
                             render={() =>
                                 !!statusFetchingResources
-                                    ? <Loading alternative />
+                                    ? <div className="loading-container"><Loading alternative /></div>
                                     : <CardContainer data={tasks} />
                             }
                         />
@@ -123,7 +123,7 @@ class Main extends Component {
                             path={`${url}/notes`}
                             render={() =>
                                 !!statusFetchingResources
-                                    ? <Loading alternative />
+                                    ? <div className="loading-container"><Loading alternative /></div>
                                     : <CardContainer data={notes} />
                             }
                         />
@@ -131,7 +131,7 @@ class Main extends Component {
                             path={`${url}/archive`}
                             render={() =>
                                 !!statusFetchingResources
-                                    ? <Loading alternative />
+                                    ? <div className="loading-container"><Loading alternative /></div>
                                     : <CardContainer data={archived} />
                             }
                         />

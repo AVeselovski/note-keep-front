@@ -51,13 +51,17 @@
 }
 .alternative {
     // transform: rotate(-90deg);
+    // width: 30px;
+    // height: 30px;
+
+    height: 5px;
     width: 30px;
-    height: 30px;
 
     .loading-dot {
-        width: 2px;
-        height: 30px;
-        border-radius: 0px;
         background-color: $darkGrey;
+        // width: 2px;
+        // height: 30px;
+        // border-radius: 0px;
+        // background-color: $darkGrey;
     }
 }

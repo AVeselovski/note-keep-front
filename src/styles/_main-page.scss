@@ -22,7 +22,7 @@
     }
 
     nav {
-        // mobile header
+        // mobile header & title
         @media screen and (max-width: 767px) {
             height: 60px;
             background-color: $lightGrey;
@@ -30,6 +30,26 @@
             border-bottom: 1px solid $darkGrey;
             width: 100%;
             position: fixed;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // padding-left: 60px;
+        }
+        .mobile-title h1 {
+            color: $darkGrey;
+            font-size: $font-md;
+            font-weight: 500;
+        }
+    }
+
+    .loading-container {
+        height: calc(100vh - 70px);
+        display: flex;
+        align-items: center;
+
+        @media screen and (min-width: 768px) {
+            height: calc(100vh - 100px); 
         }
     }
 }

@@ -34,7 +34,7 @@ const SideNav = ({ isMobile = false, menuOpen, url, toggleMenu, logoutUser }) =>
                 className={`btn-menu${menuOpen ? ' open' : ''}`}
                 onClick={() => toggleMenu(true)}>
                 <MenuIcon /></i>
-            <i className="btn-add-new"><PlusIcon /></i>
+            <NavLink to={'/add'} className="btn-add-new"><PlusIcon /></NavLink>
         </div>
     );
 }

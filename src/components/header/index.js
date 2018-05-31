@@ -3,6 +3,7 @@ import HeaderNav from './HeaderNav';
 import SideNav from './SideNav';
 import Tags from './Tags';
 import Select from './Select';
+import Title from '../Title';
 
 
 class Header extends Component {
@@ -54,13 +55,18 @@ class Header extends Component {
             filterTag
         } = this.props;
 
+        const title = pathname.split('/').pop().toUpperCase();
+
         return (
             <nav>
+                {
+                    this.state.isMobile &&
+                    <Title title={title} />
+                }
                 {
                     !this.state.isMobile &&
                     <HeaderNav menuOpen={menuOpen} url={url} pathname={pathname} />
                 }
-                <Select tags={tags} />
                 <SideNav
                     isMobile={this.state.isMobile}
                     menuOpen={menuOpen}

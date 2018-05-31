@@ -5,6 +5,7 @@ import Notification from './Notification';
 import Loading from './Loading';
 import { NotFound, NotFoundAlt } from './NotFound';
 import CardContainer from './CardContainer';
+import Title from './Title';
 
 
 export {
@@ -15,5 +16,6 @@ export {
     Loading,
     NotFound,
     NotFoundAlt,
-    CardContainer
+    CardContainer,
+    Title
 };
