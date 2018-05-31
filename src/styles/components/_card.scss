@@ -12,13 +12,13 @@
     border-radius: 3px;
     // height: 500px;
 
-    .card-head {
+    .card-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 10px 15px;
 
-        border-bottom: 1px solid $blue;
+        border-bottom: 1px solid;
 
         .title {
             font-size: $font-md;
@@ -34,6 +34,11 @@
 
     .card-body {
         padding: 10px;
+        padding-top: 15px;
+
+        .description {
+            display: block;
+        }
     }
 
     .card-footer {
@@ -45,7 +50,7 @@
         height: 50px;
 
         .tag {
-            color: $grey;
+            color: $themeColor;
         }
         .date {
             background-color: $yellow;
@@ -53,5 +58,27 @@
             border-radius: 12px;
             color: $lightGrey;
         }
+    }
+
+    .list {
+        list-style-type: none;
+        padding-left: 25px;
+
+        li {
+            margin-bottom: 6px;
+        }
+        li::before {
+            content: ">";
+            font-weight: 500;
+            font-size: $font-md;
+            color: $darkGrey;
+            display: inline-block;
+            width: 25px;
+            margin-left: -18px;
+        }
+    }
+
+    .checklist {
+        list-style-type: none;
     }
 }

@@ -32,7 +32,7 @@ class Main extends Component {
                 this.props.setActiveTag('#all');
             }
             this.filterResources(this.props.allCards);
-        }, 2000);
+        }, 600);
     }
 
     componentDidUpdate() {

@@ -11,9 +11,9 @@ h1, h2, h3, h4, p { font-size: 16px; font-weight: 300; }
 
 .main-page { min-height: 100vh; position: relative; overflow-x: hidden; }
 .main-page .main-container { height: 100%; display: flex; flex-direction: column; padding: 65px 5px 5px 5px; }
-@media screen and (min-width: 768px) { .main-page .main-container { transition: margin-left .1s ease-in; padding: 80px 20px 20px 20px; } }
+@media screen and (min-width: 768px) { .main-page .main-container { max-height: calc(100vh - 140px); transition: margin-left .1s ease-in; padding: 80px 20px 60px 20px; } }
 @media screen and (min-width: 768px) { .main-page .main-container.menu-open { margin-left: 240px; } }
-@media screen and (max-width: 767px) { .main-page nav { height: 60px; background-color: #e3e3e3; box-sizing: border-box; border-bottom: 1px solid #747474; width: 100%; position: fixed; display: flex; align-items: center; justify-content: center; } }
+@media screen and (max-width: 767px) { .main-page nav { height: 60px; background-color: #e3e3e3; box-sizing: border-box; border-bottom: 1px solid #747474; width: 100%; position: fixed; z-index: 10; display: flex; align-items: center; justify-content: center; } }
 .main-page nav .mobile-title h1 { color: #747474; font-size: 18px; font-weight: 500; }
 .main-page .loading-container { height: calc(100vh - 70px); display: flex; align-items: center; }
 @media screen and (min-width: 768px) { .main-page .loading-container { height: calc(100vh - 100px); } }
@@ -99,18 +99,25 @@ h1, h2, h3, h4, p { font-size: 16px; font-weight: 300; }
 .alternative { height: 5px; width: 30px; }
 .alternative .loading-dot { background-color: #747474; }
 
-.card-container { display: flex; flex-wrap: wrap; justify-content: center; }
-@media screen and (min-width: 768px) { .card-container { justify-content: flex-start; align-items: flex-start; flex-direction: column; width: auto; } }
+.card-container-wrapper { display: flex; flex-direction: column; flex-wrap: wrap; }
+@media screen and (min-width: 768px) { .card-container-wrapper { align-items: baseline; max-height: calc(100vh - 140px); } }
+.card-container-wrapper .card-container { display: flex; flex-wrap: wrap; justify-content: center; }
+@media screen and (min-width: 768px) { .card-container-wrapper .card-container { justify-content: flex-start; align-items: flex-start; flex-direction: column; width: auto; } }
 
 .card { background-color: #e3e3e3; width: 100%; max-width: 400px; color: #747474; margin: 5px; border-radius: 3px; }
 @media screen and (min-width: 768px) { .card { width: 350px; } }
-.card .card-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; border-bottom: 1px solid #5bc0de; }
-.card .card-head .title { font-size: 18px; color: #1a1a1a; }
-.card .card-head .done-icon { width: 30px; height: 30px; border-radius: 50%; border: 1px solid #5bc0de; }
-.card .card-body { padding: 10px; }
+.card .card-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; border-bottom: 1px solid; }
+.card .card-header .title { font-size: 18px; color: #1a1a1a; }
+.card .card-header .done-icon { width: 30px; height: 30px; border-radius: 50%; border: 1px solid #5bc0de; }
+.card .card-body { padding: 10px; padding-top: 15px; }
+.card .card-body .description { display: block; }
 .card .card-footer { display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; box-sizing: border-box; height: 50px; }
-.card .card-footer .tag { color: #bdbdbd; }
+.card .card-footer .tag { color: #1a1a1a; }
 .card .card-footer .date { background-color: #faa825; padding: 2px 7px; border-radius: 12px; color: #e3e3e3; }
+.card .list { list-style-type: none; padding-left: 25px; }
+.card .list li { margin-bottom: 6px; }
+.card .list li::before { content: ">"; font-weight: 500; font-size: 18px; color: #747474; display: inline-block; width: 25px; margin-left: -18px; }
+.card .checklist { list-style-type: none; }
 
 .tags-container { position: fixed; display: flex; flex-wrap: wrap-reverse; width: 550px; height: 60px; left: 0; right: 0; bottom: 25px; margin-left: auto; margin-right: auto; justify-content: center; align-items: baseline; box-sizing: border-box; cursor: pointer; }
 .tags-container .tag { font-weight: 500; background-color: transparent; color: #747474; padding: 2px 3px; margin: 0 5px; transition: color .1s ease-in; }

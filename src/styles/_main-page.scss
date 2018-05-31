@@ -7,12 +7,12 @@
         height: 100%;
         display: flex;
         flex-direction: column;
-        // align-items: center;
         padding: 65px 5px 5px 5px; // temp
 
         @media screen and (min-width: 768px) {
+            max-height: calc(100vh - 140px);
             transition: margin-left .1s ease-in;
-            padding: 80px 20px 20px 20px; // temp
+            padding: 80px 20px 60px 20px; // temp
         }
     }
     .main-container.menu-open {
@@ -30,6 +30,7 @@
             border-bottom: 1px solid $darkGrey;
             width: 100%;
             position: fixed;
+            z-index: 10;
 
             display: flex;
             align-items: center;
