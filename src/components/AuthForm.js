@@ -28,7 +28,8 @@ const textFieldStyles = {
         borderColor: theme.grey
     },
     underlineFocusStyle: {
-        borderColor: theme.grey
+        borderColor: theme.grey,
+        transition: 'none'
     },
     errorStyle: {
         color: theme.yellow,

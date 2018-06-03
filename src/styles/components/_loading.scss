@@ -26,7 +26,8 @@
         border-radius: 50%;
         position: absolute;
         background-color: $grey;
-        transition: top .1s ease-in, opacity .1s ease-in;
+        transition: top 350ms cubic-bezier(0.23, 1, 0.320, 1),
+                    opacity 350ms cubic-bezier(0.23, 1, 0.320, 1);
     }
 
     .dot-1 {
@@ -50,18 +51,10 @@
     }
 }
 .alternative {
-    // transform: rotate(-90deg);
-    // width: 30px;
-    // height: 30px;
-
     height: 5px;
     width: 30px;
 
     .loading-dot {
         background-color: $darkGrey;
-        // width: 2px;
-        // height: 30px;
-        // border-radius: 0px;
-        // background-color: $darkGrey;
     }
 }

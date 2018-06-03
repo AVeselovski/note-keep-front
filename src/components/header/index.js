@@ -4,6 +4,7 @@ import SideNav from './SideNav';
 import Tags from './Tags';
 import Select from './Select';
 import Title from '../Title';
+import { ArrowIcon } from '../icons';
 
 
 class Header extends Component {
@@ -47,12 +48,13 @@ class Header extends Component {
         const {
             url,
             pathname,
+            goBack,
             menuOpen,
             tags,
             activeTag,
             toggleMenu,
             logoutUser,
-            filterTag
+            filterTag,
         } = this.props;
 
         const title = pathname.split('/').pop().toUpperCase();
@@ -65,7 +67,7 @@ class Header extends Component {
                 }
                 {
                     !this.state.isMobile &&
-                    <HeaderNav menuOpen={menuOpen} url={url} pathname={pathname} />
+                    <HeaderNav menuOpen={menuOpen} url={url} pathname={pathname} goBack={goBack} />
                 }
                 <SideNav
                     isMobile={this.state.isMobile}
@@ -78,6 +80,10 @@ class Header extends Component {
                     tags.length > 1 && 
                     <Tags tags={tags} activeTag={activeTag} filterTag={filterTag} />
                 }
+                {/*
+                    tags.length > 1 &&
+                    <Select tags={tags} activeTag={activeTag} filterTag={filterTag} />
+                */}
             </nav>
         );
     }

@@ -86,6 +86,7 @@ class Main extends Component {
         const {
             match: { url },
             location: { pathname },
+            history: { goBack },
             menuOpen,
             statusFetchingResources,
             tags,
@@ -101,6 +102,7 @@ class Main extends Component {
                 <Header
                     url={url}
                     pathname={pathname}
+                    goBack={goBack}
                     menuOpen={menuOpen}
                     tags={tags}
                     activeTag={activeTag}

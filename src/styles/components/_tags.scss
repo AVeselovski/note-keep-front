@@ -20,7 +20,7 @@
         color: $darkGrey;
         padding: 2px 3px;
         margin: 0 5px;
-        transition: color .1s ease-in;
+        transition: color 350ms cubic-bezier(0.23, 1, 0.320, 1);
         &:hover {
             color: $lightGrey;
         }
