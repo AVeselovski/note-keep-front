@@ -117,6 +117,7 @@ h1, h2, h3, h4, p { font-size: 16px; font-weight: 300; }
 .card .card-header .icon-container .icon:hover { background-color: #d6d6d6; }
 .card .card-header .icon-container .done-icon { padding-top: 0px; padding-left: 0px; }
 .card .card-header .icon-container .done-icon:hover { stroke: #5cb85c; }
+.card .card-header .icon-container .archive-icon { padding-left: 0px; }
 .card .card-header .icon-container .archive-icon:hover { stroke: #5bc0de; }
 .card .card-header .icon-container .return-icon { transform: rotate(-90deg); padding-top: 8px; }
 .card .card-header .icon-container .return-icon:hover { stroke: #faa825; }
@@ -129,7 +130,7 @@ h1, h2, h3, h4, p { font-size: 16px; font-weight: 300; }
 .card .card-footer .date { background-color: #faa825; padding: 2px 7px; border-radius: 12px; color: #e3e3e3; }
 .card .list { list-style-type: none; padding-left: 25px; }
 .card .list li { margin-bottom: 6px; }
-.card .list li::before { content: ">"; font-weight: 500; font-size: 18px; color: #747474; display: inline-block; width: 28px; margin-left: -19px; }
+.card .list li::before { content: '>'; font-weight: 500; font-size: 18px; color: #747474; display: inline-block; width: 28px; margin-left: -19px; }
 .card .checklist { list-style-type: none; }
 
 .tags-container { position: fixed; display: flex; flex-wrap: wrap-reverse; width: 550px; height: 60px; left: 0; right: 0; bottom: 25px; margin-left: auto; margin-right: auto; justify-content: center; align-items: baseline; box-sizing: border-box; cursor: pointer; }

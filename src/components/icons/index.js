@@ -6,13 +6,4 @@ import ArrowAltIcon from './ArrowAltIcon';
 import CheckIcon from './CheckIcon';
 import ArchiveIcon from './ArchiveIcon';
 
-
-export {
-    CloseIcon,
-    MenuIcon,
-    PlusIcon,
-    ArrowIcon,
-    ArrowAltIcon,
-    CheckIcon,
-    ArchiveIcon
-};
+export { CloseIcon, MenuIcon, PlusIcon, ArrowIcon, ArrowAltIcon, CheckIcon, ArchiveIcon };

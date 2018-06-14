@@ -7,15 +7,14 @@ import { NotFound, NotFoundAlt } from './NotFound';
 import CardContainer from './CardContainer';
 import Title from './Title';
 
-
 export {
-    AppTitle,
-    AuthForm,
-    Header,
-    Notification,
-    Loading,
-    NotFound,
-    NotFoundAlt,
-    CardContainer,
-    Title
+	AppTitle,
+	AuthForm,
+	Header,
+	Notification,
+	Loading,
+	NotFound,
+	NotFoundAlt,
+	CardContainer,
+	Title
 };

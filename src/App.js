@@ -8,32 +8,31 @@ import Add from './containers/Add';
 import { Notification, NotFound } from './components';
 import theme from './theme';
 
-
 const muiTheme = getMuiTheme({
-    palette: {
-        accent1Color: theme.themeColor
-    }
+	palette: {
+		accent1Color: theme.themeColor
+	}
 });
 
 class App extends Component {
-    render() {
-        const redirect = this.props.token ? "dashboard" : "auth";
+	render() {
+		const redirect = this.props.token ? 'dashboard' : 'auth';
 
-        return (
-            <MuiThemeProvider muiTheme={muiTheme}>
-                <div className="app">
-                    <Switch>
-                        <Redirect exact from="/" to={redirect} />
-                        <Route path="/auth" component={Auth} />
-                        <Route path="/dashboard" component={Main} />
-                        <Route path="/add" component={Add} />
-                        <Route component={NotFound} />
-                    </Switch>
-                    <Notification duration={3000} />
-                </div>
-            </MuiThemeProvider>
-        );
-    }
+		return (
+			<MuiThemeProvider muiTheme={muiTheme}>
+				<div className="app">
+					<Switch>
+						<Redirect exact from="/" to={redirect} />
+						<Route path="/auth" component={Auth} />
+						<Route path="/dashboard" component={Main} />
+						<Route path="/add" component={Add} />
+						<Route component={NotFound} />
+					</Switch>
+					<Notification duration={3000} />
+				</div>
+			</MuiThemeProvider>
+		);
+	}
 }
 
 export default withRouter(App);

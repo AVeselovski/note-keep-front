@@ -1,61 +1,61 @@
 .main-page {
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
+	min-height: 100vh;
+	position: relative;
+	overflow-x: hidden;
 
-    .main-container {
-        height: 100%;
-        padding: 65px 5px 5px 5px; // temp
+	.main-container {
+		height: 100%;
+		padding: 65px 5px 5px 5px; // temp
 
-        @media screen and (min-width: 768px) {
-            max-height: calc(100vh - 140px);
-            transition: margin-left 350ms cubic-bezier(0.23, 1, 0.320, 1);
-            padding: 80px 20px 60px 20px; // temp
-        }
-    }
-    .main-container.menu-open {
-        @media screen and (min-width: 768px) {
-            margin-left: 240px;
-        }
-    }
+		@media screen and (min-width: 768px) {
+			max-height: calc(100vh - 140px);
+			transition: margin-left 350ms cubic-bezier(0.23, 1, 0.32, 1);
+			padding: 80px 20px 60px 20px; // temp
+		}
+	}
+	.main-container.menu-open {
+		@media screen and (min-width: 768px) {
+			margin-left: 240px;
+		}
+	}
 
-    nav {
-        // mobile header & title
-        @media screen and (max-width: 767px) {
-            height: 60px;
-            background-color: $lightGrey;
-            box-sizing: border-box;
-            border-bottom: 1px solid $darkGrey;
-            width: 100%;
-            position: fixed;
-            z-index: 10;
+	nav {
+		// mobile header & title
+		@media screen and (max-width: 767px) {
+			height: 60px;
+			background-color: $lightGrey;
+			box-sizing: border-box;
+			border-bottom: 1px solid $darkGrey;
+			width: 100%;
+			position: fixed;
+			z-index: 10;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .mobile-title h1 {
-            color: $darkGrey;
-            font-size: $font-md;
-            font-weight: 500;
-        }
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.mobile-title h1 {
+			color: $darkGrey;
+			font-size: $font-md;
+			font-weight: 500;
+		}
 
-        .the-icon {
-            position: fixed;
-            top: 25px;
-            right: 25px;
-            stroke: $grey;
-            fill: transparent;
-        }
-    }
+		.the-icon {
+			position: fixed;
+			top: 25px;
+			right: 25px;
+			stroke: $grey;
+			fill: transparent;
+		}
+	}
 
-    .loading-container {
-        height: calc(100vh - 70px);
-        display: flex;
-        align-items: center;
+	.loading-container {
+		height: calc(100vh - 70px);
+		display: flex;
+		align-items: center;
 
-        @media screen and (min-width: 768px) {
-            height: calc(100vh - 100px); 
-        }
-    }
+		@media screen and (min-width: 768px) {
+			height: calc(100vh - 100px);
+		}
+	}
 }

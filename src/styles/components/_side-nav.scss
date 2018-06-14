@@ -1,198 +1,194 @@
 .btn-add-new {
-    cursor: pointer;
-    position: fixed;
-    bottom: $spacing-sm;
-    right: $spacing-sm;
-    width: 30px;
-    height: 30px;
-    padding: 8px;
-    stroke: $darkGrey;
-    border: 2px solid $darkGrey;
-    border-radius: 50%;
-    background-color: $lightGrey;
-    transition: stroke 350ms cubic-bezier(0.23, 1, 0.320, 1),
-                background-color 350ms cubic-bezier(0.23, 1, 0.320, 1);
-    &:hover {
-        background-color: $lightGrey;
-        stroke: $themeColor;
-    }
+	cursor: pointer;
+	position: fixed;
+	bottom: $spacing-sm;
+	right: $spacing-sm;
+	width: 30px;
+	height: 30px;
+	padding: 8px;
+	stroke: $darkGrey;
+	border: 2px solid $darkGrey;
+	border-radius: 50%;
+	background-color: $lightGrey;
+	transition: stroke 350ms cubic-bezier(0.23, 1, 0.32, 1),
+		background-color 350ms cubic-bezier(0.23, 1, 0.32, 1);
+	&:hover {
+		background-color: $lightGrey;
+		stroke: $themeColor;
+	}
 
-    @media screen and (min-width: 768px) {
-        bottom: 25px;
-        right: 25px;
-        padding: 13px;
-        stroke: $grey;
-        border: 2px solid $grey;
-        background-color: transparent;
-        &:hover {
-            border: 2px solid $lightGrey;
-        }
-    }
+	@media screen and (min-width: 768px) {
+		bottom: 25px;
+		right: 25px;
+		padding: 13px;
+		stroke: $grey;
+		border: 2px solid $grey;
+		background-color: transparent;
+		&:hover {
+			border: 2px solid $lightGrey;
+		}
+	}
 }
-
 
 .btn-menu {
-    cursor: pointer;
-    position: fixed;
-    top: $spacing-sm;
-    left: $spacing-sm;
-    width: 30px;
-    height: 30px;
-    stroke: $darkGrey;
-    fill: 'red';
-    transition: stroke 350ms cubic-bezier(0.23, 1, 0.320, 1),
-                left 350ms cubic-bezier(0.23, 1, 0.320, 1),
-                opacity 350ms cubic-bezier(0.23, 1, 0.320, 1),
-                transform 350ms cubic-bezier(0.23, 1, 0.320, 1);
-    &:hover {
-        stroke: $lightGrey;
-    }
+	cursor: pointer;
+	position: fixed;
+	top: $spacing-sm;
+	left: $spacing-sm;
+	width: 30px;
+	height: 30px;
+	stroke: $darkGrey;
+	fill: 'red';
+	transition: stroke 350ms cubic-bezier(0.23, 1, 0.32, 1),
+		left 350ms cubic-bezier(0.23, 1, 0.32, 1), opacity 350ms cubic-bezier(0.23, 1, 0.32, 1),
+		transform 350ms cubic-bezier(0.23, 1, 0.32, 1);
+	&:hover {
+		stroke: $lightGrey;
+	}
 
-    @media screen and (min-width: 768px) {
-        top: 25px;
-        left: 25px;
-        stroke: $grey;
-        transition: stroke 350ms cubic-bezier(0.23, 1, 0.320, 1),
-                    left 350ms cubic-bezier(0.23, 1, 0.320, 1),
-                    opacity 350ms cubic-bezier(0.23, 1, 0.320, 1),
-                    transform 350ms cubic-bezier(0.23, 1, 0.320, 1);
-    }
+	@media screen and (min-width: 768px) {
+		top: 25px;
+		left: 25px;
+		stroke: $grey;
+		transition: stroke 350ms cubic-bezier(0.23, 1, 0.32, 1),
+			left 350ms cubic-bezier(0.23, 1, 0.32, 1), opacity 350ms cubic-bezier(0.23, 1, 0.32, 1),
+			transform 350ms cubic-bezier(0.23, 1, 0.32, 1);
+	}
 }
 .btn-menu.open {
-    left: calc(100% + 15px);
-    transform: rotate(90deg);
-    opacity: 0.25;
-    pointer-events: none;
-    cursor: default;
+	left: calc(100% + 15px);
+	transform: rotate(90deg);
+	opacity: 0.25;
+	pointer-events: none;
+	cursor: default;
 
-    @media screen and (min-width: 768px) {
-        left: 265px;
-    }
+	@media screen and (min-width: 768px) {
+		left: 265px;
+	}
 }
-
 
 .side-nav {
-    height: 120%;
-    width: 100%;
-    position: fixed;
-    top: 0px;
-    left: -100%;
-    bottom: 0px;
-    overflow: hidden;
-    background-color: $lightGrey;
-    transition: left 350ms cubic-bezier(0.23, 1, 0.320, 1);
-    z-index: 2;
+	height: 120%;
+	width: 100%;
+	position: fixed;
+	top: 0px;
+	left: -100%;
+	bottom: 0px;
+	overflow: hidden;
+	background-color: $lightGrey;
+	transition: left 350ms cubic-bezier(0.23, 1, 0.32, 1);
+	z-index: 2;
 
-    @media screen and (min-width: 768px) {
-        width: 240px;
-        left: -240px;
-        transition: left 350ms cubic-bezier(0.23, 1, 0.320, 1);
-    }
+	@media screen and (min-width: 768px) {
+		width: 240px;
+		left: -240px;
+		transition: left 350ms cubic-bezier(0.23, 1, 0.32, 1);
+	}
 
-    .side-nav-top {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        height: 60px;
-        padding-right: 15px;
+	.side-nav-top {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		height: 60px;
+		padding-right: 15px;
 
-        @media screen and (min-width: 768px) {
-            height: 80px;
-            padding-right: 25px;
-        }
+		@media screen and (min-width: 768px) {
+			height: 80px;
+			padding-right: 25px;
+		}
 
-        .btn-close-side-nav {
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            stroke: $darkGrey;
-            transition: stroke 350ms cubic-bezier(0.23, 1, 0.320, 1);
-            &:hover {
-                stroke: $themeColor;
-            }
-        }
-    }
+		.btn-close-side-nav {
+			cursor: pointer;
+			width: 30px;
+			height: 30px;
+			stroke: $darkGrey;
+			transition: stroke 350ms cubic-bezier(0.23, 1, 0.32, 1);
+			&:hover {
+				stroke: $themeColor;
+			}
+		}
+	}
 
-    ul {
-        list-style-type: none;
-        margin-top: $spacing-sm;
-        width: 100px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
+	ul {
+		list-style-type: none;
+		margin-top: $spacing-sm;
+		width: 100px;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
 
-        @media screen and (min-width: 768px) {
-            width: auto;
-            margin-left: 0;
-            text-align: left;
-        }
-    }
+		@media screen and (min-width: 768px) {
+			width: auto;
+			margin-left: 0;
+			text-align: left;
+		}
+	}
 
-    .nav-element {
-        font-size: $font-md;
-        font-weight: 300;
+	.nav-element {
+		font-size: $font-md;
+		font-weight: 300;
 
-        a {
-            margin: 0;
-            padding: 20px 0 10px 0px;
-            display: block;
-            text-decoration: none;
-            color: $darkGrey;
-            cursor: pointer;
-        }
-        .active-link {
-            color: $themeColor;
-            padding: 20px 0 8px 0px;
-            border-bottom: 2px solid $darkGrey;
-        }
+		a {
+			margin: 0;
+			padding: 20px 0 10px 0px;
+			display: block;
+			text-decoration: none;
+			color: $darkGrey;
+			cursor: pointer;
+		}
+		.active-link {
+			color: $themeColor;
+			padding: 20px 0 8px 0px;
+			border-bottom: 2px solid $darkGrey;
+		}
 
-        @media screen and (min-width: 768px) {
-            a {
-                padding: $spacing-sm 0 $spacing-sm $spacing-md;
-                transition: color 350ms cubic-bezier(0.23, 1, 0.320, 1),
-                            padding 350ms cubic-bezier(0.23, 1, 0.320, 1),
-                            box-shadow 350ms cubic-bezier(0.23, 1, 0.320, 1),
-                            border-left 350ms cubic-bezier(0.23, 1, 0.320, 1);
-                &:hover {
-                    color: $themeColor;
-                    padding-left: $spacing-md + 5px;
-                    border-left: 4px solid $darkGrey;
-                }
-            }
-            .active-link {
-                padding: $spacing-sm 0 $spacing-sm 35px;
-                border-left: 4px solid $darkGrey;
-                border-bottom: none;
-            }
-        }
-    }
-    .nav-element:nth-of-type(1) .active-link {
-        @media screen and (max-width: 767px) {
-            border-bottom: 2px solid $red;
-        }
-    }
-    .nav-element:nth-of-type(2) .active-link {
-        @media screen and (max-width: 767px) {
-            border-bottom: 2px solid $blue;
-        }
-    }
-    .nav-element:nth-of-type(3) {
-        margin-top: $spacing-md;
-    }
-    .logout {
-        color: $red;
-        padding: $spacing-sm 0 $spacing-sm 0px;
-        cursor: pointer;
+		@media screen and (min-width: 768px) {
+			a {
+				padding: $spacing-sm 0 $spacing-sm $spacing-md;
+				transition: color 350ms cubic-bezier(0.23, 1, 0.32, 1),
+					padding 350ms cubic-bezier(0.23, 1, 0.32, 1),
+					box-shadow 350ms cubic-bezier(0.23, 1, 0.32, 1),
+					border-left 350ms cubic-bezier(0.23, 1, 0.32, 1);
+				&:hover {
+					color: $themeColor;
+					padding-left: $spacing-md + 5px;
+					border-left: 4px solid $darkGrey;
+				}
+			}
+			.active-link {
+				padding: $spacing-sm 0 $spacing-sm 35px;
+				border-left: 4px solid $darkGrey;
+				border-bottom: none;
+			}
+		}
+	}
+	.nav-element:nth-of-type(1) .active-link {
+		@media screen and (max-width: 767px) {
+			border-bottom: 2px solid $red;
+		}
+	}
+	.nav-element:nth-of-type(2) .active-link {
+		@media screen and (max-width: 767px) {
+			border-bottom: 2px solid $blue;
+		}
+	}
+	.nav-element:nth-of-type(3) {
+		margin-top: $spacing-md;
+	}
+	.logout {
+		color: $red;
+		padding: $spacing-sm 0 $spacing-sm 0px;
+		cursor: pointer;
 
-        @media screen and (min-width: 768px) {
-            padding: $spacing-sm 0 $spacing-sm $spacing-md;
-            transition: color 350ms cubic-bezier(0.23, 1, 0.320, 1);
-            &:hover {
-                color: lighten($red, 10);
-            }
-        }
-    }
+		@media screen and (min-width: 768px) {
+			padding: $spacing-sm 0 $spacing-sm $spacing-md;
+			transition: color 350ms cubic-bezier(0.23, 1, 0.32, 1);
+			&:hover {
+				color: lighten($red, 10);
+			}
+		}
+	}
 }
 .side-nav.open {
-    left: 0px;
+	left: 0px;
 }

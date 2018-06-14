@@ -1,4 +1,4 @@
-export const API_URL = 'http://localhost:3000';
+export const API_URL = 'https://zero-tasks-api-dev.herokuapp.com';
 
 // auth
 export const SET_VALIDATOR_EMAIL_ERROR = 'set_validator_email_error';

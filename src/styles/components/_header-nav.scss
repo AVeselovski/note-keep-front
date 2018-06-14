@@ -1,77 +1,76 @@
 .header-nav {
-    width: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
 
-    ul {
-        list-style-type: none;
-        position: relative;
-        margin-left: 0px;
-        transition: margin 350ms cubic-bezier(0.23, 1, 0.320, 1),
-                    opacity 350ms cubic-bezier(0.23, 1, 0.320, 1);
-        margin-bottom: 12px;
-    }
-    ul.open {
-        margin-left: 240px;
-    }
-    ul.dimmed {
-        opacity: 0.25;
-    }
+	ul {
+		list-style-type: none;
+		position: relative;
+		margin-left: 0px;
+		transition: margin 350ms cubic-bezier(0.23, 1, 0.32, 1),
+			opacity 350ms cubic-bezier(0.23, 1, 0.32, 1);
+		margin-bottom: 12px;
+	}
+	ul.open {
+		margin-left: 240px;
+	}
+	ul.dimmed {
+		opacity: 0.25;
+	}
 
-    .nav-element {
-        display: inline-block;
-        margin: 0;
-        font-size: $font-md;
-        font-weight: 300;
-        width: 110px;
-        text-align: center;
+	.nav-element {
+		display: inline-block;
+		margin: 0;
+		font-size: $font-md;
+		font-weight: 300;
+		width: 110px;
+		text-align: center;
 
-        a {
-            width: 110px;
-            text-decoration: none;
-            color: $grey;
-            padding: $spacing-xs $spacing-md;
-            transition: color 350ms cubic-bezier(0.23, 1, 0.320, 1);
-            &:hover {
-                color: $lightGrey;
-            }
-        }
-        .active-link {
-            color: $lightGrey;
-        }
-    }
+		a {
+			width: 110px;
+			text-decoration: none;
+			color: $grey;
+			padding: $spacing-xs $spacing-md;
+			transition: color 350ms cubic-bezier(0.23, 1, 0.32, 1);
+			&:hover {
+				color: $lightGrey;
+			}
+		}
+		.active-link {
+			color: $lightGrey;
+		}
+	}
 
-    .back-icon {
-        position: fixed;
-        width: 30px;
-        height: 15px;
-        top: 25px;
-        right: 25px;
-        stroke: $grey;
-        fill: transparent;
-        cursor: pointer;
-        transition: stroke 350ms cubic-bezier(0.23, 1, 0.320, 1);
+	.back-icon {
+		position: fixed;
+		width: 30px;
+		height: 15px;
+		top: 25px;
+		right: 25px;
+		stroke: $grey;
+		fill: transparent;
+		cursor: pointer;
+		transition: stroke 350ms cubic-bezier(0.23, 1, 0.32, 1);
 
-        &:hover {
-            stroke: $lightGrey;
-        }
-    }
+		&:hover {
+			stroke: $lightGrey;
+		}
+	}
 }
 
-
 .indicator-line {
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    height: 2px;
-    width: 110px;
-    background-color: $lightGrey;
-    transition: left 350ms cubic-bezier(0.23, 1, 0.320, 1),
-                background-color 350ms cubic-bezier(0.23, 1, 0.320, 1);
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	height: 2px;
+	width: 110px;
+	background-color: $lightGrey;
+	transition: left 350ms cubic-bezier(0.23, 1, 0.32, 1),
+		background-color 350ms cubic-bezier(0.23, 1, 0.32, 1);
 }
