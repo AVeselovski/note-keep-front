@@ -23,7 +23,7 @@
 		"styled-components": "^2.4.0"
 	},
 	"scripts": {
-		"start": "node server.js",
+		"start": "REACT_APP_VERSION=$npm_package_version node server.js",
 		"start-dev": "SET \"REACT_APP_VERSION=%npm_package_version%\" && react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
