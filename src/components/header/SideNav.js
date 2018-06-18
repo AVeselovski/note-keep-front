@@ -6,6 +6,7 @@ import { CloseIcon, MenuIcon, PlusIcon } from '../icons';
 const SideNav = ({ isMobile = false, menuOpen, url, toggleMenu, logoutUser }) => {
 	return (
 		<div className={`side-nav${menuOpen ? ' open' : ''}`}>
+			<span className="version">{process.env.REACT_APP_VERSION}</span>
 			<div className="side-nav-top">
 				<i className="btn-close-side-nav" onClick={() => toggleMenu(false)}>
 					<CloseIcon />

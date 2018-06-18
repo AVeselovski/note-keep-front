@@ -1,0 +1,25 @@
+.empty-container {
+	height: calc(100vh - 70px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: $darkGrey;
+
+	@media screen and (min-width: 768px) {
+		height: calc(100vh - 100px);
+	}
+
+	h4 {
+		font-weight: 500;
+	}
+
+	.circle {
+		height: 180px;
+		width: 180px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-sizing: border-box;
+	}
+}

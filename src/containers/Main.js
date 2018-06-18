@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { Header, Loading, NotFoundAlt, CardContainer } from '../components';
+import { Header, Loading, NotFoundAlt, CardContainer, Empty } from '../components';
 import { logoutUser } from '../actions/auth';
 import { toggleMenu } from '../actions/ui';
 import { getCards, setActiveTag } from '../actions/resources';
@@ -118,6 +118,8 @@ class Main extends Component {
 									<div className="loading-container">
 										<Loading alternative />
 									</div>
+								) : !tasks.length ? (
+									<Empty message="I guess you could say... zero tasks" />
 								) : (
 									<CardContainer data={tasks} />
 								)
@@ -130,6 +132,8 @@ class Main extends Component {
 									<div className="loading-container">
 										<Loading alternative />
 									</div>
+								) : !notes.length ? (
+									<Empty message="Looks empty" />
 								) : (
 									<CardContainer data={notes} />
 								)
@@ -142,6 +146,8 @@ class Main extends Component {
 									<div className="loading-container">
 										<Loading alternative />
 									</div>
+								) : !archived.length ? (
+									<Empty message="Nothing in archive" />
 								) : (
 									<CardContainer data={archived} />
 								)

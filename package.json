@@ -24,7 +24,7 @@
 	},
 	"scripts": {
 		"start": "node server.js",
-		"start-dev": "react-scripts start",
+		"start-dev": "SET \"REACT_APP_VERSION=%npm_package_version%\" && react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",

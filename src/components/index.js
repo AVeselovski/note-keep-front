@@ -6,6 +6,7 @@ import Loading from './Loading';
 import { NotFound, NotFoundAlt } from './NotFound';
 import CardContainer from './CardContainer';
 import Title from './Title';
+import Empty from './Empty';
 
 export {
 	AppTitle,
@@ -16,5 +17,6 @@ export {
 	NotFound,
 	NotFoundAlt,
 	CardContainer,
-	Title
+	Title,
+	Empty
 };
