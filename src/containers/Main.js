@@ -85,6 +85,7 @@ class Main extends Component {
 			match: { url },
 			location: { pathname },
 			history: { goBack },
+			version,
 			menuOpen,
 			statusFetchingResources,
 			tags,
@@ -101,6 +102,7 @@ class Main extends Component {
 					url={url}
 					pathname={pathname}
 					goBack={goBack}
+					version={version}
 					menuOpen={menuOpen}
 					tags={tags}
 					activeTag={activeTag}
@@ -166,6 +168,7 @@ const mapStateToProps = ({ auth, resources, ui }) => ({
 	allCards: resources.allCards,
 	tags: resources.tags,
 	activeTag: resources.activeTag,
+	version: ui.version,
 	menuOpen: ui.menuOpen,
 	statusFetchingResources: ui.statusFetchingResources
 });

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { CloseIcon, MenuIcon, PlusIcon } from '../icons';
 
-const SideNav = ({ isMobile = false, menuOpen, url, toggleMenu, logoutUser }) => {
+const SideNav = ({ isMobile = false, version, menuOpen, url, toggleMenu, logoutUser }) => {
 	return (
 		<div className={`side-nav${menuOpen ? ' open' : ''}`}>
-			<span className="version">{process.env.REACT_APP_VERSION}</span>
+			<span className="version">{version}</span>
 			<div className="side-nav-top">
 				<i className="btn-close-side-nav" onClick={() => toggleMenu(false)}>
 					<CloseIcon />
@@ -48,6 +48,7 @@ const SideNav = ({ isMobile = false, menuOpen, url, toggleMenu, logoutUser }) =>
 };
 
 SideNav.propTypes = {
+	version: PropTypes.string,
 	isMobile: PropTypes.bool,
 	menuOpen: PropTypes.bool,
 	url: PropTypes.string,

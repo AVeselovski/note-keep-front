@@ -1,4 +1,5 @@
 export const API_URL = 'https://zero-tasks-api-dev.herokuapp.com';
+export const VERSION_NUMBER = 'version_number';
 
 // auth
 export const SET_VALIDATOR_EMAIL_ERROR = 'set_validator_email_error';

@@ -3,10 +3,12 @@ import {
 	SET_NOTIFICATION,
 	DISMISS_NOTIFICATION,
 	SET_STATUS_LOGGING_IN,
-	SET_STATUS_FETCHING_RESOURCES
+	SET_STATUS_FETCHING_RESOURCES,
+	VERSION_NUMBER
 } from '../utils/constants';
 
 const initialState = {
+	version: '',
 	menuOpen: false,
 	notificationMsg: '',
 	notificationType: 'error',
@@ -16,6 +18,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
 	switch (action.type) {
+		case VERSION_NUMBER:
+			return { ...state, version: action.payload };
 		case TOGGLE_MENU:
 			return { ...state, menuOpen: action.payload };
 		case SET_NOTIFICATION:

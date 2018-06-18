@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import HeaderNav from './HeaderNav';
 import SideNav from './SideNav';
 import Tags from './Tags';
-import Select from './Select';
 import Title from '../Title';
-import { ArrowIcon } from '../icons';
 
 class Header extends Component {
 	constructor() {
@@ -48,6 +46,7 @@ class Header extends Component {
 			url,
 			pathname,
 			goBack,
+			version,
 			menuOpen,
 			tags,
 			activeTag,
@@ -69,14 +68,13 @@ class Header extends Component {
 				)}
 				<SideNav
 					isMobile={this.state.isMobile}
+					version={version}
 					menuOpen={menuOpen}
 					url={url}
 					toggleMenu={toggleMenu}
 					logoutUser={logoutUser}
 				/>
-				{tags.length > 1 && (
-					<Tags tags={tags} activeTag={activeTag} filterTag={filterTag} />
-				)}
+				{tags.length > 1 && <Tags tags={tags} activeTag={activeTag} filterTag={filterTag} />}
 				{/*
                     tags.length > 1 &&
                     <Select tags={tags} activeTag={activeTag} filterTag={filterTag} />
