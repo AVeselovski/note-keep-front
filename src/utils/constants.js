@@ -24,4 +24,7 @@ export const GET_RESOURCES = 'get_resources';
 export const SET_RESOURCES = 'set_resources';
 export const SET_TAGS = 'set_tags';
 export const SET_ACTIVE_TAG = 'set_active_tag';
+export const SET_TASKS = 'set_tasks';
+export const SET_NOTES = 'set_notes';
+export const SET_ARCHIVE = 'set_archive';
 export const RESET_DATA = 'reset_data';

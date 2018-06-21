@@ -1,0 +1,44 @@
+.add-page {
+	.back-icon {
+		position: fixed;
+		width: 30px;
+		height: 30px;
+		top: 15px;
+		left: 15px;
+		stroke: $darkGrey;
+		transform: rotate(-90deg);
+		fill: transparent;
+		cursor: pointer;
+		transition: stroke 350ms cubic-bezier(0.23, 1, 0.32, 1);
+
+		svg {
+			margin-top: 5px;
+		}
+
+		&:hover {
+			stroke: $lightGrey;
+		}
+	}
+
+	nav {
+		// mobile header & title
+		@media screen and (max-width: 767px) {
+			height: 60px;
+			background-color: $lightGrey;
+			box-sizing: border-box;
+			border-bottom: 1px solid $darkGrey;
+			width: 100%;
+			position: fixed;
+			z-index: 10;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.mobile-title h1 {
+			color: $darkGrey;
+			font-size: $font-md;
+			font-weight: 500;
+		}
+	}
+}

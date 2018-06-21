@@ -4,18 +4,12 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { Header, Loading, NotFoundAlt, CardContainer, Empty } from '../components';
 import { logoutUser } from '../actions/auth';
 import { toggleMenu } from '../actions/ui';
-import { getCards, setActiveTag } from '../actions/resources';
+import { getCards, setActiveTag, setTasks, setNotes, setArchive } from '../actions/resources';
 import { setStatusFetchingResources } from '../actions/ui';
 
 const R = require('ramda');
 
 class Main extends Component {
-	state = {
-		archived: [],
-		tasks: [],
-		notes: []
-	};
-
 	componentWillMount() {
 		// force users to auth if not logged in
 		if (!this.props.isAuthorized) {
@@ -25,13 +19,11 @@ class Main extends Component {
 	}
 
 	componentDidMount() {
-		setTimeout(() => {
-			this.props.getCards();
-			if (this.props.activeTag === '') {
-				this.props.setActiveTag('#all');
-			}
-			this.filterResources(this.props.allCards);
-		}, 600);
+		this.props.getCards();
+		if (this.props.activeTag === '') {
+			this.props.setActiveTag('#all');
+		}
+		this.filterResources(this.props.allCards);
 	}
 
 	componentDidUpdate() {
@@ -70,9 +62,9 @@ class Main extends Component {
 
 		R.map(filterCards, data);
 
-		this.setState(prevState => {
-			return { archived, tasks, notes };
-		});
+		this.props.setTasks(tasks);
+		this.props.setNotes(notes);
+		this.props.setArchive(archived);
 	}
 
 	filterTag = tag => {
@@ -90,11 +82,12 @@ class Main extends Component {
 			statusFetchingResources,
 			tags,
 			activeTag,
+			tasks,
+			notes,
+			archive,
 			toggleMenu,
 			logoutUser
 		} = this.props;
-
-		const { archived, tasks, notes } = this.state;
 
 		return (
 			<div className="main-page">
@@ -121,7 +114,7 @@ class Main extends Component {
 										<Loading alternative />
 									</div>
 								) : !tasks.length ? (
-									<Empty message="I guess you could say... zero tasks" />
+									<Empty message="ZERO" />
 								) : (
 									<CardContainer data={tasks} />
 								)
@@ -135,7 +128,7 @@ class Main extends Component {
 										<Loading alternative />
 									</div>
 								) : !notes.length ? (
-									<Empty message="Looks empty" />
+									<Empty message="ZERO" />
 								) : (
 									<CardContainer data={notes} />
 								)
@@ -148,10 +141,10 @@ class Main extends Component {
 									<div className="loading-container">
 										<Loading alternative />
 									</div>
-								) : !archived.length ? (
-									<Empty message="Nothing in archive" />
+								) : !archive.length ? (
+									<Empty message="Archive is empty" />
 								) : (
-									<CardContainer data={archived} />
+									<CardContainer data={archive} />
 								)
 							}
 						/>
@@ -168,6 +161,9 @@ const mapStateToProps = ({ auth, resources, ui }) => ({
 	allCards: resources.allCards,
 	tags: resources.tags,
 	activeTag: resources.activeTag,
+	tasks: resources.tasks,
+	notes: resources.notes,
+	archive: resources.archive,
 	version: ui.version,
 	menuOpen: ui.menuOpen,
 	statusFetchingResources: ui.statusFetchingResources
@@ -188,6 +184,15 @@ const mapDispatchToProps = dispatch => ({
 	},
 	setActiveTag: val => {
 		dispatch(setActiveTag(val));
+	},
+	setTasks: val => {
+		dispatch(setTasks(val));
+	},
+	setNotes: val => {
+		dispatch(setNotes(val));
+	},
+	setArchive: val => {
+		dispatch(setArchive(val));
 	}
 });
 

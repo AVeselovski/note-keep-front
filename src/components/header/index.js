@@ -75,10 +75,6 @@ class Header extends Component {
 					logoutUser={logoutUser}
 				/>
 				{tags.length > 1 && <Tags tags={tags} activeTag={activeTag} filterTag={filterTag} />}
-				{/*
-                    tags.length > 1 &&
-                    <Select tags={tags} activeTag={activeTag} filterTag={filterTag} />
-                */}
 			</nav>
 		);
 	}

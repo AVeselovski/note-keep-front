@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ArrowIcon } from '../components/icons';
 
 class Add extends Component {
 	componentWillMount() {
@@ -17,9 +18,17 @@ class Add extends Component {
 	}
 
 	render() {
+		const {
+			history: { goBack }
+		} = this.props;
+
 		return (
-			<div>
-				<h1>Add component</h1>
+			<div className="add-page">
+				<nav>
+					<i onClick={goBack} className="back-icon">
+						<ArrowIcon />
+					</i>
+				</nav>
 			</div>
 		);
 	}
@@ -30,4 +39,9 @@ const mapStateToProps = ({ auth, resources }) => ({
 	tags: resources.tags
 });
 
-export default connect(mapStateToProps)(Add);
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Add);

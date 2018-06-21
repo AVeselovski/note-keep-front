@@ -1,9 +1,20 @@
-import { SET_RESOURCES, SET_TAGS, SET_ACTIVE_TAG, RESET_DATA } from '../utils/constants';
+import {
+	SET_RESOURCES,
+	SET_TAGS,
+	SET_ACTIVE_TAG,
+	RESET_DATA,
+	SET_TASKS,
+	SET_NOTES,
+	SET_ARCHIVE
+} from '../utils/constants';
 
 const initialState = {
 	allCards: [],
 	tags: [],
-	activeTag: ''
+	activeTag: '',
+	tasks: [],
+	notes: [],
+	archive: []
 };
 
 export default (state = initialState, action) => {
@@ -14,6 +25,12 @@ export default (state = initialState, action) => {
 			return { ...state, tags: action.payload };
 		case SET_ACTIVE_TAG:
 			return { ...state, activeTag: action.payload };
+		case SET_TASKS:
+			return { ...state, tasks: action.payload };
+		case SET_NOTES:
+			return { ...state, notes: action.payload };
+		case SET_ARCHIVE:
+			return { ...state, archive: action.payload };
 		case RESET_DATA:
 			return { ...initialState };
 		default:
