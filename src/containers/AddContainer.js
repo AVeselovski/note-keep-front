@@ -1,24 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { AddForm } from '../components';
-import { ArrowIcon } from '../components/icons';
 
 class AddContainer extends Component {
+	state = {
+		title: '',
+		description: ''
+	};
+
+	onSubmit = e => {
+		e.preventDefault();
+
+		const { title, description } = this.state;
+		title.trim();
+	};
+
 	render() {
-		const {
-			goBack
-		} = this.props;
+		const { goBack } = this.props;
 
 		return (
 			<div className="add-container">
-                <AddForm />
+				<AddForm />
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = ({ auth, resources }) => ({
-	isAuthorized: auth.isAuthorized,
+const mapStateToProps = ({ resources }) => ({
 	tags: resources.tags
 });
 

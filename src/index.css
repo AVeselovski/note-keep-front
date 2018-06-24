@@ -23,6 +23,7 @@ h1, h2, h3, h4, p { font-size: 16px; font-weight: 300; }
 .register-form .button-container { display: flex; flex-direction: row; justify-content: space-between; margin-top: 30px; }
 
 .add-form { max-width: 600px; padding: 10px; padding-top: 15px; display: flex; flex-direction: column; margin-left: auto; margin-right: auto; }
+.add-form .button-container { display: flex; flex-direction: row; justify-content: center; margin-top: 30px; }
 
 .app-title { width: 300px; margin-top: 15px; margin-bottom: 60px; text-align: center; }
 .app-title h1 { font-size: 52px; font-weight: 200; }

@@ -71,6 +71,7 @@ class Header extends Component {
 					version={version}
 					menuOpen={menuOpen}
 					url={url}
+					pathname={pathname}
 					toggleMenu={toggleMenu}
 					logoutUser={logoutUser}
 				/>
