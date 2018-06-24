@@ -6,6 +6,7 @@ import { logoutUser } from '../actions/auth';
 import { toggleMenu } from '../actions/ui';
 import { getCards, setActiveTag, setTasks, setNotes, setArchive } from '../actions/resources';
 import { setStatusFetchingResources } from '../actions/ui';
+import AddContainer from './AddContainer';
 
 const R = require('ramda');
 
@@ -148,6 +149,10 @@ class Main extends Component {
 								)
 							}
 						/>
+                        <Route
+                            path={`${url}/add`}
+                            render={() => <AddContainer goBack={goBack} />}
+                        />
 						<Route component={NotFoundAlt} />
 					</Switch>
 				</div>

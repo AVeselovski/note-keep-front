@@ -3,8 +3,8 @@ import React from 'react';
 const ArchiveIcon = () => {
 	return (
 		<svg width="30" height="30">
-			<path d="M5,5 25,5 25,25 5,25" strokeWidth="2" strokeLinecap="round" />
-			<path d="M5,15 15,15" strokeWidth="2" strokeLinecap="round" />
+			<path d="M7,5 27,5 27,25 7,25" strokeWidth="2" strokeLinecap="round" />
+			<path d="M0,15 17,15" strokeWidth="2" strokeLinecap="round" />
 		</svg>
 	);
 };

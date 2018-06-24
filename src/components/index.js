@@ -1,5 +1,6 @@
 import AppTitle from './AppTitle';
 import AuthForm from './AuthForm';
+import AddForm from './AddForm';
 import Header from './header';
 import Notification from './Notification';
 import Loading from './Loading';
@@ -10,7 +11,8 @@ import Empty from './Empty';
 
 export {
 	AppTitle,
-	AuthForm,
+    AuthForm,
+    AddForm,
 	Header,
 	Notification,
 	Loading,
