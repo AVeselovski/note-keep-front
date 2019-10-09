@@ -114,13 +114,13 @@
 			margin-bottom: 6px;
 		}
 		li::before {
-			content: '>';
+			content: '•';
 			font-weight: 500;
 			font-size: $font-md;
 			color: $darkGrey;
 			display: inline-block;
-			width: 28px;
-			margin-left: -19px;
+			width: 24px;
+			margin-left: -15px;
 		}
 	}
 

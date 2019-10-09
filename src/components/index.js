@@ -5,20 +5,20 @@ import Header from './header';
 import Notification from './Notification';
 import Loading from './Loading';
 import { NotFound, NotFoundAlt } from './NotFound';
-import CardContainer from './CardContainer';
+import CardsContainer from './CardsContainer';
 import Title from './Title';
 import Empty from './Empty';
 
 export {
-	AppTitle,
+    AppTitle,
     AuthForm,
     AddForm,
-	Header,
-	Notification,
-	Loading,
-	NotFound,
-	NotFoundAlt,
-	CardContainer,
-	Title,
-	Empty
+    Header,
+    Notification,
+    Loading,
+    NotFound,
+    NotFoundAlt,
+    CardsContainer,
+    Title,
+    Empty,
 };
