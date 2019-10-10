@@ -12,7 +12,7 @@ import { errorMessages as errorMsg } from '../utils/messages';
 const R = require('ramda');
 
 const isActive = R.propEq('status', 'active');
-const isNull = n => n == null;
+const isNull = n => !n;
 
 const pickActive = resources => R.filter(isActive, resources);
 

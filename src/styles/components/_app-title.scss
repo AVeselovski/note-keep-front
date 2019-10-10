@@ -1,11 +1,18 @@
 .app-title {
-	width: 300px;
-	margin-top: $spacing-sm;
-	margin-bottom: $spacing-lg;
-	text-align: center;
+    color: $lightGrey;
+    margin-bottom: $spacing-lg;
+    margin-top: $spacing-sm;
+    text-align: center;
+    width: 300px;
 
-	h1 {
-		font-size: $font-title;
-		font-weight: 200;
-	}
+    h1 {
+        font-size: $font-title;
+        font-weight: 200;
+    }
+
+    h2 {
+        font-size: $font-md;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+    }
 }

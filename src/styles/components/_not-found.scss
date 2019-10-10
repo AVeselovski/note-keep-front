@@ -1,18 +1,28 @@
 .not-found {
-	padding: $spacing-lg;
-	text-align: center;
+    padding: $spacing-lg;
+    text-align: center;
 
-	h2 {
-		font-size: $font-xl;
-		color: $red;
-	}
-	h3 {
-		font-size: $font-lg;
-		margin-bottom: $spacing-md;
-	}
+    h1 {
+        color: $red;
+        font-size: $font-xl;
+        font-weight: 400;
+    }
+    h2 {
+        font-size: $font-lg;
+        margin-bottom: $spacing-md;
+    }
+    p {
+        font-size: $font-md;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+    }
 }
 
 .not-found-alt {
-	max-width: 300px;
-	text-align: center;
+    text-align: center;
+
+    p {
+        font-size: $font-md;
+        font-weight: 400;
+    }
 }

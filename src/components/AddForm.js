@@ -9,24 +9,27 @@ const textFieldStyles = {
     rootStyle: {
         marginBottom: theme.spacingSM,
     },
-    inputStyle: {
+    floatingLabelStyle: {
         color: theme.grey,
+        fontWeight: '400',
+        top: '28px',
+    },
+    inputStyle: {
+        color: theme.lightGrey,
+        fontSize: theme.fontMD,
         fontWeight: '400',
         height: '30px',
         marginTop: '33px',
     },
     textareaStyle: {
-        color: theme.grey,
+        color: theme.lightGrey,
+        fontSize: theme.fontMD,
         fontWeight: '400',
     },
     labelStyle: {
-        color: theme.grey,
-    },
-    floatingLabelStyle: {
-        color: theme.darkGrey,
-        top: '28px',
+        color: theme.lightGrey,
         fontSize: theme.fontMD,
-        fontWeight: '500',
+        fontWeight: '400',
     },
     underlineStyle: {
         borderColor: theme.grey,
@@ -106,20 +109,20 @@ const AddForm = ({
             </SelectField>
             <div className="button-container">
                 <FlatButton
-                    label="ADD"
+                    label="Add"
                     type="submit"
+                    backgroundColor={theme.lightGrey}
+                    hoverColor={theme.lightestGrey}
                     labelStyle={{
                         color: theme.themeColor,
-                        fontWeight: '300',
+                        fontWeight: '400',
                         fontSize: theme.fontLG,
+                        textTransform: 'none',
                     }}
                     style={{
                         height: '50px',
-                        width: '145px',
-                        border: `1px solid ${theme.grey}`,
+                        width: '100%',
                     }}
-                    backgroundColor={theme.grey}
-                    hoverColor={theme.lightGrey}
                     // disabled={statusLoggingIn}
                     disableTouchRipple
                 />

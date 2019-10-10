@@ -1,130 +1,133 @@
 .card {
-	background-color: $lightGrey;
-	width: 100%;
-	max-width: 400px;
-	color: $darkGrey;
+    background-color: $lightestGrey;
+    color: $darkGrey;
+    max-width: 400px;
+    width: 100%;
 
-	@media screen and (min-width: 768px) {
-		width: 350px;
-	}
+    @media screen and (min-width: 768px) {
+        width: 350px;
+    }
 
-	margin: 5px;
-	border-radius: 2px;
+    border-radius: 4px;
+    margin: 5px;
 
-	.card-header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 10px 15px;
+    .card-header {
+        align-items: center;
+        border-bottom: 1px solid;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 15px;
 
-		border-bottom: 1px solid;
+        .title {
+            color: $darkGrey;
+            font-size: $font-md;
+            font-weight: 500;
+        }
+        .icon-container {
+            display: flex;
 
-		.title {
-			font-size: $font-md;
-			color: $themeColor;
-		}
-		.icon-container {
-			display: flex;
+            .icon {
+                background-color: transparent;
+                border-radius: 50%;
+                box-sizing: border-box;
+                cursor: pointer;
+                fill: transparent;
+                height: 34px;
+                overflow: hidden;
+                padding-left: 2px;
+                padding-top: 2px;
+                stroke: $grey;
+                transition: background-color 350ms
+                        cubic-bezier(0.23, 1, 0.32, 1),
+                    stroke 350ms cubic-bezier(0.23, 1, 0.32, 1);
+                width: 34px;
 
-			.icon {
-				width: 34px;
-				height: 34px;
-				stroke: $grey;
-				fill: transparent;
-				background-color: transparent;
-				border-radius: 50%;
-				overflow: hidden;
-				box-sizing: border-box;
-				padding-top: 2px;
-				padding-left: 2px;
-				cursor: pointer;
-				transition: background-color 350ms cubic-bezier(0.23, 1, 0.32, 1),
-					stroke 350ms cubic-bezier(0.23, 1, 0.32, 1);
-
-				&:hover {
-					background-color: darken($lightGrey, 5%);
-				}
-			}
-			.done-icon {
-				padding-top: 0px;
-				padding-left: 0px;
-
-				&:hover {
-					stroke: $green;
-				}
-			}
-			.archive-icon {
+                &:hover {
+                    background-color: darken($lightGrey, 5%);
+                }
+            }
+            .done-icon {
                 padding-left: 0px;
-				&:hover {
-					stroke: $blue;
-				}
-			}
-			.return-icon {
-				transform: rotate(-90deg);
-				padding-top: 8px;
+                padding-top: 0px;
 
-				&:hover {
-					stroke: $yellow;
-				}
-			}
-			.remove-icon {
-				margin-left: 15px;
+                &:hover {
+                    stroke: $green;
+                }
+            }
+            .archive-icon {
+                padding-left: 0px;
 
-				&:hover {
-					stroke: $red;
-				}
-			}
-		}
-	}
+                &:hover {
+                    stroke: $blue;
+                }
+            }
+            .return-icon {
+                padding-top: 8px;
+                transform: rotate(-90deg);
 
-	.card-body {
-		padding: 10px;
-		padding-top: 15px;
+                &:hover {
+                    stroke: $yellow;
+                }
+            }
+            .remove-icon {
+                margin-left: 15px;
 
-		.description {
-			display: block;
-		}
-	}
+                &:hover {
+                    stroke: $red;
+                }
+            }
+        }
+    }
 
-	.card-footer {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 10px 15px;
-		box-sizing: border-box;
-		height: 50px;
+    .card-body {
+        font-size: $font-standard;
+        padding: 10px;
+        padding-top: 15px;
 
-		.tag {
-			color: $themeColor;
-			font-weight: 500;
-		}
-		.date {
-			background-color: $yellow;
-			padding: 2px 7px;
-			border-radius: 12px;
-			color: $lightGrey;
-		}
-	}
+        .description {
+            display: block;
+        }
+    }
 
-	.list {
-		list-style-type: none;
-		padding-left: 25px;
+    .card-footer {
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        height: 50px;
+        justify-content: space-between;
+        padding: 10px 15px;
 
-		li {
-			margin-bottom: 6px;
-		}
-		li::before {
-			content: '•';
-			font-weight: 500;
-			font-size: $font-md;
-			color: $darkGrey;
-			display: inline-block;
-			width: 24px;
-			margin-left: -15px;
-		}
-	}
+        .tag {
+            color: $themeColor;
+            font-weight: 500;
+        }
+        .date {
+            background-color: $yellow;
+            border-radius: 12px;
+            color: $lightGrey;
+            padding: 2px 7px;
+        }
+    }
 
-	.checklist {
-		list-style-type: none;
-	}
+    .list {
+        list-style-type: none;
+        padding-left: 25px;
+
+        li {
+            margin-bottom: 6px;
+        }
+        li::before {
+            color: $darkGrey;
+            content: '•';
+            display: inline-block;
+            font-size: $font-md;
+            font-weight: 500;
+            margin-left: -15px;
+            width: 24px;
+        }
+    }
+
+    .checklist {
+        list-style-type: none;
+    }
 }

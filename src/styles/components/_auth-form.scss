@@ -1,20 +1,20 @@
 .register-form {
-	display: flex;
-	flex-direction: column;
-	width: 300px;
-	margin-bottom: $spacing-sm;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $spacing-sm;
+    width: 300px;
 
-	.input-container {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
+    .input-container {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
-	.button-container {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		margin-top: $spacing-md;
-	}
+    .button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: $spacing-md;
+    }
 }
