@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500');
 
 // COLORS
-
 $themeColor: #202124;
 $darkGrey: #323639;
 $grey: #9b9b9b;
@@ -13,14 +12,14 @@ $green: #5cb85c;
 $blue: #5bc0de;
 
 // SPACING
-
-$spacing-xs: 10px;
-$spacing-sm: 15px;
-$spacing-md: 30px;
-$spacing-lg: 60px;
+$spacing-xxs: 4px;
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+$spacing-lg: 32px;
+$spacing-xl: 64px;
 
 // FONT
-
 $font-standard: 12px;
 $font-sm: 10px;
 $font-md: 14px;

@@ -9,7 +9,7 @@ import Loading from './Loading';
 
 const textFieldStyles = {
     rootStyle: {
-        marginBottom: theme.spacingSM,
+        marginBottom: theme.spacingMD,
         width: '300px',
     },
     floatingLabelStyle: {

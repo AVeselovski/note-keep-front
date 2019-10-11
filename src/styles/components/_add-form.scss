@@ -1,16 +1,16 @@
 .add-form {
-	max-width: 600px;
-	padding: $spacing-xs;
-	padding-top: $spacing-sm;
-	display: flex;
-	flex-direction: column;
-	margin-left: auto;
-	margin-right: auto;
+    max-width: 600px;
+    padding: $spacing-sm;
+    padding-top: $spacing-md;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
 
-	.button-container {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		margin-top: $spacing-md;
-	}
+    .button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: $spacing-lg;
+    }
 }

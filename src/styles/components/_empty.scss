@@ -1,25 +1,29 @@
 .empty-container {
-	height: calc(100vh - 70px);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	color: $darkGrey;
+    align-items: center;
+    color: $grey;
+    display: flex;
+    height: calc(100vh - 70px);
+    justify-content: center;
+    text-align: center;
 
-	@media screen and (min-width: 768px) {
-		height: calc(100vh - 100px);
-	}
+    @media screen and (min-width: 768px) {
+        height: calc(100vh - 100px);
+    }
 
-	h4 {
-		font-weight: 500;
-	}
+    h1 {
+        font-size: $font-lg;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+    }
 
-	.circle {
-		height: 180px;
-		width: 180px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		box-sizing: border-box;
-	}
+    .circle {
+        align-items: center;
+        border: 3px solid $darkGrey;
+        border-radius: 50%;
+        box-sizing: border-box;
+        display: flex;
+        height: 180px;
+        justify-content: center;
+        width: 180px;
+    }
 }

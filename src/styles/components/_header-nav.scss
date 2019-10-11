@@ -34,7 +34,7 @@
 
         a {
             color: $grey;
-            padding: $spacing-xs $spacing-md;
+            padding: $spacing-sm $spacing-lg;
             text-decoration: none;
             transition: color 350ms cubic-bezier(0.23, 1, 0.32, 1);
             width: 110px;
@@ -51,13 +51,13 @@
     .back-icon {
         cursor: pointer;
         fill: transparent;
-        height: 15px;
+        height: 28px;
         position: fixed;
-        right: 25px;
+        right: 26px;
         stroke: $lightGrey;
-        top: 25px;
+        top: 26px;
         transition: stroke 350ms cubic-bezier(0.23, 1, 0.32, 1);
-        width: 30px;
+        width: 28px;
 
         &:hover {
             stroke: $lightestGrey;

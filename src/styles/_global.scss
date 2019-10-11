@@ -4,6 +4,7 @@
 }
 body {
     font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: $font-standard;
 }
 h1,
 h2,
@@ -13,9 +14,29 @@ p {
     font-size: $font-standard;
     font-weight: 300;
 }
+button {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    line-height: normal;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 0;
+    width: auto;
+}
 
 .app {
     background-color: $themeColor;
     color: $grey;
     min-height: 100vh;
+}
+
+.no-select {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }

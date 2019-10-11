@@ -4,10 +4,10 @@ import { ArrowAltIcon, CheckIcon, ArchiveIcon, CloseIcon } from './icons';
 import theme from '../theme';
 
 const colorCode = {
-    0: theme.blue,
-    1: theme.green,
-    2: theme.yellow,
-    3: theme.red,
+    0: theme.darkerBlue,
+    1: theme.darkerGreen,
+    2: theme.darkerYellow,
+    3: theme.darkerRed,
 };
 
 const checkboxStyles = {
@@ -66,7 +66,6 @@ const CheckList = ({ items }) => {
 
 const Card = ({ card }) => {
     getDate(card.duedate);
-    console.log(card.list && card.list.items.length);
 
     return (
         <div className="card">
@@ -82,30 +81,30 @@ const Card = ({ card }) => {
                 <span className="title">{card.title}</span>
                 <div className="icon-container">
                     {card.status === 'archived' && (
-                        <i className="icon return-icon">
+                        <button className="icon return-icon">
                             <ArrowAltIcon />
-                        </i>
+                        </button>
                     )}
                     {card.status === 'active' ? (
                         card.priority === 0 ? (
-                            <i className="icon archive-icon">
+                            <button className="icon archive-icon">
                                 <ArchiveIcon />
-                            </i>
+                            </button>
                         ) : (
-                            <i className="icon done-icon">
+                            <button className="icon done-icon">
                                 <CheckIcon />
-                            </i>
+                            </button>
                         )
                     ) : (
-                        <i className="icon remove-icon">
+                        <button className="icon remove-icon">
                             <CloseIcon />
-                        </i>
+                        </button>
                     )}
                 </div>
             </div>
             <div className="card-body">
                 {!!card.description && (
-                    <span className="description">{card.description}</span>
+                    <p className="description">{card.description}</p>
                 )}
                 {!!card.description && !!card.list && card.list.items.length ? (
                     <br />

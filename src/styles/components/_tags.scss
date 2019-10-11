@@ -1,6 +1,6 @@
 .tags-container {
     align-items: baseline;
-    bottom: 25px;
+    bottom: 16px;
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
@@ -17,9 +17,10 @@
     .tag {
         background-color: transparent;
         color: $grey;
+        font-size: $font-md;
         font-weight: 500;
-        margin: 0 5px;
-        padding: 2px 3px;
+        margin: 0 $spacing-xxs;
+        padding: $spacing-xxs;
         transition: color 350ms cubic-bezier(0.23, 1, 0.32, 1);
 
         &:hover {

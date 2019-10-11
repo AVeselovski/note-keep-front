@@ -1,12 +1,17 @@
 import React from 'react';
 
 const ArchiveIcon = () => {
-	return (
-		<svg width="30" height="30">
-			<path d="M7,5 27,5 27,25 7,25" strokeWidth="2" strokeLinecap="round" />
-			<path d="M0,15 17,15" strokeWidth="2" strokeLinecap="round" />
-		</svg>
-	);
+    return (
+        <svg width="28" height="28">
+            <path
+                d="M6,4 22,4 22,24 6,24 6,4"
+                strokeWidth="3"
+                strokeLinecap="round"
+            />
+            <path d="M6,14 22,14" strokeWidth="3" strokeLinecap="round" />
+            <path d="M14,14 14,18" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+    );
 };
 
 export default ArchiveIcon;

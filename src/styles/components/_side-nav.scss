@@ -1,56 +1,72 @@
 .btn-add-new {
     background-color: $lightGrey;
     border: 2px solid $darkGrey;
-    border-radius: 50%;
-    bottom: $spacing-sm;
+    border-radius: 60px;
+    bottom: $spacing-md;
     cursor: pointer;
-    height: 30px;
-    padding: 12px;
+    overflow: hidden;
     position: fixed;
-    right: $spacing-sm;
-    stroke: $darkGrey;
-    transition: stroke 350ms cubic-bezier(0.23, 1, 0.32, 1),
-        background-color 350ms cubic-bezier(0.23, 1, 0.32, 1);
-    width: 30px;
+    right: $spacing-md;
+    transition: background-color 350ms cubic-bezier(0.23, 1, 0.32, 1);
+
+    a {
+        display: block;
+        height: 28px;
+        padding: $spacing-sm;
+        stroke: $darkGrey;
+        transition: stroke 350ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
 
     &:hover {
         background-color: $lightestGrey;
-        stroke: $themeColor;
+
+        a {
+            stroke: $themeColor;
+        }
     }
 
     @media screen and (min-width: 768px) {
         background-color: transparent;
         border: 2px solid $lightGrey;
-        bottom: 25px;
-        padding: 12px;
-        right: 25px;
+        bottom: $spacing-lg;
+        right: $spacing-lg;
         stroke: $lightGrey;
+
+        a {
+            padding: $spacing-md;
+            stroke: $lightGrey;
+            transition: stroke 350ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
 
         &:hover {
             border: 2px solid $lightestGrey;
+
+            a {
+                stroke: $darkGrey;
+            }
         }
     }
 }
 
 .btn-menu {
     cursor: pointer;
-    height: 30px;
-    right: $spacing-sm;
+    height: 28px;
+    right: $spacing-md;
     position: fixed;
     stroke: $darkGrey;
-    top: $spacing-sm;
+    top: $spacing-md;
     transition: stroke 350ms cubic-bezier(0.23, 1, 0.32, 1),
         opacity 350ms cubic-bezier(0.23, 1, 0.32, 1);
-    width: 30px;
+    width: 28px;
 
     &:hover {
         stroke: $themeColor;
     }
 
     @media screen and (min-width: 768px) {
-        left: 25px;
+        left: 26px;
         stroke: $lightGrey;
-        top: 25px;
+        top: 26px;
         transition: stroke 350ms cubic-bezier(0.23, 1, 0.32, 1),
             left 350ms cubic-bezier(0.23, 1, 0.32, 1),
             opacity 350ms cubic-bezier(0.23, 1, 0.32, 1),
@@ -104,10 +120,10 @@
 
         .btn-close-side-nav {
             cursor: pointer;
-            height: 30px;
+            height: 28px;
             stroke: $darkGrey;
             transition: stroke 350ms cubic-bezier(0.23, 1, 0.32, 1);
-            width: 30px;
+            width: 28px;
 
             &:hover {
                 stroke: $themeColor;
@@ -119,7 +135,7 @@
         list-style-type: none;
         margin-left: auto;
         margin-right: auto;
-        margin-top: $spacing-sm;
+        margin-top: $spacing-md;
         text-align: center;
         width: 100px;
 
@@ -150,7 +166,7 @@
 
         @media screen and (min-width: 768px) {
             a {
-                padding: $spacing-sm 0 $spacing-sm $spacing-md;
+                padding: $spacing-md 0 $spacing-md $spacing-lg;
                 transition: color 350ms cubic-bezier(0.23, 1, 0.32, 1),
                     padding 350ms cubic-bezier(0.23, 1, 0.32, 1),
                     box-shadow 350ms cubic-bezier(0.23, 1, 0.32, 1),
@@ -159,13 +175,13 @@
                 &:hover {
                     border-left: 4px solid $grey;
                     color: $themeColor;
-                    padding-left: $spacing-md + 5px;
+                    padding-left: $spacing-lg + 5px;
                 }
             }
             .active-link {
                 border-bottom: none;
                 border-left: 4px solid $darkGrey;
-                padding: $spacing-sm 0 $spacing-sm 35px;
+                padding: $spacing-md 0 $spacing-md 35px;
             }
         }
     }
@@ -186,15 +202,15 @@
         }
     }
     .nav-element:nth-of-type(3) {
-        margin-top: $spacing-md;
+        margin-top: $spacing-lg;
     }
     .logout {
         color: $red;
         cursor: pointer;
-        padding: $spacing-sm 0 $spacing-sm 0px;
+        padding: $spacing-md 0 $spacing-md 0px;
 
         @media screen and (min-width: 768px) {
-            padding: $spacing-sm 0 $spacing-sm $spacing-md;
+            padding: $spacing-md 0 $spacing-md $spacing-lg;
             transition: color 350ms cubic-bezier(0.23, 1, 0.32, 1);
 
             &:hover {

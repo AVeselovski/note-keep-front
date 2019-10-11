@@ -175,7 +175,7 @@ class Main extends Component {
                                         <Loading alternative />
                                     </div>
                                 ) : !archive.length ? (
-                                    <Empty message="Archive is empty" />
+                                    <Empty message="ZERO" />
                                 ) : (
                                     <CardsContainer data={archive} />
                                 )

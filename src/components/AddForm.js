@@ -7,7 +7,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 const textFieldStyles = {
     rootStyle: {
-        marginBottom: theme.spacingSM,
+        marginBottom: theme.spacingMD,
     },
     floatingLabelStyle: {
         color: theme.grey,

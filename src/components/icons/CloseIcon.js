@@ -1,12 +1,12 @@
 import React from 'react';
 
-const CloseIcon = ({ size = '30' }) => {
-	return (
-		<svg width={size} height={size}>
-			<path d={`M0,${size} ${size},0`} strokeWidth="2" strokeLinecap="round" />
-			<path d={`M0,0 ${size},${size}`} strokeWidth="2" strokeLinecap="round" />
-		</svg>
-	);
+const CloseIcon = () => {
+    return (
+        <svg width="28" height="28">
+            <path d="M5,23 23,5" strokeWidth="3" strokeLinecap="round" />
+            <path d="M5,5 23,23" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+    );
 };
 
 export default CloseIcon;

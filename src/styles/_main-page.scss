@@ -5,10 +5,10 @@
 
     .main-container {
         height: 100%;
-        padding: 65px 5px 5px 5px; // temp
+        padding: 64px 4px 4px 4px; // temp
 
         @media screen and (min-width: 768px) {
-            padding: 80px 20px 60px 20px; // temp
+            padding: 80px 22px 60px 22px; // temp
             max-height: calc(100vh - 140px);
             transition: margin-left 350ms cubic-bezier(0.23, 1, 0.32, 1);
         }
