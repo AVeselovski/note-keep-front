@@ -1,7 +1,7 @@
 import { all } from 'redux-saga/effects';
 import { watchLogin, watchRegister, watchLogout } from './auth';
 import { watchGetResources } from './resources';
-import { watchSaveNote } from './note';
+import { watchSaveNote, watchChangeStatus } from './note';
 
 export default function* rootSaga() {
     yield all([
@@ -10,5 +10,6 @@ export default function* rootSaga() {
         watchLogout(),
         watchGetResources(),
         watchSaveNote(),
+        watchChangeStatus(),
     ]);
 }

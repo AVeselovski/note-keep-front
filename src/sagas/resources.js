@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { apiGetCards } from '../api/resources';
+import { apiFetchCards } from '../api/resources';
 import {
-    GET_RESOURCES,
+    FETCH_RESOURCES,
     SET_RESOURCES,
     SET_TAGS,
     SET_STATUS_FETCHING_RESOURCES,
@@ -26,7 +26,7 @@ const pickTags = resources =>
 
 function* getResources() {
     try {
-        const response = yield call(apiGetCards);
+        const response = yield call(apiFetchCards);
 
         // make sure to only display tags of active cards
         const active = pickActive(response.data);
@@ -35,16 +35,14 @@ function* getResources() {
         yield put({ type: SET_RESOURCES, payload: response.data });
         yield put({ type: SET_TAGS, payload: tags });
         yield put({ type: SET_STATUS_FETCHING_RESOURCES, payload: false });
-
-        console.log('Great success!', response.data); // TEMP
     } catch (error) {
-        // log error, not temp
+        // log error
         console.log(error);
 
         yield put({ type: SET_STATUS_FETCHING_RESOURCES, payload: false });
 
-        let customError = errorMsg.genericResponseError;
         // notify error
+        let customError = errorMsg.genericResponseError;
         yield put({
             type: SET_NOTIFICATION,
             payload: { msg: customError, type: 'error' },
@@ -53,5 +51,5 @@ function* getResources() {
 }
 
 export function* watchGetResources() {
-    yield takeEvery(GET_RESOURCES, getResources);
+    yield takeEvery(FETCH_RESOURCES, getResources);
 }

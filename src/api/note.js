@@ -10,3 +10,19 @@ export const apiSaveNote = note => {
             return res;
         });
 };
+
+export const apiChangeStatus = (id, status) => {
+    return axios
+        .put(
+            `${API_URL}/note/status/${id}`,
+            {
+                status,
+            },
+            {
+                headers: { authorization: localStorage.getItem('token') },
+            }
+        )
+        .then(res => {
+            return res;
+        });
+};

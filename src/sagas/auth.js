@@ -67,16 +67,17 @@ function* register(action) {
         // redirect
         history.push('/dashboard');
     } catch (error) {
-        // log error, not temp
+        // log error
         console.log(error);
 
         yield put({ type: SET_STATUS_LOGGING_IN, payload: false });
 
+        // notify error
         let customError = errorMsg.genericResponseError;
         if (error.response.status === 422) {
             customError = error.response.data;
         }
-        // notify error
+
         yield put({
             type: SET_NOTIFICATION,
             payload: { msg: customError, type: 'error' },

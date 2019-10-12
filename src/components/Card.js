@@ -64,7 +64,7 @@ const CheckList = ({ items }) => {
     );
 };
 
-const Card = ({ card }) => {
+const Card = ({ card, changeStatus }) => {
     getDate(card.duedate);
 
     return (
@@ -81,17 +81,41 @@ const Card = ({ card }) => {
                 <span className="title">{card.title}</span>
                 <div className="icon-container">
                     {card.status === 'archived' && (
-                        <button className="icon return-icon">
+                        <button
+                            className="icon return-icon"
+                            onClick={() =>
+                                changeStatus({
+                                    id: card._id,
+                                    status: 'active',
+                                })
+                            }
+                        >
                             <ArrowAltIcon />
                         </button>
                     )}
                     {card.status === 'active' ? (
                         card.priority === 0 ? (
-                            <button className="icon archive-icon">
+                            <button
+                                className="icon archive-icon"
+                                onClick={() =>
+                                    changeStatus({
+                                        id: card._id,
+                                        status: 'archived',
+                                    })
+                                }
+                            >
                                 <ArchiveIcon />
                             </button>
                         ) : (
-                            <button className="icon done-icon">
+                            <button
+                                className="icon done-icon"
+                                onClick={() =>
+                                    changeStatus({
+                                        id: card._id,
+                                        status: 'archived',
+                                    })
+                                }
+                            >
                                 <CheckIcon />
                             </button>
                         )

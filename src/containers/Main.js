@@ -11,12 +11,13 @@ import {
 import { logoutUser } from '../actions/auth';
 import { toggleMenu } from '../actions/ui';
 import {
-    getCards,
+    fetchCards,
     setActiveTag,
     setTasks,
     setNotes,
     setArchive,
 } from '../actions/resources';
+import { changeNoteStatus } from '../actions/note';
 import { setStatusFetchingResources } from '../actions/ui';
 import AddContainer from './AddContainer';
 
@@ -32,7 +33,7 @@ class Main extends Component {
         }
 
         this.props.setStatusFetchingResources(true);
-        this.props.getCards();
+        this.props.fetchCards();
 
         if (this.props.activeTag === '') {
             this.props.setActiveTag('#all');
@@ -118,6 +119,7 @@ class Main extends Component {
             archive,
             toggleMenu,
             logoutUser,
+            changeNoteStatus,
         } = this.props;
 
         return (
@@ -149,7 +151,10 @@ class Main extends Component {
                                 ) : !tasks.length ? (
                                     <Empty message="ZERO" />
                                 ) : (
-                                    <CardsContainer data={tasks} />
+                                    <CardsContainer
+                                        data={tasks}
+                                        changeStatus={changeNoteStatus}
+                                    />
                                 )
                             }
                         />
@@ -163,7 +168,10 @@ class Main extends Component {
                                 ) : !notes.length ? (
                                     <Empty message="ZERO" />
                                 ) : (
-                                    <CardsContainer data={notes} />
+                                    <CardsContainer
+                                        data={notes}
+                                        changeStatus={changeNoteStatus}
+                                    />
                                 )
                             }
                         />
@@ -177,7 +185,10 @@ class Main extends Component {
                                 ) : !archive.length ? (
                                     <Empty message="ZERO" />
                                 ) : (
-                                    <CardsContainer data={archive} />
+                                    <CardsContainer
+                                        data={archive}
+                                        changeStatus={changeNoteStatus}
+                                    />
                                 )
                             }
                         />
@@ -207,30 +218,16 @@ const mapStateToProps = ({ auth, resources, ui }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    logoutUser: () => {
-        dispatch(logoutUser());
-    },
-    toggleMenu: val => {
-        dispatch(toggleMenu(val));
-    },
-    setStatusFetchingResources: val => {
-        dispatch(setStatusFetchingResources(val));
-    },
-    getCards: () => {
-        dispatch(getCards());
-    },
-    setActiveTag: val => {
-        dispatch(setActiveTag(val));
-    },
-    setTasks: val => {
-        dispatch(setTasks(val));
-    },
-    setNotes: val => {
-        dispatch(setNotes(val));
-    },
-    setArchive: val => {
-        dispatch(setArchive(val));
-    },
+    logoutUser: () => dispatch(logoutUser()),
+    toggleMenu: val => dispatch(toggleMenu(val)),
+    setStatusFetchingResources: val =>
+        dispatch(setStatusFetchingResources(val)),
+    fetchCards: () => dispatch(fetchCards()),
+    setActiveTag: val => dispatch(setActiveTag(val)),
+    setTasks: val => dispatch(setTasks(val)),
+    setNotes: val => dispatch(setNotes(val)),
+    setArchive: val => dispatch(setArchive(val)),
+    changeNoteStatus: val => dispatch(changeNoteStatus(val)),
 });
 
 export default connect(

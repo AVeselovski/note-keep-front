@@ -1,8 +1,9 @@
-import { call, put, takeEvery, select } from 'redux-saga/effects';
-import { apiSaveNote } from '../api/note';
+import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { apiSaveNote, apiChangeStatus } from '../api/note';
 import {
     SAVE_NOTE,
-    GET_RESOURCES,
+    SAVE_NOTE_STATUS,
+    FETCH_RESOURCES,
     SET_STATUS_FETCHING_RESOURCES,
     SET_NOTIFICATION,
 } from '../utils/constants';
@@ -15,7 +16,7 @@ function* save(action) {
     const note = yield select(getNote);
 
     try {
-        const response = yield call(apiSaveNote, note);
+        yield call(apiSaveNote, note);
 
         yield put({ type: SET_STATUS_FETCHING_RESOURCES, payload: true });
 
@@ -24,13 +25,33 @@ function* save(action) {
             ? history.push('/dashboard/notes')
             : history.push('/dashboard/tasks');
 
-        yield put({ type: GET_RESOURCES });
+        yield put({ type: FETCH_RESOURCES });
     } catch (error) {
-        // log error, not temp
+        // log error
         console.log(error);
 
-        let customError = errorMsg.genericResponseError;
         // notify error
+        let customError = errorMsg.genericResponseError;
+        yield put({
+            type: SET_NOTIFICATION,
+            payload: { msg: customError, type: 'error' },
+        });
+    }
+}
+
+function* changeStatus(action) {
+    const { id, status } = action.payload;
+
+    try {
+        yield call(apiChangeStatus, id, status);
+        yield put({ type: SET_STATUS_FETCHING_RESOURCES, payload: true });
+        yield put({ type: FETCH_RESOURCES });
+    } catch (error) {
+        // log error
+        console.log(error);
+
+        // notify error
+        let customError = errorMsg.genericResponseError;
         yield put({
             type: SET_NOTIFICATION,
             payload: { msg: customError, type: 'error' },
@@ -39,5 +60,8 @@ function* save(action) {
 }
 
 export function* watchSaveNote() {
-    yield takeEvery(SAVE_NOTE, save);
+    yield takeLatest(SAVE_NOTE, save);
+}
+export function* watchChangeStatus() {
+    yield takeLatest(SAVE_NOTE_STATUS, changeStatus);
 }
