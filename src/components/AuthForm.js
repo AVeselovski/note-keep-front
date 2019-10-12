@@ -56,7 +56,7 @@ const AuthForm = ({
     onRegister,
     isRegistering = false,
 }) => {
-    const containerHeight = isRegistering ? '348px' : '174px';
+    const containerHeight = isRegistering ? '348px' : '176px';
 
     return (
         <form

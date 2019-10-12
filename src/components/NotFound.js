@@ -11,6 +11,7 @@ const NotFound = () => (
 
 const NotFoundAlt = () => (
     <div className="not-found-alt">
+        <h1>404</h1>
         <p>{errorMsg.notFoundError}</p>
     </div>
 );

@@ -1,7 +1,7 @@
 .btn-add-new {
     background-color: $lightGrey;
     border: 2px solid $darkGrey;
-    border-radius: 60px;
+    border-radius: 64px;
     bottom: $spacing-md;
     cursor: pointer;
     overflow: hidden;
@@ -92,7 +92,7 @@
 .side-nav {
     background-color: $lightestGrey;
     bottom: 0px;
-    height: 120%;
+    height: 120%; // mobile height jumping
     left: -100%;
     overflow: hidden;
     position: fixed;
@@ -111,11 +111,11 @@
         display: flex;
         height: 60px;
         justify-content: flex-end;
-        padding-right: 15px;
+        padding-right: $spacing-md;
 
         @media screen and (min-width: 768px) {
             height: 80px;
-            padding-right: 25px;
+            padding-right: 26px;
         }
 
         .btn-close-side-nav {
@@ -175,13 +175,13 @@
                 &:hover {
                     border-left: 4px solid $grey;
                     color: $themeColor;
-                    padding-left: $spacing-lg + 5px;
+                    padding-left: $spacing-lg + 4px;
                 }
             }
             .active-link {
                 border-bottom: none;
                 border-left: 4px solid $darkGrey;
-                padding: $spacing-md 0 $spacing-md 35px;
+                padding: $spacing-md 0 $spacing-md 36px;
             }
         }
     }
@@ -220,13 +220,13 @@
     }
     .version {
         font-size: $font-sm;
-        left: 20px;
+        left: $spacing-md;
         position: absolute;
-        top: 20px;
+        top: $spacing-md;
 
         @media screen and (min-width: 768px) {
-            left: 30px;
-            top: 25px;
+            left: $spacing-lg;
+            top: 26px;
         }
     }
 }

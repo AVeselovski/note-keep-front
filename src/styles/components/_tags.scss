@@ -1,6 +1,6 @@
 .tags-container {
     align-items: baseline;
-    bottom: 16px;
+    bottom: 0;
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
@@ -8,11 +8,11 @@
     height: 60px;
     justify-content: center;
     left: 0;
-    margin-left: auto;
-    margin-right: auto;
+    padding-left: 128px;
+    padding-right: 128px;
+    padding-bottom: $spacing-md;
     position: fixed;
     right: 0;
-    width: 550px;
 
     .tag {
         background-color: transparent;
@@ -21,6 +21,7 @@
         font-weight: 500;
         margin: 0 $spacing-xxs;
         padding: $spacing-xxs;
+        padding-top: $spacing-sm;
         transition: color 350ms cubic-bezier(0.23, 1, 0.32, 1);
 
         &:hover {

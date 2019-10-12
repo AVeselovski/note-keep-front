@@ -19,10 +19,22 @@
 }
 
 .not-found-alt {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 90px);
+    justify-content: center;
+    padding: $spacing-xs;
     text-align: center;
 
+    h1 {
+        color: $red;
+        font-size: $font-lg;
+        font-weight: 300;
+        margin-bottom: $spacing-sm;
+    }
     p {
         font-size: $font-md;
         font-weight: 400;
+        letter-spacing: 0.3px;
     }
 }
