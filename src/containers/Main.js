@@ -17,22 +17,20 @@ import {
     setNotes,
     setArchive,
 } from '../actions/resources';
-import { changeNoteStatus } from '../actions/note';
-import { setStatusFetchingResources } from '../actions/ui';
+import { changeNoteStatus, deleteNote } from '../actions/note';
+import { setProcessing } from '../actions/ui';
 import AddContainer from './AddContainer';
 
 const R = require('ramda');
 
 class Main extends Component {
-    // componentWillMount() {}
-
     componentDidMount() {
         // force users to auth if not logged in
         if (!this.props.isAuthorized) {
             this.props.history.push('/auth');
         }
 
-        this.props.setStatusFetchingResources(true);
+        this.props.setProcessing(true);
         this.props.fetchCards();
 
         if (this.props.activeTag === '') {
@@ -61,10 +59,6 @@ class Main extends Component {
         if (tag && tag !== '#all') {
             data = R.filter(R.propEq('tag', tag), allCards);
         }
-
-        // const notes = response.notes.sort(function(a, b) {
-        // 	return b.priority - a.priority;
-        // });
 
         let tasks = [];
         let notes = [];
@@ -111,7 +105,7 @@ class Main extends Component {
             history,
             version,
             menuOpen,
-            statusFetchingResources,
+            processing,
             tags,
             activeTag,
             tasks,
@@ -120,6 +114,7 @@ class Main extends Component {
             toggleMenu,
             logoutUser,
             changeNoteStatus,
+            deleteNote,
         } = this.props;
 
         return (
@@ -144,7 +139,7 @@ class Main extends Component {
                         <Route
                             path={`${url}/tasks`}
                             render={() =>
-                                !!statusFetchingResources ? (
+                                !!processing ? (
                                     <div className="loading-container">
                                         <Loading alternative />
                                     </div>
@@ -161,7 +156,7 @@ class Main extends Component {
                         <Route
                             path={`${url}/notes`}
                             render={() =>
-                                !!statusFetchingResources ? (
+                                !!processing ? (
                                     <div className="loading-container">
                                         <Loading alternative />
                                     </div>
@@ -178,7 +173,7 @@ class Main extends Component {
                         <Route
                             path={`${url}/archive`}
                             render={() =>
-                                !!statusFetchingResources ? (
+                                !!processing ? (
                                     <div className="loading-container">
                                         <Loading alternative />
                                     </div>
@@ -188,6 +183,7 @@ class Main extends Component {
                                     <CardsContainer
                                         data={archive}
                                         changeStatus={changeNoteStatus}
+                                        deleteNote={deleteNote}
                                     />
                                 )
                             }
@@ -214,20 +210,20 @@ const mapStateToProps = ({ auth, resources, ui }) => ({
     archive: resources.archive,
     version: ui.version,
     menuOpen: ui.menuOpen,
-    statusFetchingResources: ui.statusFetchingResources,
+    processing: ui.processing,
 });
 
 const mapDispatchToProps = dispatch => ({
     logoutUser: () => dispatch(logoutUser()),
     toggleMenu: val => dispatch(toggleMenu(val)),
-    setStatusFetchingResources: val =>
-        dispatch(setStatusFetchingResources(val)),
+    setProcessing: val => dispatch(setProcessing(val)),
     fetchCards: () => dispatch(fetchCards()),
     setActiveTag: val => dispatch(setActiveTag(val)),
     setTasks: val => dispatch(setTasks(val)),
     setNotes: val => dispatch(setNotes(val)),
     setArchive: val => dispatch(setArchive(val)),
     changeNoteStatus: val => dispatch(changeNoteStatus(val)),
+    deleteNote: val => dispatch(deleteNote(val)),
 });
 
 export default connect(

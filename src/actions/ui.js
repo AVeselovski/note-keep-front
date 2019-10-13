@@ -3,7 +3,7 @@ import {
     SET_NOTIFICATION,
     DISMISS_NOTIFICATION,
     SET_STATUS_LOGGING_IN,
-    SET_STATUS_FETCHING_RESOURCES,
+    SET_PROCESSING,
 } from '../utils/constants';
 
 export const toggleMenu = val => ({
@@ -25,7 +25,7 @@ export const setStatusLoggingIn = val => ({
     payload: val,
 });
 
-export const setStatusFetchingResources = val => ({
-    type: SET_STATUS_FETCHING_RESOURCES,
+export const setProcessing = val => ({
+    type: SET_PROCESSING,
     payload: val,
 });

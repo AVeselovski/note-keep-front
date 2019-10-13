@@ -17,4 +17,20 @@ const validatePassword = password => {
     }
 };
 
-export { validateEmail, validatePassword };
+const validateTag = tag => {
+    return tag.match(/[`~!@$%^&*()\\=+[\]{}/?,.<>]/) ? true : false;
+};
+
+const formatTag = tag => {
+    let formattedTag = tag
+        .replace('-', ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .replace('#', '')
+        .replace(' ', '-')
+        .toLowerCase();
+
+    return '#' + formattedTag;
+};
+
+export { validateEmail, validatePassword, validateTag, formatTag };

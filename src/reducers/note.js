@@ -4,6 +4,7 @@ import {
     SET_ADDFORM_TAG,
     SET_ADDFORM_PRIORITY,
     SET_VALIDATOR_TITLE_ERROR,
+    SET_VALIDATOR_TAG_ERROR,
 } from '../utils/constants';
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
     duedate: null,
     validatorErrors: {
         titleError: '',
+        tagError: '',
     },
 };
 
@@ -35,7 +37,18 @@ export default (state = initialState, action) => {
         case SET_VALIDATOR_TITLE_ERROR:
             return {
                 ...state,
-                validatorErrors: { titleError: action.payload },
+                validatorErrors: {
+                    ...state.validatorErrors,
+                    titleError: action.payload,
+                },
+            };
+        case SET_VALIDATOR_TAG_ERROR:
+            return {
+                ...state,
+                validatorErrors: {
+                    ...state.validatorErrors,
+                    tagError: action.payload,
+                },
             };
         default:
             return state;

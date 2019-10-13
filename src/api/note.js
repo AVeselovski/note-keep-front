@@ -26,3 +26,13 @@ export const apiChangeStatus = (id, status) => {
             return res;
         });
 };
+
+export const apiDeleteNote = id => {
+    return axios
+        .delete(`${API_URL}/note/${id}`, {
+            headers: { authorization: localStorage.getItem('token') },
+        })
+        .then(res => {
+            return res;
+        });
+};

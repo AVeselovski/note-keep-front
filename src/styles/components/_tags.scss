@@ -2,14 +2,13 @@
     align-items: baseline;
     bottom: 0;
     box-sizing: border-box;
-    cursor: pointer;
     display: flex;
     flex-wrap: wrap-reverse;
     height: 60px;
     justify-content: center;
     left: 0;
-    padding-left: 128px;
-    padding-right: 128px;
+    margin-left: 128px;
+    margin-right: 128px;
     padding-bottom: $spacing-md;
     position: fixed;
     right: 0;
@@ -17,6 +16,7 @@
     .tag {
         background-color: transparent;
         color: $grey;
+        cursor: pointer;
         font-size: $font-md;
         font-weight: 500;
         margin: 0 $spacing-xxs;

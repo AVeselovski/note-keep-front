@@ -14,12 +14,12 @@ export const LOGIN_USER = 'login_user';
 export const REGISTER_USER = 'register_user';
 export const LOGOUT_USER = 'logout_user';
 
-// UI & notifications
+// ui & notifications
 export const TOGGLE_MENU = 'toggle_menu';
 export const SET_NOTIFICATION = 'set_notification';
 export const DISMISS_NOTIFICATION = 'dismiss_notification';
 export const SET_STATUS_LOGGING_IN = 'set_status_logging_in';
-export const SET_STATUS_FETCHING_RESOURCES = 'set_status_fetching_resources';
+export const SET_PROCESSING = 'set_processing';
 
 // resources
 export const SET_RESOURCES = 'set_resources';
@@ -38,6 +38,8 @@ export const SET_ADDFORM_DESCRIPTION = 'set_addform_description';
 export const SET_ADDFORM_TAG = 'set_addform_tag';
 export const SET_ADDFORM_PRIORITY = 'set_addform_priority';
 export const SET_VALIDATOR_TITLE_ERROR = 'set_validator_title_error';
+export const SET_VALIDATOR_TAG_ERROR = 'set_validator_tag_error';
 
 export const SAVE_NOTE = 'save_note';
 export const SAVE_NOTE_STATUS = 'save_note_status';
+export const DELETE_NOTE = 'delete_note';

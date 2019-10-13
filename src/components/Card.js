@@ -64,7 +64,7 @@ const CheckList = ({ items }) => {
     );
 };
 
-const Card = ({ card, changeStatus }) => {
+const Card = ({ card, changeStatus, deleteNote }) => {
     getDate(card.duedate);
 
     return (
@@ -120,7 +120,10 @@ const Card = ({ card, changeStatus }) => {
                             </button>
                         )
                     ) : (
-                        <button className="icon remove-icon">
+                        <button
+                            className="icon remove-icon"
+                            onClick={() => deleteNote(card._id)}
+                        >
                             <CloseIcon />
                         </button>
                     )}

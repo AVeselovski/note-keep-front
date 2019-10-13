@@ -4,7 +4,7 @@ import {
     FETCH_RESOURCES,
     SET_RESOURCES,
     SET_TAGS,
-    SET_STATUS_FETCHING_RESOURCES,
+    SET_PROCESSING,
     SET_NOTIFICATION,
 } from '../utils/constants';
 import { errorMessages as errorMsg } from '../utils/messages';
@@ -34,12 +34,12 @@ function* getResources() {
 
         yield put({ type: SET_RESOURCES, payload: response.data });
         yield put({ type: SET_TAGS, payload: tags });
-        yield put({ type: SET_STATUS_FETCHING_RESOURCES, payload: false });
+        yield put({ type: SET_PROCESSING, payload: false });
     } catch (error) {
         // log error
         console.log(error);
 
-        yield put({ type: SET_STATUS_FETCHING_RESOURCES, payload: false });
+        yield put({ type: SET_PROCESSING, payload: false });
 
         // notify error
         let customError = errorMsg.genericResponseError;

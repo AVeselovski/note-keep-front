@@ -4,6 +4,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import theme from '../theme';
 import FlatButton from 'material-ui/FlatButton';
+import { ArrowIcon } from '../components/icons';
 
 const textFieldStyles = {
     rootStyle: {
@@ -45,12 +46,16 @@ const textFieldStyles = {
 };
 
 const AddForm = ({
+    processing,
     title,
     titleError,
     description,
+    tag,
+    tagError,
     priority,
     onChangeTitle,
     onChangeDescription,
+    onChangeTag,
     onChangePriority,
     onSave,
 }) => {
@@ -79,11 +84,27 @@ const AddForm = ({
                 floatingLabelFixed
                 fullWidth
                 multiLine
-                rows={3}
+                rows={5}
                 value={description}
                 onChange={onChangeDescription}
                 style={textFieldStyles.rootStyle}
                 textareaStyle={textFieldStyles.textareaStyle}
+                floatingLabelStyle={textFieldStyles.floatingLabelStyle}
+                underlineStyle={textFieldStyles.underlineStyle}
+                underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+                errorStyle={textFieldStyles.errorStyle}
+            />
+            <TextField
+                name="tag"
+                type="text"
+                floatingLabelText="Project / category #tag:"
+                floatingLabelFixed
+                fullWidth
+                value={tag}
+                onChange={onChangeTag}
+                errorText={tagError}
+                style={textFieldStyles.rootStyle}
+                inputStyle={textFieldStyles.inputStyle}
                 floatingLabelStyle={textFieldStyles.floatingLabelStyle}
                 underlineStyle={textFieldStyles.underlineStyle}
                 underlineFocusStyle={textFieldStyles.underlineFocusStyle}
@@ -98,6 +119,18 @@ const AddForm = ({
                 style={textFieldStyles.rootStyle}
                 labelStyle={textFieldStyles.labelStyle}
                 floatingLabelStyle={textFieldStyles.floatingLabelStyle}
+                dropDownMenuProps={{
+                    iconButton: <ArrowIcon small />,
+                }}
+                iconStyle={{
+                    fill: 'none',
+                    height: '32px',
+                    padding: '0px',
+                    stroke: theme.grey,
+                    transform: 'rotate(180deg)',
+                    top: '17px',
+                    width: '32px',
+                }}
                 underlineStyle={textFieldStyles.underlineStyle}
                 underlineFocusStyle={textFieldStyles.underlineFocusStyle}
                 errorStyle={textFieldStyles.errorStyle}
@@ -114,16 +147,17 @@ const AddForm = ({
                     backgroundColor={theme.lightGrey}
                     hoverColor={theme.lightestGrey}
                     labelStyle={{
-                        color: theme.themeColor,
+                        color: processing ? theme.grey : theme.themeColor,
                         fontWeight: '400',
                         fontSize: theme.fontLG,
                         textTransform: 'none',
                     }}
                     style={{
                         height: '50px',
+                        opacity: processing ? 0.75 : 1,
                         width: '100%',
                     }}
-                    // disabled={statusLoggingIn}
+                    disabled={processing}
                     disableTouchRipple
                 />
             </div>

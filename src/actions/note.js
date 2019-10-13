@@ -4,8 +4,10 @@ import {
     SET_ADDFORM_TAG,
     SET_ADDFORM_PRIORITY,
     SET_VALIDATOR_TITLE_ERROR,
+    SET_VALIDATOR_TAG_ERROR,
     SAVE_NOTE,
     SAVE_NOTE_STATUS,
+    DELETE_NOTE,
 } from '../utils/constants';
 
 export const setTitle = payload => ({
@@ -33,6 +35,11 @@ export const setTitleError = payload => ({
     payload,
 });
 
+export const setTagError = payload => ({
+    type: SET_VALIDATOR_TAG_ERROR,
+    payload,
+});
+
 export const saveNote = payload => ({
     type: SAVE_NOTE,
     payload,
@@ -40,5 +47,10 @@ export const saveNote = payload => ({
 
 export const changeNoteStatus = payload => ({
     type: SAVE_NOTE_STATUS,
+    payload,
+});
+
+export const deleteNote = payload => ({
+    type: DELETE_NOTE,
     payload,
 });

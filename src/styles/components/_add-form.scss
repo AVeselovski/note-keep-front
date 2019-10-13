@@ -1,3 +1,7 @@
+.add-container {
+    position: relative;
+}
+
 .add-form {
     max-width: 600px;
     padding: $spacing-sm;
@@ -13,4 +17,15 @@
         justify-content: center;
         margin-top: $spacing-lg;
     }
+}
+
+.loading-overlay {
+    background-color: $themeColor;
+    bottom: 0;
+    left: 0;
+    opacity: 0.8;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 19;
 }
