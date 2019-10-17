@@ -1,0 +1,16 @@
+.info-container {
+    padding: $spacing-xl;
+    position: relative;
+
+    h1 {
+        color: $lightGrey;
+        font-size: $font-lg;
+        font-weight: 300;
+        margin-bottom: $spacing-lg;
+    }
+    p {
+        font-size: $font-md;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+    }
+}

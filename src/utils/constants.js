@@ -33,13 +33,16 @@ export const RESET_DATA = 'reset_data';
 export const FETCH_RESOURCES = 'fetch_resources';
 
 // note
+export const RESET_NOTE = 'reset_note';
 export const SET_ADDFORM_TITLE = 'set_addform_title';
 export const SET_ADDFORM_DESCRIPTION = 'set_addform_description';
 export const SET_ADDFORM_TAG = 'set_addform_tag';
 export const SET_ADDFORM_PRIORITY = 'set_addform_priority';
 export const SET_VALIDATOR_TITLE_ERROR = 'set_validator_title_error';
 export const SET_VALIDATOR_TAG_ERROR = 'set_validator_tag_error';
+export const SET_NOTE = 'set_note';
 
+export const FETCH_NOTE = 'fetch_note';
 export const SAVE_NOTE = 'save_note';
 export const SAVE_NOTE_STATUS = 'save_note_status';
 export const DELETE_NOTE = 'delete_note';

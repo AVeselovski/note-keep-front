@@ -45,8 +45,8 @@ const SideNav = ({
                     </NavLink>
                 </li>
                 <li className="nav-element">
-                    <NavLink to={`#`} activeClassName="active-link">
-                        About
+                    <NavLink to={`${url}/info`} activeClassName="active-link">
+                        Info
                     </NavLink>
                 </li>
                 <li className="nav-element logout" onClick={logoutUser}>

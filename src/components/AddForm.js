@@ -46,7 +46,9 @@ const textFieldStyles = {
 };
 
 const AddForm = ({
+    paramId,
     processing,
+    deleteConfirmed,
     title,
     titleError,
     description,
@@ -58,6 +60,7 @@ const AddForm = ({
     onChangeTag,
     onChangePriority,
     onSave,
+    onDelete,
 }) => {
     return (
         <form className="add-form" autoComplete="off" onSubmit={onSave}>
@@ -140,27 +143,75 @@ const AddForm = ({
                 <MenuItem value={1} primaryText="Task: Priority - Green" />
                 <MenuItem value={0} primaryText="Note" />
             </SelectField>
-            <div className="button-container">
-                <FlatButton
-                    label="Add"
-                    type="submit"
-                    backgroundColor={theme.lightGrey}
-                    hoverColor={theme.lightestGrey}
-                    labelStyle={{
-                        color: processing ? theme.grey : theme.themeColor,
-                        fontWeight: '400',
-                        fontSize: theme.fontLG,
-                        textTransform: 'none',
-                    }}
-                    style={{
-                        height: '50px',
-                        opacity: processing ? 0.75 : 1,
-                        width: '100%',
-                    }}
-                    disabled={processing}
-                    disableTouchRipple
-                />
-            </div>
+            {!paramId && (
+                <div className="add-form__button-container add-form__button-container--add">
+                    <FlatButton
+                        label="Add"
+                        type="submit"
+                        backgroundColor={theme.lightGrey}
+                        hoverColor={theme.lightestGrey}
+                        labelStyle={{
+                            color: processing ? theme.grey : theme.themeColor,
+                            fontWeight: '400',
+                            fontSize: theme.fontLG,
+                            textTransform: 'none',
+                        }}
+                        style={{
+                            height: '50px',
+                            opacity: processing ? 0.75 : 1,
+                            width: '100%',
+                        }}
+                        disabled={processing}
+                        disableTouchRipple
+                    />
+                </div>
+            )}
+            {paramId && (
+                <div className="add-form__button-container add-form__button-container--edit">
+                    <FlatButton
+                        label={!deleteConfirmed ? 'Delete' : 'Sure?'}
+                        onClick={onDelete}
+                        backgroundColor={theme.red}
+                        hoverColor={theme.darkerRed}
+                        labelStyle={{
+                            color: processing
+                                ? theme.lightGrey
+                                : theme.lightestGrey,
+                            fontWeight: '400',
+                            fontSize: theme.fontLG,
+                            textTransform: 'none',
+                        }}
+                        style={{
+                            height: '50px',
+                            marginRight: theme.spacingXXS,
+                            opacity: processing ? 0.75 : 1,
+                            width: '100%',
+                        }}
+                        disabled={processing}
+                        disableTouchRipple
+                    />
+                    <FlatButton
+                        label="Save"
+                        type="submit"
+                        backgroundColor={theme.lightGrey}
+                        hoverColor={theme.lightestGrey}
+                        labelStyle={{
+                            color: processing ? theme.grey : theme.themeColor,
+                            fontWeight: '400',
+                            fontSize: theme.fontLG,
+                            textTransform: 'none',
+                        }}
+                        style={{
+                            height: '50px',
+                            marginLeft: theme.spacingXXS,
+                            opacity: processing ? 0.75 : 1,
+                            width: '100%',
+                        }}
+                        disabled={processing}
+                        disableTouchRipple
+                    />
+                </div>
+            )}
         </form>
     );
 };

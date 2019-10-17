@@ -1,14 +1,22 @@
 import {
+    RESET_NOTE,
     SET_ADDFORM_TITLE,
     SET_ADDFORM_DESCRIPTION,
     SET_ADDFORM_TAG,
     SET_ADDFORM_PRIORITY,
     SET_VALIDATOR_TITLE_ERROR,
     SET_VALIDATOR_TAG_ERROR,
+    SET_NOTE,
+    FETCH_NOTE,
     SAVE_NOTE,
     SAVE_NOTE_STATUS,
     DELETE_NOTE,
 } from '../utils/constants';
+
+export const reset = payload => ({
+    type: RESET_NOTE,
+    payload,
+});
 
 export const setTitle = payload => ({
     type: SET_ADDFORM_TITLE,
@@ -37,6 +45,16 @@ export const setTitleError = payload => ({
 
 export const setTagError = payload => ({
     type: SET_VALIDATOR_TAG_ERROR,
+    payload,
+});
+
+export const setNote = payload => ({
+    type: SET_NOTE,
+    payload,
+});
+
+export const fetchNote = payload => ({
+    type: FETCH_NOTE,
     payload,
 });
 

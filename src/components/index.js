@@ -8,6 +8,7 @@ import { NotFound, NotFoundAlt } from './NotFound';
 import CardsContainer from './CardsContainer';
 import Title from './Title';
 import Empty from './Empty';
+import Info from './Info';
 
 export {
     AppTitle,
@@ -21,4 +22,5 @@ export {
     CardsContainer,
     Title,
     Empty,
+    Info,
 };

@@ -7,6 +7,7 @@ import {
     NotFoundAlt,
     CardsContainer,
     Empty,
+    Info,
 } from '../components';
 import { logoutUser } from '../actions/auth';
 import { toggleMenu } from '../actions/ui';
@@ -147,6 +148,7 @@ class Main extends Component {
                                     <Empty message="ZERO" />
                                 ) : (
                                     <CardsContainer
+                                        url={url}
                                         data={tasks}
                                         changeStatus={changeNoteStatus}
                                     />
@@ -164,6 +166,7 @@ class Main extends Component {
                                     <Empty message="ZERO" />
                                 ) : (
                                     <CardsContainer
+                                        url={url}
                                         data={notes}
                                         changeStatus={changeNoteStatus}
                                     />
@@ -181,6 +184,7 @@ class Main extends Component {
                                     <Empty message="ZERO" />
                                 ) : (
                                     <CardsContainer
+                                        url={url}
                                         data={archive}
                                         changeStatus={changeNoteStatus}
                                         deleteNote={deleteNote}
@@ -192,6 +196,11 @@ class Main extends Component {
                             path={`${url}/add`}
                             render={() => <AddContainer history={history} />}
                         />
+                        <Route
+                            path={`${url}/edit/:id`}
+                            render={() => <AddContainer history={history} />}
+                        />
+                        <Route path={`${url}/info`} render={() => <Info />} />
                         <Route component={NotFoundAlt} />
                     </Switch>
                 </div>

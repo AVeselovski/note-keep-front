@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Checkbox from 'material-ui/Checkbox';
 import { ArrowAltIcon, CheckIcon, ArchiveIcon, CloseIcon } from './icons';
 import theme from '../theme';
@@ -64,7 +65,7 @@ const CheckList = ({ items }) => {
     );
 };
 
-const Card = ({ card, changeStatus, deleteNote }) => {
+const Card = ({ url, card, changeStatus, deleteNote }) => {
     getDate(card.duedate);
 
     return (
@@ -78,7 +79,9 @@ const Card = ({ card, changeStatus, deleteNote }) => {
                             : theme.darkGrey,
                 }}
             >
-                <span className="title">{card.title}</span>
+                <NavLink className="title" to={`${url}/edit/${card._id}`}>
+                    {card.title}
+                </NavLink>
                 <div className="icon-container">
                     {card.status === 'archived' && (
                         <button
@@ -122,7 +125,7 @@ const Card = ({ card, changeStatus, deleteNote }) => {
                     ) : (
                         <button
                             className="icon remove-icon"
-                            onClick={() => deleteNote(card._id)}
+                            onClick={() => deleteNote({ id: card._id })}
                         >
                             <CloseIcon />
                         </button>
