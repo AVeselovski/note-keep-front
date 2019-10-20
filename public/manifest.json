@@ -1,15 +1,15 @@
 {
-	"short_name": "Zero Tasks",
-	"name": "Tasks & Notes manager",
-	"icons": [
-		{
-			"src": "favicon.ico",
-			"sizes": "64x64 32x32 24x24 16x16",
-			"type": "image/x-icon"
-		}
-	],
-	"start_url": "./index.html",
-	"display": "standalone",
-	"theme_color": "#000000",
-	"background_color": "#1a1a1a"
+    "short_name": "Zero Tasks",
+    "name": "Zero Tasks",
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon"
+        }
+    ],
+    "start_url": "/?utm_source=homescreen",
+    "display": "standalone",
+    "theme_color": "#202124",
+    "background_color": "#202124"
 }

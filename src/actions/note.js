@@ -7,6 +7,9 @@ import {
     SET_VALIDATOR_TITLE_ERROR,
     SET_VALIDATOR_TAG_ERROR,
     SET_NOTE,
+    SET_LIST_ITEM,
+    REMOVE_LIST_ITEM,
+    ADD_LIST_ITEM,
     FETCH_NOTE,
     SAVE_NOTE,
     SAVE_NOTE_STATUS,
@@ -51,6 +54,20 @@ export const setTagError = payload => ({
 export const setNote = payload => ({
     type: SET_NOTE,
     payload,
+});
+
+export const setListItem = payload => ({
+    type: SET_LIST_ITEM,
+    payload,
+});
+
+export const removeListItem = payload => ({
+    type: REMOVE_LIST_ITEM,
+    payload,
+});
+
+export const addListItem = () => ({
+    type: ADD_LIST_ITEM,
 });
 
 export const fetchNote = payload => ({

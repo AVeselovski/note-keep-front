@@ -1,7 +1,7 @@
 import {
     TOGGLE_MENU,
     SET_NOTIFICATION,
-    DISMISS_NOTIFICATION,
+    RESET_NOTIFICATION,
     SET_STATUS_LOGGING_IN,
     SET_PROCESSING,
     VERSION_NUMBER,
@@ -28,7 +28,7 @@ export default (state = initialState, action) => {
                 notificationMsg: action.payload.msg,
                 notificationType: action.payload.type,
             };
-        case DISMISS_NOTIFICATION:
+        case RESET_NOTIFICATION:
             return { ...state, notificationMsg: '' };
         case SET_STATUS_LOGGING_IN:
             return { ...state, statusLoggingIn: action.payload };

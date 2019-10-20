@@ -84,13 +84,15 @@ class Header extends Component {
                     toggleMenu={toggleMenu}
                     logoutUser={logoutUser}
                 />
-                {tags.length > 1 && (
-                    <Tags
-                        tags={tags}
-                        activeTag={activeTag}
-                        filterTag={filterTag}
-                    />
-                )}
+                {tags.length > 1 &&
+                    pathname.split('/')[2] !== 'add' &&
+                    pathname.split('/')[2] !== 'edit' && (
+                        <Tags
+                            tags={tags}
+                            activeTag={activeTag}
+                            filterTag={filterTag}
+                        />
+                    )}
             </nav>
         );
     }

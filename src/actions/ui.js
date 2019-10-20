@@ -1,7 +1,7 @@
 import {
     TOGGLE_MENU,
     SET_NOTIFICATION,
-    DISMISS_NOTIFICATION,
+    RESET_NOTIFICATION,
     SET_STATUS_LOGGING_IN,
     SET_PROCESSING,
 } from '../utils/constants';
@@ -17,7 +17,7 @@ export const setNotification = (msg, type) => ({
 });
 
 export const dismissNotification = () => ({
-    type: DISMISS_NOTIFICATION,
+    type: RESET_NOTIFICATION,
 });
 
 export const setStatusLoggingIn = val => ({

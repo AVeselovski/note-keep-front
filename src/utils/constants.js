@@ -16,8 +16,8 @@ export const LOGOUT_USER = 'logout_user';
 
 // ui & notifications
 export const TOGGLE_MENU = 'toggle_menu';
+export const RESET_NOTIFICATION = 'reset_notification';
 export const SET_NOTIFICATION = 'set_notification';
-export const DISMISS_NOTIFICATION = 'dismiss_notification';
 export const SET_STATUS_LOGGING_IN = 'set_status_logging_in';
 export const SET_PROCESSING = 'set_processing';
 
@@ -41,6 +41,9 @@ export const SET_ADDFORM_PRIORITY = 'set_addform_priority';
 export const SET_VALIDATOR_TITLE_ERROR = 'set_validator_title_error';
 export const SET_VALIDATOR_TAG_ERROR = 'set_validator_tag_error';
 export const SET_NOTE = 'set_note';
+export const SET_LIST_ITEM = 'set_list_item';
+export const REMOVE_LIST_ITEM = 'remove_list_item';
+export const ADD_LIST_ITEM = 'add_list_item';
 
 export const FETCH_NOTE = 'fetch_note';
 export const SAVE_NOTE = 'save_note';

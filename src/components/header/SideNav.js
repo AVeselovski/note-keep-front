@@ -12,7 +12,7 @@ const SideNav = ({
     toggleMenu,
     logoutUser,
 }) => {
-    const curLocation = pathname.split('/').pop();
+    const curLocation = pathname.split('/')[2];
 
     return (
         <div className={`side-nav${menuOpen ? ' open' : ''}`}>
@@ -59,7 +59,7 @@ const SideNav = ({
             >
                 <MenuIcon />
             </button>
-            {curLocation !== 'add' && (
+            {curLocation !== 'add' && curLocation !== 'edit' && (
                 <button className="btn-add-new">
                     <NavLink
                         to={`${url}/add`}

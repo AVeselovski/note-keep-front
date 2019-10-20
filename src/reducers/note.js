@@ -1,3 +1,4 @@
+import { remove } from 'ramda';
 import {
     RESET_NOTE,
     SET_ADDFORM_TITLE,
@@ -7,13 +8,21 @@ import {
     SET_VALIDATOR_TITLE_ERROR,
     SET_VALIDATOR_TAG_ERROR,
     SET_NOTE,
+    SET_LIST_ITEM,
+    REMOVE_LIST_ITEM,
+    ADD_LIST_ITEM,
 } from '../utils/constants';
+
+const initList = {
+    checklist: false,
+    items: [],
+};
 
 const initialState = {
     title: '',
     description: '',
     list: {
-        ckecklist: true,
+        checklist: false,
         items: [],
     },
     tag: '',
@@ -24,6 +33,37 @@ const initialState = {
         titleError: '',
         tagError: '',
     },
+};
+
+const listReducer = (state = initialState.list, action) => {
+    switch (action.type) {
+        case SET_NOTE:
+            return {
+                ...state,
+                ...action.payload.list,
+            };
+        case SET_LIST_ITEM:
+            return {
+                ...state,
+                items: state.items.map((item, i) =>
+                    i === action.payload.index
+                        ? { ...item, name: action.payload.value }
+                        : item
+                ),
+            };
+        case REMOVE_LIST_ITEM:
+            return {
+                ...state,
+                items: remove(action.payload, 1, state.items),
+            };
+        case ADD_LIST_ITEM:
+            return {
+                ...state,
+                items: [...state.items, { checked: false, name: '' }],
+            };
+        default:
+            return state;
+    }
 };
 
 export default (state = initialState, action) => {
@@ -57,15 +97,23 @@ export default (state = initialState, action) => {
         case SET_NOTE:
             return {
                 ...state,
+                ...action.payload,
                 title: action.payload.title,
                 description: action.payload.description,
-                list: action.payload.list,
+                list: action.payload.list
+                    ? listReducer(state.list, action)
+                    : initList,
                 tag: action.payload.tag,
                 priority: action.payload.priority,
                 status: action.payload.status,
                 duedate: action.payload.duedate,
-                ...action.payload,
             };
+        case SET_LIST_ITEM:
+            return { ...state, list: listReducer(state.list, action) };
+        case REMOVE_LIST_ITEM:
+            return { ...state, list: listReducer(state.list, action) };
+        case ADD_LIST_ITEM:
+            return { ...state, list: listReducer(state.list, action) };
         default:
             return state;
     }

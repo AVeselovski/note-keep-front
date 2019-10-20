@@ -10,22 +10,22 @@ export const fetchCards = () => ({
     type: FETCH_RESOURCES,
 });
 
-export const setActiveTag = val => ({
+export const setActiveTag = payload => ({
     type: SET_ACTIVE_TAG,
-    payload: val,
+    payload,
 });
 
-export const setTasks = tasks => ({
+export const setTasks = payload => ({
     type: SET_TASKS,
-    payload: tasks,
+    payload,
 });
 
-export const setNotes = notes => ({
+export const setNotes = payload => ({
     type: SET_NOTES,
-    payload: notes,
+    payload,
 });
 
-export const setArchive = archived => ({
+export const setArchive = payload => ({
     type: SET_ARCHIVE,
-    payload: archived,
+    payload,
 });

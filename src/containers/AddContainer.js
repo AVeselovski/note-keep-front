@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import memoize from 'memoize-one';
+import { last } from 'ramda';
+import memoize from 'memoize-one';
 import { withRouter } from 'react-router-dom';
 import { validateTag } from '../utils/helpers';
 import { setProcessing } from '../actions/ui';
@@ -12,6 +13,9 @@ import {
     setTag,
     setTitleError,
     setTagError,
+    setListItem,
+    removeListItem,
+    addListItem,
     fetchNote,
     saveNote,
     deleteNote,
@@ -22,6 +26,8 @@ class AddContainer extends Component {
     state = {
         deleteConfirmed: false,
     };
+
+    findItem = memoize(items => last(items));
 
     onSave = e => {
         e.preventDefault();
@@ -71,8 +77,6 @@ class AddContainer extends Component {
         }
     }
 
-    // findNote = memoize((list, id) => find(propEq('_id', id))(list)); TEMP
-
     componentWillUnmount() {
         this.props.reset();
     }
@@ -84,6 +88,7 @@ class AddContainer extends Component {
             title,
             titleError,
             description,
+            list,
             tag,
             tagError,
             priority,
@@ -91,9 +96,15 @@ class AddContainer extends Component {
             setDescription,
             setTag,
             setPriority,
+            setListItem,
+            removeListItem,
+            addListItem,
         } = this.props;
 
-        // const noteInEdit = this.findNote(allCards, params.id); TEMP
+        const focusOn =
+            list && this.findItem(list.items) && !this.findItem(list.items).name
+                ? list.items.length - 1
+                : null;
 
         return (
             <div className="add-container">
@@ -104,6 +115,8 @@ class AddContainer extends Component {
                     title={title}
                     titleError={titleError}
                     description={description}
+                    list={list}
+                    focusOn={focusOn}
                     tag={tag}
                     tagError={tagError}
                     priority={priority}
@@ -111,6 +124,11 @@ class AddContainer extends Component {
                     onChangeDescription={e => setDescription(e.target.value)}
                     onChangeTag={e => setTag(e.target.value)}
                     onChangePriority={(e, i, val) => setPriority(val)}
+                    onChangeListItem={(value, index) =>
+                        setListItem({ value, index })
+                    }
+                    onRemoveListItem={val => removeListItem(val)}
+                    onAddListItem={addListItem}
                     onSave={this.onSave}
                     onDelete={this.onDelete}
                 />
@@ -128,6 +146,7 @@ const mapStateToProps = ({ ui, note, resources }) => ({
     processing: ui.processing,
     title: note.title,
     description: note.description,
+    list: note.list,
     priority: note.priority,
     tag: note.tag,
     titleError: note.validatorErrors.titleError,
@@ -137,13 +156,16 @@ const mapStateToProps = ({ ui, note, resources }) => ({
 
 const mapDispatchToProps = dispatch => ({
     setProcessing: val => dispatch(setProcessing(val)),
-    reset: val => dispatch(reset()),
+    reset: () => dispatch(reset()),
     setTitle: val => dispatch(setTitle(val)),
     setDescription: val => dispatch(setDescription(val)),
     setPriority: val => dispatch(setPriority(val)),
     setTag: val => dispatch(setTag(val)),
     setTitleError: val => dispatch(setTitleError(val)),
     setTagError: val => dispatch(setTagError(val)),
+    setListItem: val => dispatch(setListItem(val)),
+    removeListItem: val => dispatch(removeListItem(val)),
+    addListItem: () => dispatch(addListItem()),
     fetchNote: val => dispatch(fetchNote(val)),
     saveNote: val => dispatch(saveNote(val)),
     deleteNote: val => dispatch(deleteNote(val)),

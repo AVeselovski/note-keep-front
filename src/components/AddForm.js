@@ -4,7 +4,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import theme from '../theme';
 import FlatButton from 'material-ui/FlatButton';
-import { ArrowIcon } from '../components/icons';
+import { ArrowIcon, CloseIcon } from '../components/icons';
 
 const textFieldStyles = {
     rootStyle: {
@@ -45,6 +45,44 @@ const textFieldStyles = {
     },
 };
 
+const ListItem = ({
+    index,
+    item,
+    focusOn,
+    onChangeListItem,
+    onRemoveListItem,
+}) => {
+    return (
+        <div className="list-item">
+            <TextField
+                id={'item-' + index}
+                name="item"
+                type="text"
+                fullWidth
+                placeholder="+ List item"
+                value={item.name}
+                autoFocus={index === focusOn}
+                onChange={e => onChangeListItem(e.target.value, index)}
+                style={textFieldStyles.rootStyle}
+                inputStyle={{
+                    color: theme.lightGrey,
+                    fontSize: theme.fontMD,
+                    fontWeight: '400',
+                }}
+                underlineStyle={textFieldStyles.underlineStyle}
+                underlineFocusStyle={textFieldStyles.underlineFocusStyle}
+            />
+            <button
+                className="list-item__remove-item-btn"
+                type="button"
+                onClick={() => onRemoveListItem(index)}
+            >
+                <CloseIcon small />
+            </button>
+        </div>
+    );
+};
+
 const AddForm = ({
     paramId,
     processing,
@@ -52,6 +90,8 @@ const AddForm = ({
     title,
     titleError,
     description,
+    list,
+    focusOn,
     tag,
     tagError,
     priority,
@@ -59,6 +99,9 @@ const AddForm = ({
     onChangeDescription,
     onChangeTag,
     onChangePriority,
+    onChangeListItem,
+    onRemoveListItem,
+    onAddListItem,
     onSave,
     onDelete,
 }) => {
@@ -97,6 +140,28 @@ const AddForm = ({
                 underlineFocusStyle={textFieldStyles.underlineFocusStyle}
                 errorStyle={textFieldStyles.errorStyle}
             />
+            <div className="add-form__list-container">
+                {list &&
+                    list.items.map((item, index) => (
+                        <ListItem
+                            key={index}
+                            index={index}
+                            item={item}
+                            focusOn={focusOn}
+                            onChangeListItem={onChangeListItem}
+                            onRemoveListItem={onRemoveListItem}
+                        />
+                    ))}
+                <div key="fad" className="list-item">
+                    <button
+                        type="button"
+                        className="list-item__add-item-btn"
+                        onClick={onAddListItem}
+                    >
+                        + List item
+                    </button>
+                </div>
+            </div>
             <TextField
                 name="tag"
                 type="text"

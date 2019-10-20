@@ -12,6 +12,43 @@
     margin-left: auto;
     margin-right: auto;
 
+    &__list-container {
+        .list-item {
+            display: flex;
+
+            &__remove-item-btn {
+                cursor: pointer;
+                margin-bottom: 16px;
+                margin-left: 8px;
+                margin-top: 4px;
+                stroke: $grey;
+                width: 32px;
+
+                &:hover,
+                &:focus {
+                    stroke: $lightGrey;
+                }
+            }
+
+            &__add-item-btn {
+                color: $grey;
+                font-size: $font-md;
+                font-weight: 500;
+                height: 48px;
+                margin-bottom: 16px;
+                opacity: 0.25;
+                transition: color 350ms cubic-bezier(0.23, 1, 0.32, 1),
+                    opacity 350ms cubic-bezier(0.23, 1, 0.32, 1);
+
+                &:hover,
+                &:focus {
+                    color: $lightGrey;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
     &__button-container {
         margin-top: $spacing-lg;
 
