@@ -10,12 +10,13 @@
         justify-content: space-between;
         padding: $spacing-xs $spacing-md;
 
-        .title {
+        &__title {
             color: $darkGrey;
             font-size: $font-md;
             font-weight: 500;
         }
-        .icon-container {
+
+        &__icon-container {
             display: flex;
 
             .icon {
@@ -69,9 +70,31 @@
         font-size: $font-standard;
         padding: $spacing-md;
 
-        .description {
+        &__description {
             display: block;
             white-space: pre-wrap;
+        }
+
+        &__list {
+            list-style-type: none;
+
+            .bullet {
+                color: $grey;
+                display: inline-block;
+                font-size: $font-standard;
+                font-weight: 500;
+                margin-right: 12px;
+            }
+            li {
+                align-items: center;
+                display: flex;
+                margin-bottom: 6px;
+                min-height: 22px;
+            }
+        }
+
+        &__checklist {
+            list-style-type: none;
         }
     }
 
@@ -82,42 +105,18 @@
         justify-content: space-between;
         padding: $spacing-xxs $spacing-md $spacing-sm $spacing-md;
 
-        .tag {
+        &__tag {
             color: $grey;
             font-weight: 500;
             padding-bottom: 2px;
             padding-top: 2px;
         }
-        .date {
+
+        &__date {
             background-color: $grey;
             border-radius: 12px;
             color: $lightestGrey;
             padding: 2px 7px;
         }
-    }
-
-    .list {
-        list-style-type: none;
-        padding-left: 25px; // do not change
-
-        li {
-            align-items: center;
-            display: flex;
-            height: 22px;
-            margin-bottom: 6px;
-        }
-        li::before {
-            color: $grey;
-            content: '•';
-            display: inline-block;
-            font-size: $font-standard;
-            font-weight: 500;
-            margin-left: -15px;
-            width: 24px;
-        }
-    }
-
-    .checklist {
-        list-style-type: none;
     }
 }

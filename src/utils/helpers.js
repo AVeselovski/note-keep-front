@@ -18,6 +18,8 @@ const validatePassword = password => {
 };
 
 const validateTag = tag => {
+    if (!tag) return false;
+
     return tag.match(/[`~!@$%^&*()\\=+[\]{}/?,.<>]/) ? true : false;
 };
 

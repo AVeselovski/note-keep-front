@@ -13,7 +13,7 @@ const colorCode = {
 
 const checkboxStyles = {
     rootStyle: {
-        height: '22px',
+        display: 'flex',
         marginBottom: '6px',
     },
     iconStyle: {
@@ -22,8 +22,10 @@ const checkboxStyles = {
         marginRight: '10px',
     },
     labelStyle: {
-        height: '22px',
+        alignItems: 'center',
         color: theme.darkGrey,
+        display: 'flex',
+        lineHeight: '14px',
     },
 };
 
@@ -39,9 +41,12 @@ const getDate = d => {
 
 const List = ({ items }) => {
     return (
-        <ul className="list">
+        <ul className="card-body__list">
             {items.map(item => (
-                <li key={item._id}>{item.name}</li>
+                <li key={item._id}>
+                    <span className="bullet">•</span>
+                    {item.name}
+                </li>
             ))}
         </ul>
     );
@@ -49,7 +54,7 @@ const List = ({ items }) => {
 
 const CheckList = ({ items }) => {
     return (
-        <ul className="checklist">
+        <ul className="card-body__checklist">
             {items.map(item => (
                 <li key={item._id}>
                     <Checkbox
@@ -79,10 +84,13 @@ const Card = ({ url, card, changeStatus, deleteNote }) => {
                             : theme.darkGrey,
                 }}
             >
-                <NavLink className="title" to={`${url}/edit/${card._id}`}>
+                <NavLink
+                    className="card-header__title"
+                    to={`${url}/edit/${card._id}`}
+                >
                     {card.title}
                 </NavLink>
-                <div className="icon-container">
+                <div className="card-header__icon-container">
                     {card.status === 'archived' && (
                         <button
                             className="icon return-icon"
@@ -134,7 +142,7 @@ const Card = ({ url, card, changeStatus, deleteNote }) => {
             </div>
             <div className="card-body">
                 {!!card.description && (
-                    <p className="description">{card.description}</p>
+                    <p className="card-body__description">{card.description}</p>
                 )}
                 {!!card.description && !!card.list && card.list.items.length ? (
                     <br />
@@ -148,9 +156,11 @@ const Card = ({ url, card, changeStatus, deleteNote }) => {
                 ) : null}
             </div>
             <div className="card-footer">
-                <span className="tag">{card.tag}</span>
+                <span className="card-footer__tag">{card.tag}</span>
                 {card.duedate && (
-                    <span className="date">{getDate(card.duedate)}</span>
+                    <span className="card-footer__date">
+                        {getDate(card.duedate)}
+                    </span>
                 )}
             </div>
         </div>

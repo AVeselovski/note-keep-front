@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500");
 * { padding: 0; margin: 0; }
 
@@ -144,25 +143,25 @@ button { -webkit-appearance: none; -moz-appearance: none; appearance: none; back
 
 .card { background-color: #d8d8d8; border-radius: 4px; color: #323639; }
 .card .card-header { -webkit-box-align: center; -ms-flex-align: center; align-items: center; border-bottom: 2px solid; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 8px 16px; }
-.card .card-header .title { color: #323639; font-size: 14px; font-weight: 500; }
-.card .card-header .icon-container { display: -webkit-box; display: -ms-flexbox; display: flex; }
-.card .card-header .icon-container .icon { background-color: #cbcbcb; border-radius: 50%; -webkit-box-sizing: border-box; box-sizing: border-box; cursor: pointer; fill: transparent; height: 32px; overflow: hidden; padding: 2px; stroke: #9b9b9b; -webkit-transition: background-color 350ms cubic-bezier(0.23, 1, 0.32, 1), stroke 350ms cubic-bezier(0.23, 1, 0.32, 1); transition: background-color 350ms cubic-bezier(0.23, 1, 0.32, 1), stroke 350ms cubic-bezier(0.23, 1, 0.32, 1); width: 32px; }
-.card .card-header .icon-container .icon:hover { background-color: #bfbfbf; }
-.card .card-header .icon-container .done-icon:hover { stroke: #449d44; }
-.card .card-header .icon-container .archive-icon:hover { stroke: #31b0d5; }
-.card .card-header .icon-container .return-icon { -webkit-transform: rotate(-90deg); transform: rotate(-90deg); }
-.card .card-header .icon-container .return-icon:hover { stroke: #e79005; }
-.card .card-header .icon-container .remove-icon { margin-left: 16px; }
-.card .card-header .icon-container .remove-icon:hover { stroke: #c9302c; }
+.card .card-header__title { color: #323639; font-size: 14px; font-weight: 500; }
+.card .card-header__icon-container { display: -webkit-box; display: -ms-flexbox; display: flex; }
+.card .card-header__icon-container .icon { background-color: #cbcbcb; border-radius: 50%; -webkit-box-sizing: border-box; box-sizing: border-box; cursor: pointer; fill: transparent; height: 32px; overflow: hidden; padding: 2px; stroke: #9b9b9b; -webkit-transition: background-color 350ms cubic-bezier(0.23, 1, 0.32, 1), stroke 350ms cubic-bezier(0.23, 1, 0.32, 1); transition: background-color 350ms cubic-bezier(0.23, 1, 0.32, 1), stroke 350ms cubic-bezier(0.23, 1, 0.32, 1); width: 32px; }
+.card .card-header__icon-container .icon:hover { background-color: #bfbfbf; }
+.card .card-header__icon-container .done-icon:hover { stroke: #449d44; }
+.card .card-header__icon-container .archive-icon:hover { stroke: #31b0d5; }
+.card .card-header__icon-container .return-icon { -webkit-transform: rotate(-90deg); transform: rotate(-90deg); }
+.card .card-header__icon-container .return-icon:hover { stroke: #e79005; }
+.card .card-header__icon-container .remove-icon { margin-left: 16px; }
+.card .card-header__icon-container .remove-icon:hover { stroke: #c9302c; }
 .card .card-body { color: #323639; font-size: 12px; padding: 16px; }
-.card .card-body .description { display: block; white-space: pre-wrap; }
+.card .card-body__description { display: block; white-space: pre-wrap; }
+.card .card-body__list { list-style-type: none; }
+.card .card-body__list .bullet { color: #9b9b9b; display: inline-block; font-size: 12px; font-weight: 500; margin-right: 12px; }
+.card .card-body__list li { -webkit-box-align: center; -ms-flex-align: center; align-items: center; display: -webkit-box; display: -ms-flexbox; display: flex; margin-bottom: 6px; min-height: 22px; }
+.card .card-body__checklist { list-style-type: none; }
 .card .card-footer { -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-sizing: border-box; box-sizing: border-box; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 4px 16px 12px 16px; }
-.card .card-footer .tag { color: #9b9b9b; font-weight: 500; padding-bottom: 2px; padding-top: 2px; }
-.card .card-footer .date { background-color: #9b9b9b; border-radius: 12px; color: #d8d8d8; padding: 2px 7px; }
-.card .list { list-style-type: none; padding-left: 25px; }
-.card .list li { -webkit-box-align: center; -ms-flex-align: center; align-items: center; display: -webkit-box; display: -ms-flexbox; display: flex; height: 22px; margin-bottom: 6px; }
-.card .list li::before { color: #9b9b9b; content: '•'; display: inline-block; font-size: 12px; font-weight: 500; margin-left: -15px; width: 24px; }
-.card .checklist { list-style-type: none; }
+.card .card-footer__tag { color: #9b9b9b; font-weight: 500; padding-bottom: 2px; padding-top: 2px; }
+.card .card-footer__date { background-color: #9b9b9b; border-radius: 12px; color: #d8d8d8; padding: 2px 7px; }
 
 .tags-container { -webkit-box-align: baseline; -ms-flex-align: baseline; align-items: baseline; bottom: 0; -webkit-box-sizing: border-box; box-sizing: border-box; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap-reverse; flex-wrap: wrap-reverse; height: 60px; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; left: 0; margin-left: 128px; margin-right: 128px; padding-bottom: 16px; position: fixed; right: 0; }
 .tags-container .tag { background-color: transparent; color: #9b9b9b; cursor: pointer; font-size: 14px; font-weight: 500; margin: 0 4px; padding: 4px; padding-top: 12px; -webkit-transition: color 350ms cubic-bezier(0.23, 1, 0.32, 1); transition: color 350ms cubic-bezier(0.23, 1, 0.32, 1); }
