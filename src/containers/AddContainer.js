@@ -16,6 +16,7 @@ import {
     setListItem,
     removeListItem,
     addListItem,
+    toggleChecklist,
     fetchNote,
     saveNote,
     deleteNote,
@@ -99,6 +100,7 @@ class AddContainer extends Component {
             setListItem,
             removeListItem,
             addListItem,
+            toggleChecklist,
         } = this.props;
 
         const focusOn =
@@ -124,11 +126,10 @@ class AddContainer extends Component {
                     onChangeDescription={e => setDescription(e.target.value)}
                     onChangeTag={e => setTag(e.target.value)}
                     onChangePriority={(e, i, val) => setPriority(val)}
-                    onChangeListItem={(value, index) =>
-                        setListItem({ value, index })
-                    }
+                    onChangeListItem={(value, index) => setListItem({ value, index })}
                     onRemoveListItem={val => removeListItem(val)}
                     onAddListItem={addListItem}
+                    onToggleChecklist={(e, val) => toggleChecklist(val)}
                     onSave={this.onSave}
                     onDelete={this.onDelete}
                 />
@@ -166,6 +167,7 @@ const mapDispatchToProps = dispatch => ({
     setListItem: val => dispatch(setListItem(val)),
     removeListItem: val => dispatch(removeListItem(val)),
     addListItem: () => dispatch(addListItem()),
+    toggleChecklist: val => dispatch(toggleChecklist(val)),
     fetchNote: val => dispatch(fetchNote(val)),
     saveNote: val => dispatch(saveNote(val)),
     deleteNote: val => dispatch(deleteNote(val)),

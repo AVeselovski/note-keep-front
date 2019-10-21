@@ -31,12 +31,28 @@ export const apiPutNote = (id, note) => {
         });
 };
 
-export const apiChangeStatus = (id, status) => {
+export const apiPutNoteStatus = (id, status) => {
     return axios
         .put(
             `${API_URL}/note/status/${id}`,
             {
                 status,
+            },
+            {
+                headers: { authorization: localStorage.getItem('token') },
+            }
+        )
+        .then(res => {
+            return res;
+        });
+};
+
+export const apiPutNoteItem = (id, list) => {
+    return axios
+        .put(
+            `${API_URL}/note/list/${id}`,
+            {
+                list,
             },
             {
                 headers: { authorization: localStorage.getItem('token') },

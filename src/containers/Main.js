@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import {
-    Header,
-    Loading,
-    NotFoundAlt,
-    CardsContainer,
-    Empty,
-    Info,
-} from '../components';
+import { filter, propEq, map, comparator, gt, prop, sort, either, when, assoc } from 'ramda';
+import { Header, Loading, NotFoundAlt, CardsContainer, Empty, Info } from '../components';
 import { logoutUser } from '../actions/auth';
 import { toggleMenu } from '../actions/ui';
 import {
@@ -17,12 +11,11 @@ import {
     setTasks,
     setNotes,
     setArchive,
+    updateResources,
 } from '../actions/resources';
-import { changeNoteStatus, deleteNote } from '../actions/note';
+import { changeCardStatus, toggleCardItem, deleteNote } from '../actions/note';
 import { setProcessing } from '../actions/ui';
 import AddContainer from './AddContainer';
-
-const R = require('ramda');
 
 class Main extends Component {
     componentDidMount() {
@@ -48,6 +41,7 @@ class Main extends Component {
         }
     }
 
+    // REFACTOR THIS TO USE MEMOIZATION INSTEAD
     componentWillReceiveProps(nextProps) {
         if (nextProps.allCards !== this.props.allCards) {
             this.filterResources(nextProps.allCards);
@@ -58,7 +52,7 @@ class Main extends Component {
         let data = allCards;
 
         if (tag && tag !== '#all') {
-            data = R.filter(R.propEq('tag', tag), allCards);
+            data = filter(propEq('tag', tag), allCards);
         }
 
         let tasks = [];
@@ -75,19 +69,14 @@ class Main extends Component {
             }
         };
 
-        R.map(filterCards, data);
+        map(filterCards, data);
 
-        const priorityComparator = R.comparator((a, b) =>
-            R.gt(R.prop('priority', a), R.prop('priority', b))
+        const priorityComparator = comparator((a, b) =>
+            gt(prop('priority', a), prop('priority', b))
         );
-        const dateComparator = R.comparator((a, b) =>
-            R.gt(R.prop('createdBy', a), R.prop('createdBy', b))
-        );
+        const dateComparator = comparator((a, b) => gt(prop('createdBy', a), prop('createdBy', b)));
 
-        const sortedTasks = R.sort(
-            R.either(priorityComparator, dateComparator),
-            tasks
-        );
+        const sortedTasks = sort(either(priorityComparator, dateComparator), tasks);
 
         this.props.setTasks(sortedTasks);
         this.props.setNotes(notes);
@@ -97,6 +86,20 @@ class Main extends Component {
     filterTag = tag => {
         this.props.setActiveTag(tag);
         this.filterResources(this.props.allCards, tag);
+    };
+
+    onCheckItem = (val, itemId, card) => {
+        const items = map(when(propEq('_id', itemId), assoc('checked', val)), card.list.items);
+        const list = {
+            ...card.list,
+            items,
+        };
+        const newCard = {
+            ...card,
+            list,
+        };
+        this.props.toggleCardItem(newCard);
+        this.props.updateResources(newCard);
     };
 
     render() {
@@ -114,7 +117,7 @@ class Main extends Component {
             archive,
             toggleMenu,
             logoutUser,
-            changeNoteStatus,
+            changeCardStatus,
             deleteNote,
         } = this.props;
 
@@ -132,9 +135,7 @@ class Main extends Component {
                     toggleMenu={toggleMenu}
                     filterTag={this.filterTag}
                 />
-                <div
-                    className={`main-container${menuOpen ? ' menu-open' : ''}`}
-                >
+                <div className={`main-container${menuOpen ? ' menu-open' : ''}`}>
                     <Switch>
                         <Redirect exact from={url} to={`${url}/tasks`} />
                         <Route
@@ -150,7 +151,10 @@ class Main extends Component {
                                     <CardsContainer
                                         url={url}
                                         data={tasks}
-                                        changeStatus={changeNoteStatus}
+                                        changeStatus={changeCardStatus}
+                                        onCheckItem={(val, itemId, card) =>
+                                            this.onCheckItem(val, itemId, card)
+                                        }
                                     />
                                 )
                             }
@@ -168,7 +172,10 @@ class Main extends Component {
                                     <CardsContainer
                                         url={url}
                                         data={notes}
-                                        changeStatus={changeNoteStatus}
+                                        changeStatus={changeCardStatus}
+                                        onCheckItem={(val, itemId, cardId) =>
+                                            this.onCheckItem(val, itemId, cardId)
+                                        }
                                     />
                                 )
                             }
@@ -186,7 +193,8 @@ class Main extends Component {
                                     <CardsContainer
                                         url={url}
                                         data={archive}
-                                        changeStatus={changeNoteStatus}
+                                        checkDisabled={true}
+                                        changeStatus={changeCardStatus}
                                         deleteNote={deleteNote}
                                     />
                                 )
@@ -231,7 +239,9 @@ const mapDispatchToProps = dispatch => ({
     setTasks: val => dispatch(setTasks(val)),
     setNotes: val => dispatch(setNotes(val)),
     setArchive: val => dispatch(setArchive(val)),
-    changeNoteStatus: val => dispatch(changeNoteStatus(val)),
+    updateResources: val => dispatch(updateResources(val)),
+    changeCardStatus: val => dispatch(changeCardStatus(val)),
+    toggleCardItem: val => dispatch(toggleCardItem(val)),
     deleteNote: val => dispatch(deleteNote(val)),
 });
 

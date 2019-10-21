@@ -10,6 +10,8 @@ import {
     SET_LIST_ITEM,
     REMOVE_LIST_ITEM,
     ADD_LIST_ITEM,
+    TOGGLE_CHECKLIST,
+    TOGGLE_CARD_ITEM,
     FETCH_NOTE,
     SAVE_NOTE,
     SAVE_NOTE_STATUS,
@@ -70,6 +72,16 @@ export const addListItem = () => ({
     type: ADD_LIST_ITEM,
 });
 
+export const toggleChecklist = payload => ({
+    type: TOGGLE_CHECKLIST,
+    payload,
+});
+
+export const toggleCardItem = payload => ({
+    type: TOGGLE_CARD_ITEM,
+    payload,
+});
+
 export const fetchNote = payload => ({
     type: FETCH_NOTE,
     payload,
@@ -80,7 +92,7 @@ export const saveNote = payload => ({
     payload,
 });
 
-export const changeNoteStatus = payload => ({
+export const changeCardStatus = payload => ({
     type: SAVE_NOTE_STATUS,
     payload,
 });

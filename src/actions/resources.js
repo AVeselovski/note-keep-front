@@ -4,6 +4,7 @@ import {
     SET_TASKS,
     SET_NOTES,
     SET_ARCHIVE,
+    UPDATE_RESOURCES,
 } from '../utils/constants';
 
 export const fetchCards = () => ({
@@ -27,5 +28,10 @@ export const setNotes = payload => ({
 
 export const setArchive = payload => ({
     type: SET_ARCHIVE,
+    payload,
+});
+
+export const updateResources = payload => ({
+    type: UPDATE_RESOURCES,
     payload,
 });

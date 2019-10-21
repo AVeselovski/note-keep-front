@@ -5,6 +5,7 @@ import {
     watchFetchNote,
     watchSaveNote,
     watchChangeStatus,
+    watchToggleCardItem,
     watchDeleteNote,
 } from './note';
 
@@ -17,6 +18,7 @@ export default function* rootSaga() {
         watchFetchNote(),
         watchSaveNote(),
         watchChangeStatus(),
+        watchToggleCardItem(),
         watchDeleteNote(),
     ]);
 }

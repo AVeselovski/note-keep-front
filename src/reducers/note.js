@@ -11,6 +11,7 @@ import {
     SET_LIST_ITEM,
     REMOVE_LIST_ITEM,
     ADD_LIST_ITEM,
+    TOGGLE_CHECKLIST,
 } from '../utils/constants';
 
 const initList = {
@@ -46,9 +47,7 @@ const listReducer = (state = initialState.list, action) => {
             return {
                 ...state,
                 items: state.items.map((item, i) =>
-                    i === action.payload.index
-                        ? { ...item, name: action.payload.value }
-                        : item
+                    i === action.payload.index ? { ...item, name: action.payload.value } : item
                 ),
             };
         case REMOVE_LIST_ITEM:
@@ -60,6 +59,11 @@ const listReducer = (state = initialState.list, action) => {
             return {
                 ...state,
                 items: [...state.items, { checked: false, name: '' }],
+            };
+        case TOGGLE_CHECKLIST:
+            return {
+                ...state,
+                checklist: action.payload,
             };
         default:
             return state;
@@ -100,9 +104,7 @@ export default (state = initialState, action) => {
                 ...action.payload,
                 title: action.payload.title,
                 description: action.payload.description,
-                list: action.payload.list
-                    ? listReducer(state.list, action)
-                    : initList,
+                list: action.payload.list ? listReducer(state.list, action) : initList,
                 tag: action.payload.tag,
                 priority: action.payload.priority,
                 status: action.payload.status,
@@ -113,6 +115,8 @@ export default (state = initialState, action) => {
         case REMOVE_LIST_ITEM:
             return { ...state, list: listReducer(state.list, action) };
         case ADD_LIST_ITEM:
+            return { ...state, list: listReducer(state.list, action) };
+        case TOGGLE_CHECKLIST:
             return { ...state, list: listReducer(state.list, action) };
         default:
             return state;

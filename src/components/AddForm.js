@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import Checkbox from 'material-ui/Checkbox';
 import theme from '../theme';
 import FlatButton from 'material-ui/FlatButton';
 import { ArrowIcon, CloseIcon } from '../components/icons';
@@ -40,18 +41,32 @@ const textFieldStyles = {
         transition: 'none',
     },
     errorStyle: {
-        color: theme.yellow,
         bottom: '-5px',
+        color: theme.yellow,
     },
 };
 
-const ListItem = ({
-    index,
-    item,
-    focusOn,
-    onChangeListItem,
-    onRemoveListItem,
-}) => {
+const checkboxStyles = {
+    rootStyle: {
+        marginTop: '12px',
+        marginBottom: '16px',
+        marginRight: '32px',
+        width: 'auto',
+    },
+    iconStyle: {
+        fill: theme.grey,
+    },
+    labelStyle: {
+        alignItems: 'center',
+        color: theme.grey,
+        display: 'flex',
+        fontSize: theme.fontMD,
+        fontWeight: '400',
+        marginRight: '8px',
+    },
+};
+
+const ListItem = ({ index, item, focusOn, onChangeListItem, onRemoveListItem }) => {
     return (
         <div className="list-item">
             <TextField
@@ -102,6 +117,7 @@ const AddForm = ({
     onChangeListItem,
     onRemoveListItem,
     onAddListItem,
+    onToggleChecklist,
     onSave,
     onDelete,
 }) => {
@@ -160,6 +176,15 @@ const AddForm = ({
                     >
                         + List item
                     </button>
+                    <Checkbox
+                        checked={list.checklist}
+                        onCheck={onToggleChecklist}
+                        label="Checklist"
+                        labelPosition="left"
+                        iconStyle={checkboxStyles.iconStyle}
+                        labelStyle={checkboxStyles.labelStyle}
+                        style={checkboxStyles.rootStyle}
+                    />
                 </div>
             </div>
             <TextField
@@ -239,9 +264,7 @@ const AddForm = ({
                         backgroundColor={theme.red}
                         hoverColor={theme.darkerRed}
                         labelStyle={{
-                            color: processing
-                                ? theme.lightGrey
-                                : theme.lightestGrey,
+                            color: processing ? theme.lightGrey : theme.lightestGrey,
                             fontWeight: '400',
                             fontSize: theme.fontLG,
                             textTransform: 'none',

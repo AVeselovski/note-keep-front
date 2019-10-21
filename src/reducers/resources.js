@@ -6,6 +6,7 @@ import {
     SET_TASKS,
     SET_NOTES,
     SET_ARCHIVE,
+    UPDATE_RESOURCES,
 } from '../utils/constants';
 
 const initialState = {
@@ -31,6 +32,13 @@ export default (state = initialState, action) => {
             return { ...state, notes: action.payload };
         case SET_ARCHIVE:
             return { ...state, archive: action.payload };
+        case UPDATE_RESOURCES:
+            return {
+                ...state,
+                allCards: state.allCards.map(card =>
+                    card._id === action.payload._id ? { ...action.payload } : card
+                ),
+            };
         case RESET_DATA:
             return { ...initialState };
         default:

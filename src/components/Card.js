@@ -52,14 +52,16 @@ const List = ({ items }) => {
     );
 };
 
-const CheckList = ({ items }) => {
+const CheckList = ({ items, checkDisabled, onCheckItem }) => {
     return (
         <ul className="card-body__checklist">
             {items.map(item => (
                 <li key={item._id}>
                     <Checkbox
                         label={item.name}
+                        disabled={checkDisabled}
                         checked={item.checked}
+                        onCheck={(e, val) => onCheckItem(val, item._id)}
                         iconStyle={checkboxStyles.iconStyle}
                         labelStyle={checkboxStyles.labelStyle}
                         style={checkboxStyles.rootStyle}
@@ -70,7 +72,7 @@ const CheckList = ({ items }) => {
     );
 };
 
-const Card = ({ url, card, changeStatus, deleteNote }) => {
+const Card = ({ url, card, checkDisabled, changeStatus, deleteNote, onCheckItem }) => {
     getDate(card.duedate);
 
     return (
@@ -79,21 +81,17 @@ const Card = ({ url, card, changeStatus, deleteNote }) => {
                 className="card-header"
                 style={{
                     borderColor:
-                        card.status !== 'archived'
-                            ? colorCode[card.priority]
-                            : theme.darkGrey,
+                        card.status !== 'archived' ? colorCode[card.priority] : theme.darkGrey,
                 }}
             >
-                <NavLink
-                    className="card-header__title"
-                    to={`${url}/edit/${card._id}`}
-                >
+                <NavLink className="card-header__title" to={`${url}/edit/${card._id}`}>
                     {card.title}
                 </NavLink>
                 <div className="card-header__icon-container">
                     {card.status === 'archived' && (
                         <button
                             className="icon return-icon"
+                            title="Return card as active"
                             onClick={() =>
                                 changeStatus({
                                     id: card._id,
@@ -108,6 +106,7 @@ const Card = ({ url, card, changeStatus, deleteNote }) => {
                         card.priority === 0 ? (
                             <button
                                 className="icon archive-icon"
+                                title="Archive card"
                                 onClick={() =>
                                     changeStatus({
                                         id: card._id,
@@ -120,6 +119,7 @@ const Card = ({ url, card, changeStatus, deleteNote }) => {
                         ) : (
                             <button
                                 className="icon done-icon"
+                                title="Mark as done (archive)"
                                 onClick={() =>
                                     changeStatus({
                                         id: card._id,
@@ -133,6 +133,7 @@ const Card = ({ url, card, changeStatus, deleteNote }) => {
                     ) : (
                         <button
                             className="icon remove-icon"
+                            title="Delete card"
                             onClick={() => deleteNote({ id: card._id })}
                         >
                             <CloseIcon />
@@ -141,15 +142,15 @@ const Card = ({ url, card, changeStatus, deleteNote }) => {
                 </div>
             </div>
             <div className="card-body">
-                {!!card.description && (
-                    <p className="card-body__description">{card.description}</p>
-                )}
-                {!!card.description && !!card.list && card.list.items.length ? (
-                    <br />
-                ) : null}
+                {!!card.description && <p className="card-body__description">{card.description}</p>}
+                {!!card.description && !!card.list && card.list.items.length ? <br /> : null}
                 {!!card.list && card.list.items.length ? (
                     card.list.checklist ? (
-                        <CheckList items={card.list.items} />
+                        <CheckList
+                            items={card.list.items}
+                            checkDisabled={checkDisabled}
+                            onCheckItem={(val, itemId) => onCheckItem(val, itemId, card)}
+                        />
                     ) : (
                         <List items={card.list.items} />
                     )
@@ -157,11 +158,7 @@ const Card = ({ url, card, changeStatus, deleteNote }) => {
             </div>
             <div className="card-footer">
                 <span className="card-footer__tag">{card.tag}</span>
-                {card.duedate && (
-                    <span className="card-footer__date">
-                        {getDate(card.duedate)}
-                    </span>
-                )}
+                {card.duedate && <span className="card-footer__date">{getDate(card.duedate)}</span>}
             </div>
         </div>
     );

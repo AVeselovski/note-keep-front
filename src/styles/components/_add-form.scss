@@ -15,6 +15,7 @@
     &__list-container {
         .list-item {
             display: flex;
+            justify-content: space-between;
 
             &__remove-item-btn {
                 cursor: pointer;

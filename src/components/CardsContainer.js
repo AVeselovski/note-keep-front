@@ -1,7 +1,14 @@
 import React from 'react';
 import Card from './Card';
 
-const CardsContainer = ({ url, data, changeStatus, deleteNote = () => {} }) => {
+const CardsContainer = ({
+    url,
+    data,
+    checkDisabled,
+    changeStatus,
+    deleteNote = () => {},
+    onCheckItem = () => {},
+}) => {
     return (
         <div className="cards-container-wrapper">
             <div className="cards-container">
@@ -10,8 +17,10 @@ const CardsContainer = ({ url, data, changeStatus, deleteNote = () => {} }) => {
                         <Card
                             url={url}
                             card={card}
+                            checkDisabled={checkDisabled}
                             changeStatus={changeStatus}
                             deleteNote={deleteNote}
+                            onCheckItem={onCheckItem}
                         />
                     </div>
                 ))}
