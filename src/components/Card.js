@@ -63,7 +63,10 @@ const CheckList = ({ items, checkDisabled, onCheckItem }) => {
                         checked={item.checked}
                         onCheck={(e, val) => onCheckItem(val, item._id)}
                         iconStyle={checkboxStyles.iconStyle}
-                        labelStyle={checkboxStyles.labelStyle}
+                        labelStyle={{
+                            ...checkboxStyles.labelStyle,
+                            textDecoration: item.checked ? 'line-through' : 'none',
+                        }}
                         style={checkboxStyles.rootStyle}
                     />
                 </li>
@@ -136,7 +139,7 @@ const Card = ({ url, card, checkDisabled, changeStatus, deleteNote, onCheckItem 
                             title="Delete card"
                             onClick={() => deleteNote({ id: card._id })}
                         >
-                            <CloseIcon />
+                            <CloseIcon small />
                         </button>
                     )}
                 </div>
@@ -157,6 +160,7 @@ const Card = ({ url, card, checkDisabled, changeStatus, deleteNote, onCheckItem 
                 ) : null}
             </div>
             <div className="card-footer">
+                <div className="card-footer__overlay"></div>
                 <span className="card-footer__tag">{card.tag}</span>
                 {card.duedate && <span className="card-footer__date">{getDate(card.duedate)}</span>}
             </div>

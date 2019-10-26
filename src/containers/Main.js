@@ -44,7 +44,7 @@ class Main extends Component {
     // REFACTOR THIS TO USE MEMOIZATION INSTEAD
     componentWillReceiveProps(nextProps) {
         if (nextProps.allCards !== this.props.allCards) {
-            this.filterResources(nextProps.allCards);
+            this.filterResources(nextProps.allCards, this.props.activeTag);
         }
     }
 
