@@ -65,9 +65,12 @@
     .card-body {
         color: $darkGrey;
         font-size: $font-standard;
-        max-height: calc(100vh - 260px);
-        overflow-y: scroll;
         padding: $spacing-md;
+
+        @media screen and (min-width: 768px) {
+            max-height: calc(100vh - 260px);
+            overflow-y: scroll;
+        }
 
         &__description {
             display: block;

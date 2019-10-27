@@ -152,7 +152,8 @@ button { -webkit-appearance: none; -moz-appearance: none; appearance: none; back
 .card .card-header__icon-container .return-icon:hover { background-color: #e79005; }
 .card .card-header__icon-container .remove-icon { margin-left: 16px; padding: 7px; }
 .card .card-header__icon-container .remove-icon:hover { background-color: #d9534f; }
-.card .card-body { color: #323639; font-size: 12px; max-height: calc(100vh - 260px); overflow-y: scroll; padding: 16px; }
+.card .card-body { color: #323639; font-size: 12px; padding: 16px; }
+@media screen and (min-width: 768px) { .card .card-body { max-height: calc(100vh - 260px); overflow-y: scroll; } }
 .card .card-body__description { display: block; white-space: pre-wrap; }
 .card .card-body__list { list-style-type: none; }
 .card .card-body__list .bullet { color: #9b9b9b; display: inline-block; font-size: 12px; font-weight: 500; margin-right: 12px; }
